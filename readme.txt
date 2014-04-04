@@ -3,8 +3,8 @@ Contributors: bobbingwide, vsgloik
 Donate link: http://www.oik-plugins.com/oik/oik-donate/
 Tags: shortcode, CSS, GeSHi, [bw_css], [bw_geshi], oik, lazy, smart
 Requires at least: 3.5
-Tested up to: 3.8
-Stable tag: 0.2
+Tested up to: 3.9-beta3
+Stable tag: 0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -72,6 +72,9 @@ Note: oik-css will only load the GeSHi code if it is not already loaded.
 2. [bw_geshi] - examples 
 
 == Upgrade Notice ==
+= 0.5 = 
+Now dependent upon oik v2.1. Tested with WordPress 3.9-beta3
+
 = 0.4 = 
 Tested with WordPress 3.8 
 
@@ -85,6 +88,11 @@ Dependent upon the oik base plugin v2.0 (or higher)
 Dependent upon the oik base plugin 
 
 == Changelog == 
+= 0.5 =
+* Fixed: So that [bw_geshi] works with NextGen gallery installed
+* Tested: With WordPress 3.9-beta3
+* Changed: Dependency logic, now dependent upon oik v2.1
+
 = 0.4 =
 * Tested: With WordPress 3.8
 * Changed: Added support for media=print in addition to media=screen
@@ -104,5 +112,5 @@ Dependent upon the oik base plugin
 == Further reading ==
 If you want to read more about the oik plugins then please visit the
 [oik plugin](http://www.oik-plugins.com/oik) 
-**"the oik plugin - for often included key-information"**
+**"OIK - OIK Information Kit"**
 

@@ -4,7 +4,7 @@ Plugin Name: oik-css
 Plugin URI: http://wordpress.org/extend/plugins/oik-css
 Plugin URI: http://www.oik-plugins.com/oik-plugins/oik-css
 Description: Implements [bw_css] shortcode for internal CSS styling and to help document CSS examples and [bw_geshi] for other languages
-Version: 0.4  
+Version: 0.5  
 Author: bobbingwide
 Author URI: http://www.bobbingwide.com
 License: GPL2
@@ -89,6 +89,7 @@ function bw_wpautop( $pee ) {
  * So the latest solution ( 2013/09/03) is to disable both wpautop() and shortcode_unautop().
  * and replace wpautop() by bw_wpautop() where newlines are NOT converted to breaks, performed AFTER shortcode expansion.
  *
+ * 2014/03/26 - And that still doesn't work when block tags (e.g div) are embedded within non-block tags ( e.g. a ) 
  */
 function bw_better_autop() {
   remove_filter( 'the_content', 'wpautop' );
@@ -114,10 +115,10 @@ function oik_css_activation() {
   static $plugin_basename = null;
   if ( !$plugin_basename ) {
     $plugin_basename = plugin_basename(__FILE__);
-    add_action( "after_plugin_row_" . $plugin_basename, __FUNCTION__ );   
+    add_action( "after_plugin_row_oik-css/oik-css.php", "oik_css_activation" );   
     require_once( "admin/oik-activation.php" );
   }  
-  $depends = "oik:2.0";
+  $depends = "oik:2.1";
   oik_plugin_lazy_activation( __FILE__, $depends, "oik_plugin_plugin_inactive" );
 }
 

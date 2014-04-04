@@ -34,6 +34,9 @@ function bw_format_style( $atts, $content ) {
  * Perform GeSHi - Generic Syntax Highlighter processing
  * 
  * If geshi_highlight() is already available then we don't need to load our version
+ *
+ * After highlighting convert any remaining '[' to &#091; to stop plugins such as NextGen from expanding the shortcodes.
+ * Note: It shouldn't matter if we do this to CSS 
  * 
  * @param string $content - the code to be put through GESHI highlighting
  * @param string $language - the language to use.
@@ -44,6 +47,7 @@ function bw_geshi_it( $content, $language="CSS" ) {
     oik_require( "geshi/geshi.php", "oik-css" );
   }
   $geshid = geshi_highlight( $content, $language, null, true );
+  $geshid = str_replace( "[", "&#091;", $geshid );
   return( $geshid );
 }
 
