@@ -4,9 +4,9 @@ Plugin Name: oik-css
 Plugin URI: http://wordpress.org/extend/plugins/oik-css
 Plugin URI: http://www.oik-plugins.com/oik-plugins/oik-css
 Description: Implements [bw_css] shortcode for internal CSS styling and to help document CSS examples and [bw_geshi] for other languages
-Version: 0.5  
+Version: 0.6  
 Author: bobbingwide
-Author URI: http://www.bobbingwide.com
+Author URI: http://www.oik-plugins.com/author/bobbingwide
 License: GPL2
 
     Copyright 2013,2014 Bobbing Wide (email : herb@bobbingwide.com )
@@ -28,11 +28,13 @@ License: GPL2
 */
 
 /**
- * Implement "oik_loaded" action for oik-css
+ * Implement "oik_add_shortcodes" action for oik-css
  */
 function oik_css_init() {
   bw_add_shortcode( "bw_css", "oik_css", oik_path( "shortcodes/oik-css.php", "oik-css" ), false );
   bw_add_shortcode( "bw_geshi", "oik_geshi", oik_path( "shortcodes/oik-geshi.php", "oik-css" ), false );
+  bw_add_shortcode( "bw_background", "bw_background", oik_path( "shortcodes/oik-background.php", "oik-css" ), false );
+  bw_add_shortcode( "bw_autop", "bw_autop", oik_path( "shortcodes/oik-autop.php", "oik-css" ), false );
   bw_better_autop();
 }
 
@@ -45,6 +47,7 @@ function bw_tracef( $arg1, $arg2=null, $arg3=null ) {
 
 /**
  * Implement "no_texturize_shortcodes" for oik-css shortcodes
+ * 
  * @param array $shortcodes - array of shortcodes that won't be texturized
  * @return array $shortcodes - updated array with our shortcodes added
  */
@@ -56,6 +59,11 @@ function bw_no_texturize_shortcodes( $shortcodes ) {
 
 /**
  * Implement 'the_content' filter using wpautop() without converting newlines to br tags
+ * 
+ * More often than not wpautop() can appear to be more trouble than it's worth.
+ * When we do use it, the results are better if we don't allow newlines to be converted to br tags.
+ *
+ * 
  * @param string $pee - the content with new lines to be converted to paragraphs
  * @return string - the content with automatically generated paragraphs
  */
@@ -77,7 +85,7 @@ function bw_wpautop( $pee ) {
  * such as [bw_css] since it will convert new line characters to &lt;br /&gt; tags
  * 
  * I applied the suggestion from 
- * @link http://stackoverflow.com/questions/5940854/disable-automatic-formatting-inside-wordpress-shortcodes
+ * link http://stackoverflow.com/questions/5940854/disable-automatic-formatting-inside-wordpress-shortcodes
  * but that caused WooCommerce's [add_to_cart] shortcode to fail since it created new line characters
  * during the expansion which were then converted to unwanted paragraph end and start tags.
  * 
@@ -89,13 +97,26 @@ function bw_wpautop( $pee ) {
  * So the latest solution ( 2013/09/03) is to disable both wpautop() and shortcode_unautop().
  * and replace wpautop() by bw_wpautop() where newlines are NOT converted to breaks, performed AFTER shortcode expansion.
  *
- * 2014/03/26 - And that still doesn't work when block tags (e.g div) are embedded within non-block tags ( e.g. a ) 
+ * 2014/03/26 - And that still doesn't work when block tags (e.g div) are embedded within non-block tags ( e.g. a )
+ * 2014/07/03 - Nor does it work when they are embedded within h3 tags!  
+ *
+ * 2014/08/26 - To allow DIY-oik shortcodes to work nicely the latest solution is that we initially disable wpautop processing
+ * and allow it to be re-introduced by using the [bw_autop] shortcode.
+ * 
+ * @param bool $autop - true if you want the bw_wpautop() filter to be run after shortcode expansion
+ *                      false if you want it to be removed again.
+ * 
  */
-function bw_better_autop() {
+function bw_better_autop( $autop=false ) {
   remove_filter( 'the_content', 'wpautop' );
   remove_filter( 'the_content', 'shortcode_unautop' );
+  
   //add_filter( 'the_content', 'bw_tracef', 99 );
-  add_filter( 'the_content', 'bw_wpautop' , 99);
+  if ( $autop ) {
+    add_filter( 'the_content', 'bw_wpautop', 99);
+  } else {
+    remove_filter( 'the_content', 'bw_wpautop', 99 );
+  } 
   //add_filter( 'the_content', 'bw_tracef', 100 );
   //add_filter( 'the_content', 'shortcode_unautop',100 );
   //add_filter( 'no_texturize_shortcodes', "bw_no_texturize_shortcodes" );
@@ -115,8 +136,10 @@ function oik_css_activation() {
   static $plugin_basename = null;
   if ( !$plugin_basename ) {
     $plugin_basename = plugin_basename(__FILE__);
-    add_action( "after_plugin_row_oik-css/oik-css.php", "oik_css_activation" );   
-    require_once( "admin/oik-activation.php" );
+    add_action( "after_plugin_row_oik-css/oik-css.php", "oik_css_activation" );
+    if ( !function_exists( "oik_plugin_lazy_activation" ) ) { 
+      require_once( "admin/oik-activation.php" );
+    }
   }  
   $depends = "oik:2.1";
   oik_plugin_lazy_activation( __FILE__, $depends, "oik_plugin_plugin_inactive" );
@@ -128,7 +151,8 @@ function oik_css_activation() {
 function oik_css_plugin_loaded() {
   add_action( "admin_notices", "oik_css_activation" );
   //add_action( "oik_admin_menu", "oik_css_admin_menu" );
-  add_action( "oik_loaded", "oik_css_init" );
+  //add_action( "oik_loaded", "oik_css_init" );
+  add_action( "oik_add_shortcodes", "oik_css_init" );
 }
 
 oik_css_plugin_loaded();

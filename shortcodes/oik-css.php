@@ -70,6 +70,8 @@ function bw_remove_unwanted_tags( $content ) {
   $dec = str_replace( "&#8217;", "'", $dec );  // Right single quotation mark
   $dec = str_replace( "&#8220;", '"', $dec );  // Left double quotation mark
   $dec = str_replace( "&#8221;", '"', $dec );  // Right double quotation mark
+  $dec = str_replace( "&#038;", '&', $dec );   // Ampersand
+  $dec = str_replace( "&#8211;", "-", $dec );  // en dash
   //bw_trace2( $dec, "de-tagged content" );
   return( $dec );
 }

@@ -1,7 +1,9 @@
 <?php // (C) Copyright Bobbing Wide 2013, 2014
 
 /**
- *  Validate the language for GeSHi
+ * Validate the language for GeSHi
+ *
+ * Note: html5 is a special version which will also remove unwanted tags.
  *
  * @param string $lang - the required languange ( case insensitive )
  * @param string $text - alternative parameter for language ( case sensitive )
@@ -11,7 +13,7 @@
 function oik_css_validate_lang( $lang, &$text ) {
   bw_trace2();
   $lang = strtolower( $lang );
-  $valid = bw_assoc( bw_as_array( "css,html,javascript,jquery,php" ));
+  $valid = bw_assoc( bw_as_array( "css,html,javascript,jquery,php,html5" ));
   $vlang = bw_array_get( $valid, $lang, null );
   if ( !$vlang ) {
     $vlang = bw_array_get( $valid, $text, null );

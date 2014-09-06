@@ -1,10 +1,10 @@
 === oik-css ===
 Contributors: bobbingwide, vsgloik
 Donate link: http://www.oik-plugins.com/oik/oik-donate/
-Tags: shortcode, CSS, GeSHi, [bw_css], [bw_geshi], oik, lazy, smart
-Requires at least: 3.5
-Tested up to: 3.9-beta3
-Stable tag: 0.5
+Tags: shortcode, CSS, GeSHi, [bw_css], [bw_geshi], [bw_autop], [bw_background], oik, lazy, smart
+Requires at least: 3.9
+Tested up to: 4.0
+Stable tag: 0.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -19,6 +19,11 @@ For readability, the CSS is processed using the Generic Syntax Highlighter (GeSH
 Use the [bw_geshi] shortcode for syntax highlighting of: CSS, HTML(5), JavaScript and jQuery, and PHP. 
 
 Implemented as a lazy smart shortcode this code is dependent upon the oik base plugin.
+
+Use the [bw_autop] shortcode to partially re-enable WordPress's wpautop() logic.
+
+Use the experimental [bw_background] shortcode to display an attached image in the background.
+
 
 == Installation ==
 1. Upload the contents of the oik-css plugin to the `/wp-content/plugins/oik-css' directory
@@ -72,8 +77,11 @@ Note: oik-css will only load the GeSHi code if it is not already loaded.
 2. [bw_geshi] - examples 
 
 == Upgrade Notice ==
+= 0.6 = 
+Tested with WordPress 3.9 to 4.0, including WPMS
+
 = 0.5 = 
-Now dependent upon oik v2.1. Tested with WordPress 3.9-beta3
+Now dependent upon oik v2.1 or higher. Tested with WordPress 3.9
 
 = 0.4 = 
 Tested with WordPress 3.8 
@@ -87,7 +95,15 @@ Dependent upon the oik base plugin v2.0 (or higher)
 = 0.1 =
 Dependent upon the oik base plugin 
 
-== Changelog == 
+== Changelog ==
+= 0.6 = 
+* Added: In response to the 'oik_add_shortcodes' action hook the default processing is to disable wpautop() processing.
+* Added: You can partially re-enable wpautop() processing using the [bw_autop true] shortcode.
+* Changed: Then you can turn it off again later [bw_autop false]
+* Added: [bw_autop] shortcode - experimental
+* Added: [bw_background] shortcode - experimental
+* Fixed: Updated bw_remove_unwanted_tags() to cater for ampersands
+  
 = 0.5 =
 * Fixed: So that [bw_geshi] works with NextGen gallery installed
 * Tested: With WordPress 3.9-beta3
