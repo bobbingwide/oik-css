@@ -9,7 +9,7 @@ Author: bobbingwide
 Author URI: http://www.oik-plugins.com/author/bobbingwide
 License: GPL2
 
-    Copyright 2013,2014 Bobbing Wide (email : herb@bobbingwide.com )
+    Copyright 2013-2015 Bobbing Wide (email : herb@bobbingwide.com )
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License version 2,
@@ -186,7 +186,7 @@ function oik_css_activation() {
  * Function to run when the plugin file is loaded 
  */
 function oik_css_plugin_loaded() {
-  add_action( "admin_notices", "oik_css_activation" );
+  add_action( "admin_notices", "oik_css_activation", 11 );
   add_action( "oik_admin_menu", "oik_css_admin_menu" );
   add_action( "oik_loaded", "oik_css_oik_loaded" );
   add_action( "oik_add_shortcodes", "oik_css_init" );

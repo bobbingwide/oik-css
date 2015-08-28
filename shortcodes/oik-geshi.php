@@ -1,9 +1,10 @@
-<?php // (C) Copyright Bobbing Wide 2013, 2014
+<?php // (C) Copyright Bobbing Wide 2013-2015
 
 /**
  * Validate the language for GeSHi
  *
  * Note: html5 is a special version which will also remove unwanted tags.
+ * Use 'none' when you want the output to be displayed ASIS
  *
  * @param string $lang - the required languange ( case insensitive )
  * @param string $text - alternative parameter for language ( case sensitive )
@@ -13,7 +14,7 @@
 function oik_css_validate_lang( $lang, &$text ) {
   //bw_trace2();
   $lang = strtolower( $lang );
-  $valid = bw_assoc( bw_as_array( "css,html,javascript,jquery,php,html5" ));
+  $valid = bw_assoc( bw_as_array( "css,html,javascript,jquery,php,html5,none" ));
   $vlang = bw_array_get( $valid, $lang, null );
   if ( !$vlang ) {
     $vlang = bw_array_get( $valid, $text, null );
@@ -39,7 +40,7 @@ function bw_format_content( $atts, $content ) {
   $text = bw_array_get_from( $atts, "text,1", null );
   $lang = oik_css_validate_lang( $lang, $text );
   if ( $lang ) {
-    if ( $lang <> "html" ) {
+    if ( $lang <> "html"  || $lang <> "none" ) {
       $content = bw_remove_unwanted_tags( $content );
     } else {
       $lang = "html5"; 
@@ -56,6 +57,11 @@ function bw_format_content( $atts, $content ) {
 
 /**
  * Implement the [bw_geshi] shortcode for source code syntax highlighting
+ *
+ * @param array $atts shortcode parameters
+ * @param string $content code to syntax highlight
+ * @param string $tag
+ * @return string syntax highlighted content
  */
 function oik_geshi( $atts=null, $content=null, $tag=null ) {
   //bw_backtrace();
@@ -64,7 +70,9 @@ function oik_geshi( $atts=null, $content=null, $tag=null ) {
     oik_require( "shortcodes/oik-css.php", "oik-css" );
     bw_format_content( $atts, $content );
   }
-  return( bw_ret() );
+	$ret = bw_ret();
+	//bw_trace2( $ret, "returning", false );
+  return( $ret );
 }
 
 /** 
@@ -76,10 +84,15 @@ function bw_geshi__help( $shortcode="bw_geshi" ) {
 
 /**
  * Syntax hook for the bw_geshi shortcode
+ *
+ * Added "content" for shortcode UI
+ * Removed "content" for shortcode UI - since it now uses "inner_content"
+ * Added "none" language for no GeSHi processing
  */
 function bw_geshi__syntax( $shortcode="bw_geshi" ) {
-  $syntax = array( "lang" => bw_skv( null, "html|css|javascript|jquery|php", "Programming language" )
+  $syntax = array( "lang" => bw_skv( null, "html|css|javascript|jquery|php|none", "Programming language" )
                  , "text" => bw_skv( null, "<i>text</i>", "Descriptive text to display" )
+                 //, "content" => bw_skv( null, "textarea", "Content" )
                  );
   return( $syntax );
 }

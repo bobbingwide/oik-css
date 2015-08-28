@@ -45,12 +45,19 @@ function bw_format_style( $atts, $content ) {
  * @return string the highlighted code
  */
 function bw_geshi_it( $content, $language="CSS" ) {
-  if ( !function_exists('geshi_highlight') ) {
-    oik_require( "geshi/geshi.php", "oik-css" );
-  }
-  $geshid = geshi_highlight( $content, $language, null, true );
-  $geshid = str_replace( "[", "&#091;", $geshid );
-  return( $geshid );
+	
+	if ( $language != "none" ) {
+		if ( !function_exists('geshi_highlight') ) {
+			oik_require( "geshi/geshi.php", "oik-css" );
+		}
+		$geshid = geshi_highlight( $content, $language, null, true );
+	} else {
+		$content = esc_html( $content );
+		$geshid = "<pre>" . $content . "</pre>";
+	}
+	bw_trace2( $geshid );
+	$geshid = str_replace( "[", "&#091;", $geshid );
+	return( $geshid );
 }
 
 /**
