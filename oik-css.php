@@ -129,6 +129,12 @@ function bw_wpautop( $pee ) {
 function bw_better_autop( $autop=false ) {
   remove_filter( 'the_content', 'wpautop' );
   remove_filter( 'the_content', 'shortcode_unautop' );
+	remove_filter( 'the_content', 'wptexturize' );
+	if ( !function_exists( "do_shortcode_earlier" ) ) {
+		oik_require( "includes/shortcodes-earlier.php", "oik-css" );
+	}
+	oik_require( "includes/oik-filters.inc" );
+	bw_replace_filter( "the_content", "do_shortcode", 11, "do_shortcode_earlier" );
   
   //add_filter( 'the_content', 'bw_tracef', 99 );
   if ( $autop ) {
@@ -138,8 +144,38 @@ function bw_better_autop( $autop=false ) {
   } 
   //add_filter( 'the_content', 'bw_tracef', 100 );
   //add_filter( 'the_content', 'shortcode_unautop',100 );
-  //add_filter( 'no_texturize_shortcodes', "bw_no_texturize_shortcodes" );
-}  
+	add_filter( 'no_texturize_shortcodes', "bw_no_texturize_shortcodes" );
+  //add_filter( 'the_content', "bw_pre_texturize" );
+  
+  
+	/**
+	 * Filter whether to skip running wptexturize().
+	 *
+	 * Passing false to the filter will effectively short-circuit wptexturize().
+	 * returning the original text passed to the function instead.
+	 *
+	 * The filter runs only once, the first time wptexturize() is called.
+	 *
+	 * @since 4.0.0
+	 *
+	 * @see wptexturize()
+	 *
+	 * @param bool $run_texturize Whether to short-circuit wptexturize().
+	 */
+  $run_texturize = true; 
+	$run_texturize = apply_filters( 'run_wptexturize', $run_texturize );
+  if ( $run_texturize ) {
+    if ( !function_exists( "wptexturize_blocks" ) ) {
+      oik_require( "includes/formatting-later.php", "oik-css" );
+    }  
+    add_filter( 'the_content', "wptexturize_blocks", 98 );
+    
+  }
+  
+  
+}
+
+    
 
 /**
  * Implement "oik_admin_menu" filter for oik-css
