@@ -23,10 +23,12 @@ function bw_enqueue_style( $atts, $content ) {
 function bw_format_style( $atts, $content ) {
   $text = bw_array_get_from( $atts, "text,0", null );
   if ( $text ) {
+    sdiv( "bw_css" ); 
     if ( $text <> "." ) {
       e( $text );
     }
     e( bw_geshi_it( $content ) );
+    ediv();
   }
 }
 

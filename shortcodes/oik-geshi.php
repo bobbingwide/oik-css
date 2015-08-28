@@ -11,7 +11,7 @@
  * 
  */
 function oik_css_validate_lang( $lang, &$text ) {
-  bw_trace2();
+  //bw_trace2();
   $lang = strtolower( $lang );
   $valid = bw_assoc( bw_as_array( "css,html,javascript,jquery,php,html5" ));
   $vlang = bw_array_get( $valid, $lang, null );
@@ -39,16 +39,18 @@ function bw_format_content( $atts, $content ) {
   $text = bw_array_get_from( $atts, "text,1", null );
   $lang = oik_css_validate_lang( $lang, $text );
   if ( $lang ) {
-    if ( $text <> "." ) {
-      e( $text );
-    }
     if ( $lang <> "html" ) {
       $content = bw_remove_unwanted_tags( $content );
     } else {
       $lang = "html5"; 
-      bw_trace2( $content, "html5-content" );
+      //bw_trace2( $content, "html5-content" );
     } 
+    sdiv( "bw_geshi $lang" );
+    if ( $text <> "." ) {
+      e( $text );
+    }
     e( bw_geshi_it( $content, $lang ) );
+    ediv();
   }
 }
 

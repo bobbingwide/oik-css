@@ -4,7 +4,7 @@ Plugin Name: oik-css
 Plugin URI: http://wordpress.org/extend/plugins/oik-css
 Plugin URI: http://www.oik-plugins.com/oik-plugins/oik-css
 Description: Implements [bw_css] shortcode for internal CSS styling and to help document CSS examples and [bw_geshi] for other languages
-Version: 0.6  
+Version: 0.7  
 Author: bobbingwide
 Author URI: http://www.oik-plugins.com/author/bobbingwide
 License: GPL2
@@ -27,15 +27,32 @@ License: GPL2
 
 */
 
+/** 
+ * Implement "oik_loaded" action for oik-css
+ * 
+ * Regardless of whether or not there are any shortcodes
+ * we apply our logic for filtering 'the_content' 
+ * The option field is a checkbox that is ticked when the wpautop() processing is disabled
+ * So we need to negate the value when calling bw_better_autop().
+ * 
+ * Note: Part of the better autop logic applies regardless of the settting for bw_autop 
+ *
+ */
+function oik_css_oik_loaded() {
+  $bw_disable_autop = bw_get_option( "bw_autop", "bw_css_options" );
+  $bw_autop = !$bw_disable_autop; 
+  bw_better_autop( $bw_autop );
+}
+
 /**
  * Implement "oik_add_shortcodes" action for oik-css
+ * 
  */
 function oik_css_init() {
   bw_add_shortcode( "bw_css", "oik_css", oik_path( "shortcodes/oik-css.php", "oik-css" ), false );
   bw_add_shortcode( "bw_geshi", "oik_geshi", oik_path( "shortcodes/oik-geshi.php", "oik-css" ), false );
   bw_add_shortcode( "bw_background", "bw_background", oik_path( "shortcodes/oik-background.php", "oik-css" ), false );
   bw_add_shortcode( "bw_autop", "bw_autop", oik_path( "shortcodes/oik-autop.php", "oik-css" ), false );
-  bw_better_autop();
 }
 
 /**
@@ -52,8 +69,10 @@ function bw_tracef( $arg1, $arg2=null, $arg3=null ) {
  * @return array $shortcodes - updated array with our shortcodes added
  */
 function bw_no_texturize_shortcodes( $shortcodes ) {
+  //  bw_backtrace();
   $shortcodes[] = "bw_css";
   $shortcodes[] = "bw_geshi"; 
+  //$shortcodes[] = "bw_related";
   return( $shortcodes );
 }
 
@@ -123,14 +142,32 @@ function bw_better_autop( $autop=false ) {
 }  
 
 /**
- * Set the plugin server. Not necessary for a plugin on WordPress.org
+ * Implement "oik_admin_menu" filter for oik-css
+ * 
+ * oik-css provides an additional box for the oik options page where the user selects whether or not wpautop() processing
+ * should be globally enabled or disabled. 
+ * 
+ * Setting the plugin server is not necessary for a plugin on WordPress.org
  */
-// function oik_css_admin_menu() {
-//  oik_register_plugin_server( __FILE__ );
-//}
+function oik_css_admin_menu() {
+  //  oik_register_plugin_server( __FILE__ );
+  
+  register_setting( 'oik_css_options', 'bw_css_options', 'oik_options_validate' );
+  add_action( "oik_menu_box", "oik_css_oik_menu_box" );
+}
+
+/**
+ * Display the oik-css menu box
+ */
+function oik_css_oik_menu_box() {
+  oik_require( "admin/oik-css.php", "oik-css" );
+  oik_css_lazy_oik_menu_box();
+}
 
 /**
  * Implement "admin_notices" for oik-css to check plugin dependency
+ * 
+ * Now dependent upon oik v2.3
  */ 
 function oik_css_activation() {
   static $plugin_basename = null;
@@ -141,7 +178,7 @@ function oik_css_activation() {
       require_once( "admin/oik-activation.php" );
     }
   }  
-  $depends = "oik:2.1";
+  $depends = "oik:2.3";
   oik_plugin_lazy_activation( __FILE__, $depends, "oik_plugin_plugin_inactive" );
 }
 
@@ -150,8 +187,8 @@ function oik_css_activation() {
  */
 function oik_css_plugin_loaded() {
   add_action( "admin_notices", "oik_css_activation" );
-  //add_action( "oik_admin_menu", "oik_css_admin_menu" );
-  //add_action( "oik_loaded", "oik_css_init" );
+  add_action( "oik_admin_menu", "oik_css_admin_menu" );
+  add_action( "oik_loaded", "oik_css_oik_loaded" );
   add_action( "oik_add_shortcodes", "oik_css_init" );
 }
 

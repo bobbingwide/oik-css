@@ -77,6 +77,9 @@ Note: oik-css will only load the GeSHi code if it is not already loaded.
 2. [bw_geshi] - examples 
 
 == Upgrade Notice ==
+= 0.7 = 
+Required for better control over Automatic paragraph creation. Now dependent on oik v2.3 or higher.
+
 = 0.6 = 
 Tested with WordPress 3.9 to 4.0, including WPMS
 
@@ -96,14 +99,23 @@ Dependent upon the oik base plugin v2.0 (or higher)
 Dependent upon the oik base plugin 
 
 == Changelog ==
+= 0.7 = 
+* Added: oik-CSS section for oik options > Overview to control Automatic paragraph creation
+* Changed: Responds to "oik_loaded" action to invoke the first part of 'better automatic paragraph creation'
+* Changed: Responds to "oik_admin_menu" action 
+* Changed: Responds to "oik_menu_box" action to display the new section
+* Changed: Now dependent upon oik v2.3
+* Changed: Styled CSS now wrapped in a div with class bw_css
+* Changed: Styled GeSHi now wrapped in a div with classes bw_geshi and the selected language
+
 = 0.6 = 
 * Added: In response to the 'oik_add_shortcodes' action hook the default processing is to disable wpautop() processing.
 * Added: You can partially re-enable wpautop() processing using the [bw_autop true] shortcode.
-* Changed: Then you can turn it off again later [bw_autop false]
 * Added: [bw_autop] shortcode - experimental
 * Added: [bw_background] shortcode - experimental
+* Changed: Then you can turn it off again later [bw_autop false]
 * Fixed: Updated bw_remove_unwanted_tags() to cater for ampersands
-  
+
 = 0.5 =
 * Fixed: So that [bw_geshi] works with NextGen gallery installed
 * Tested: With WordPress 3.9-beta3
