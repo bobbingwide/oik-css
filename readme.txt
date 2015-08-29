@@ -3,7 +3,7 @@ Contributors: bobbingwide, vsgloik
 Donate link: http://www.oik-plugins.com/oik/oik-donate/
 Tags: shortcode, CSS, GeSHi, [bw_css], [bw_geshi], [bw_autop], [bw_background], oik, lazy, smart
 Requires at least: 3.9
-Tested up to: 4.0
+Tested up to: 4.3
 Stable tag: 0.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -17,10 +17,11 @@ For designers, developers and documentors [bw_css] supports echoing of the custo
 For readability, the CSS is processed using the Generic Syntax Highlighter (GeSHi) processing.
 
 Use the [bw_geshi] shortcode for syntax highlighting of: CSS, HTML(5), JavaScript and jQuery, and PHP. 
+Also supports language: none.
 
 Implemented as a lazy smart shortcode this code is dependent upon the oik base plugin.
 
-Use the [bw_autop] shortcode to partially re-enable WordPress's wpautop() logic.
+Use the [bw_autop] shortcode to disable or re-enable WordPress's wpautop() logic.
 
 Use the experimental [bw_background] shortcode to display an attached image in the background.
 
@@ -53,7 +54,7 @@ or
 
 Use the [bw_geshi] shortcode.
 e.g. 
-[bw_geshi html]&lt;h3&gt;[bw_css] and [bw_geshi]&lt;/h3&gt;&lt;p&gt;Cool, lazy smart shortcodes from oik-plugins.&lt;/p&gt;
+[bw_geshi html]&lt;h3&gt;[bw_css], [bw_geshi] &amp; [bw_background]&lt;/h3&gt;&lt;p&gt;Cool, lazy smart shortcodes from oik-plugins.&lt;/p&gt;
 [/bw_geshi]
 
 Supported languages are: 
@@ -61,6 +62,7 @@ Supported languages are:
 * HTML(5)
 * JavsScript and jQuery 
 * PHP
+* none 
 
 If you want to display syntax highlighted CSS without affecting the current display use [bw_geshi css]
 
@@ -77,6 +79,9 @@ Note: oik-css will only load the GeSHi code if it is not already loaded.
 2. [bw_geshi] - examples 
 
 == Upgrade Notice ==
+= 0.8.0 = 
+Required for oik-plugins use of [bw_geshi none] for documenting oik-bwtrace output
+
 = 0.7 = 
 Required for better control over Automatic paragraph creation. Now dependent on oik v2.3 or higher.
 
@@ -99,6 +104,12 @@ Dependent upon the oik base plugin v2.0 (or higher)
 Dependent upon the oik base plugin 
 
 == Changelog ==
+= 0.8.0 =
+* Added: Add support for [bw_geshi none]
+* Changed: Update bw_better_autop() to work with the bw_css_options[bw_autop] option setting
+* Changed: [bw_background] shortcode default selector set to 'body'
+* Tested: With WordPress 4.3
+
 = 0.7 = 
 * Added: oik-CSS section for oik options > Overview to control Automatic paragraph creation
 * Changed: Responds to "oik_loaded" action to invoke the first part of 'better automatic paragraph creation'

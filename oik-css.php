@@ -4,7 +4,7 @@ Plugin Name: oik-css
 Plugin URI: http://wordpress.org/extend/plugins/oik-css
 Plugin URI: http://www.oik-plugins.com/oik-plugins/oik-css
 Description: Implements [bw_css] shortcode for internal CSS styling and to help document CSS examples and [bw_geshi] for other languages
-Version: 0.7  
+Version: 0.8.0  
 Author: bobbingwide
 Author URI: http://www.oik-plugins.com/author/bobbingwide
 License: GPL2
