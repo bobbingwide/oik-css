@@ -3,7 +3,7 @@
 Plugin Name: oik-css
 Plugin URI: http://www.oik-plugins.com/oik-plugins/oik-css
 Description: Implements [bw_css] shortcode for internal CSS styling and to help document CSS examples and [bw_geshi] for other languages
-Version: 0.8.0  
+Version: 0.8.1  
 Author: bobbingwide
 Author URI: http://www.oik-plugins.com/author/bobbingwide
 License: GPL2
@@ -25,6 +25,8 @@ License: GPL2
     http://www.gnu.org/licenses/gpl-2.0.html
 
 */
+
+oik_css_plugin_loaded();
 
 /** 
  * Implement "oik_loaded" action for oik-css
@@ -168,10 +170,7 @@ function bw_better_autop( $autop=false ) {
       oik_require( "includes/formatting-later.php", "oik-css" );
     }  
     add_filter( 'the_content', "wptexturize_blocks", 98 );
-    
   }
-  
-  
 }
 
     
@@ -186,7 +185,6 @@ function bw_better_autop( $autop=false ) {
  */
 function oik_css_admin_menu() {
   //  oik_register_plugin_server( __FILE__ );
-  
   register_setting( 'oik_css_options', 'bw_css_options', 'oik_options_validate' );
   add_action( "oik_menu_box", "oik_css_oik_menu_box" );
 }
@@ -203,6 +201,7 @@ function oik_css_oik_menu_box() {
  * Implement "admin_notices" for oik-css to check plugin dependency
  * 
  * Now dependent upon oik v2.3
+ * 2015/12/17 Now dependent upon oik v2.5or higher
  */ 
 function oik_css_activation() {
   static $plugin_basename = null;
@@ -213,7 +212,7 @@ function oik_css_activation() {
       require_once( "admin/oik-activation.php" );
     }
   }  
-  $depends = "oik:2.3";
+  $depends = "oik:2.5";
   oik_plugin_lazy_activation( __FILE__, $depends, "oik_plugin_plugin_inactive" );
 }
 
@@ -227,4 +226,3 @@ function oik_css_plugin_loaded() {
   add_action( "oik_add_shortcodes", "oik_css_init" );
 }
 
-oik_css_plugin_loaded();

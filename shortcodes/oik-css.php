@@ -1,4 +1,4 @@
- <?php // (C) Copyright Bobbing Wide 2013, 2014
+ <?php // (C) Copyright Bobbing Wide 2013-2015
 /**
  * Enqueue the internal CSS styling
  *
@@ -45,7 +45,6 @@ function bw_format_style( $atts, $content ) {
  * @return string the highlighted code
  */
 function bw_geshi_it( $content, $language="CSS" ) {
-	
 	if ( $language != "none" ) {
 		if ( !function_exists('geshi_highlight') ) {
 			oik_require( "geshi/geshi.php", "oik-css" );

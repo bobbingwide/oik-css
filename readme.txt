@@ -3,8 +3,8 @@ Contributors: bobbingwide, vsgloik
 Donate link: http://www.oik-plugins.com/oik/oik-donate/
 Tags: shortcode, CSS, GeSHi, [bw_css], [bw_geshi], [bw_autop], [bw_background], oik, lazy, smart
 Requires at least: 3.9
-Tested up to: 4.3.1
-Stable tag: 0.8.0
+Tested up to: 4.4
+Stable tag: 0.8.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -80,6 +80,9 @@ Note: oik-css will only load the GeSHi code if it is not already loaded.
 2. [bw_geshi] - examples 
 
 == Upgrade Notice ==
+= 0.8.1 =
+Tested with WordPress 4.4. Now depends on oik v2.5 or higher
+
 = 0.8.0 = 
 Required for oik-plugins use of [bw_geshi none] for documenting oik-bwtrace output
 
@@ -105,6 +108,11 @@ Dependent upon the oik base plugin v2.0 (or higher)
 Dependent upon the oik base plugin 
 
 == Changelog ==
+= 0.8.1 = 
+* Tested: With WordPress 4.4
+* Changed: Now dependent upon oik v2.5. 
+* Changed: Updated oik-activation in line with oik
+
 = 0.8.0 =
 * Added: Add support for [bw_geshi none]
 * Changed: Update bw_better_autop() to work with the bw_css_options[bw_autop] option setting
