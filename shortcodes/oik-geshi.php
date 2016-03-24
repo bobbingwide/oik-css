@@ -1,4 +1,4 @@
-<?php // (C) Copyright Bobbing Wide 2013-2015
+<?php // (C) Copyright Bobbing Wide 2013-2016
 
 /**
  * Validate the language for GeSHi
@@ -14,7 +14,7 @@
 function oik_css_validate_lang( $lang, &$text ) {
   //bw_trace2();
   $lang = strtolower( $lang );
-  $valid = bw_assoc( bw_as_array( "css,html,javascript,jquery,php,html5,none" ));
+  $valid = bw_assoc( bw_as_array( "css,html,javascript,jquery,php,html5,none,mysql" ));
   $vlang = bw_array_get( $valid, $lang, null );
   if ( !$vlang ) {
     $vlang = bw_array_get( $valid, $text, null );
@@ -90,7 +90,7 @@ function bw_geshi__help( $shortcode="bw_geshi" ) {
  * Added "none" language for no GeSHi processing
  */
 function bw_geshi__syntax( $shortcode="bw_geshi" ) {
-  $syntax = array( "lang" => bw_skv( null, "html|css|javascript|jquery|php|none", "Programming language" )
+  $syntax = array( "lang" => bw_skv( null, "html|css|javascript|jquery|php|none,mysql", "Programming language" )
                  , "text" => bw_skv( null, "<i>text</i>", "Descriptive text to display" )
                  //, "content" => bw_skv( null, "textarea", "Content" )
                  );
