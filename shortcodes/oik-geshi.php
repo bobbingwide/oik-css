@@ -90,7 +90,7 @@ function bw_geshi__help( $shortcode="bw_geshi" ) {
  * Added "none" language for no GeSHi processing
  */
 function bw_geshi__syntax( $shortcode="bw_geshi" ) {
-  $syntax = array( "lang" => bw_skv( null, "html|css|javascript|jquery|php|none,mysql", "Programming language" )
+  $syntax = array( "lang" => bw_skv( null, "html|css|javascript|jquery|php|none|mysql", "Programming language" )
                  , "text" => bw_skv( null, "<i>text</i>", "Descriptive text to display" )
                  //, "content" => bw_skv( null, "textarea", "Content" )
                  );
