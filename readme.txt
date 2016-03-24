@@ -3,8 +3,8 @@ Contributors: bobbingwide, vsgloik
 Donate link: http://www.oik-plugins.com/oik/oik-donate/
 Tags: shortcode, CSS, GeSHi, [bw_css], [bw_geshi], [bw_autop], [bw_background], oik, lazy, smart
 Requires at least: 3.9
-Tested up to: 4.4
-Stable tag: 0.8.1
+Tested up to: 4.4-RC1
+Stable tag: 0.8.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -16,7 +16,7 @@ Use the [bw_css] shortcode to add custom CSS as and when you need it.
 For designers, developers and documentors [bw_css] supports echoing of the custom CSS, allowing you to document the CSS you are using.
 For readability, the CSS is processed using the Generic Syntax Highlighter (GeSHi) processing.
 
-Use the [bw_geshi] shortcode for syntax highlighting of: CSS, HTML(5), JavaScript and jQuery, and PHP. 
+Use the [bw_geshi] shortcode for syntax highlighting of: CSS, HTML(5), JavaScript and jQuery, PHP and MySQL. 
 Also supports language: none.
 
 Implemented as a lazy smart shortcode this code is dependent upon the oik base plugin.
@@ -63,13 +63,14 @@ Supported languages are:
 * HTML(5)
 * JavsScript and jQuery 
 * PHP
+* MySQL
 * none 
 
 If you want to display syntax highlighted CSS without affecting the current display use [bw_geshi css]
 
 
 = What version of GeSHi does oik-css use? =
-oik-css delivers a subset of GeSHi version 1.0.8.11, which was the current release on 2013/07/09
+oik-css delivers a subset of GeSHi version 1.0.8.12, which was released on 3 Nov 2014.
 
 Only a small selection of the languages are supported by oik-css. These are the languages primarily used by WordPress.
 
@@ -80,6 +81,9 @@ Note: oik-css will only load the GeSHi code if it is not already loaded.
 2. [bw_geshi] - examples 
 
 == Upgrade Notice ==
+= 0.8.2 = 
+[bw_geshi] shortcode now supports lang=mysql
+
 = 0.8.1 =
 Tested with WordPress 4.4. Now depends on oik v2.5 or higher
 
@@ -108,6 +112,11 @@ Dependent upon the oik base plugin v2.0 (or higher)
 Dependent upon the oik base plugin 
 
 == Changelog ==
+= 0.8.2 = 
+* Added: Added lang=mysql for [bw_geshi] shortcode [github bobbingwide oik-css issue 1]
+* Changed: Supports PHP 7.0 [github bobbingwide oik-css issue 2]
+* Tested: With WordPress 4.5-RC1
+
 = 0.8.1 = 
 * Tested: With WordPress 4.4
 * Changed: Now dependent upon oik v2.5. 
