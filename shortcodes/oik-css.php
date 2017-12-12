@@ -1,4 +1,4 @@
- <?php // (C) Copyright Bobbing Wide 2013-2015
+<?php // (C) Copyright Bobbing Wide 2013-2017
 /**
  * Enqueue the internal CSS styling
  *
@@ -113,12 +113,12 @@ function bw_css__help( $shortcode="bw_css" ) {
  * [bw_css]<i>Internal CSS rules</i>[/bw_css]
  *
  * If you want the CSS to be passed through GeSHi and output to the page then this is indicated using a parameter.
- * A simple . will cause the CSS to be echoed 
- * Anything other than .  which could be as text="echo this text" or just "echo this text" will be echoed before the CSS 
+ * A simple . will cause the CSS to be echoed. 
+ * Anything other than .  which could be as text="echo this text" or just "echo this text" will be echoed before the CSS. 
  */
 function bw_css__syntax( $shortcode="bw_css" ) {
-  $syntax = array( "." => bw_skv( null, "<i>any</i>", "Display the CSS" )
-                 , "text" => bw_skv( null, "<i>any</i>", "Display the CSS with this annotation" )
+  $syntax = array( "." => BW_::bw_skv( null, "<i>". __( "any", "oik-css" ) . "</i>", __( "Display the CSS", "oik-css" ) )
+                 , "text" => BW_::bw_skv( null, "<i>". __( "any", "oik-css" ) . "</i>", __( "Display the CSS with this annotation", "oik-css" ) )
                  );
   return( $syntax );
 }
@@ -127,21 +127,13 @@ function bw_css__syntax( $shortcode="bw_css" ) {
  * Implement example hook for the bw_css shortcode
  */
 function bw_css__example( $shortcode="bw_css" ) {
-  $text = "When the &lt;code&gt; tag follows a &lt;p&gt; tag use a 14px font and different colours";
+  $text = __( "When the &lt;code&gt; tag follows a &lt;p&gt; tag use a 14px font and different colours", "oik-css" );
   $example = " ] p> code { font-size: 14px; color: white; background: #333; }[/bw_css";
   bw_invoke_shortcode( $shortcode, $example, $text );
-  $text = "Elsewhere display &lt;code&gt; in blue.";
+  $text = __( "Elsewhere display &lt;code&gt; in blue.", "oik-css" );
   $example = " ]code { color: blue; } [/bw_css";
   bw_invoke_shortcode( $shortcode, $example, $text );
-  $text = "Use a parameter to cause the CSS to be shown.";
+  $text = __( "Use a parameter to cause the CSS to be shown.", "oik-css" );
   $example = " .] td code b { color: darkblue; } [/bw_css";
   bw_invoke_shortcode( $shortcode, $example, $text );
 }
-
-
-
-
-  
-  
-
-

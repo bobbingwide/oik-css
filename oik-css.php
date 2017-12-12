@@ -1,14 +1,17 @@
 <?php
 /*
 Plugin Name: oik-css
-Plugin URI: http://www.oik-plugins.com/oik-plugins/oik-css
+Plugin URI: https://www.oik-plugins.com/oik-plugins/oik-css
 Description: Implements [bw_css] shortcode for internal CSS styling and to help document CSS examples and [bw_geshi] for other languages
-Version: 0.8.2  
+Version: 0.9.0  
 Author: bobbingwide
-Author URI: http://www.oik-plugins.com/author/bobbingwide
-License: GPL2
+Author URI: https://www.oik-plugins.com/author/bobbingwide
+Text Domain: oik-css
+Domain Path: /languages/
+License: GPLv2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-    Copyright 2013-2016 Bobbing Wide (email : herb@bobbingwide.com )
+    Copyright 2013-2017 Bobbing Wide (email : herb@bobbingwide.com )
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License version 2,

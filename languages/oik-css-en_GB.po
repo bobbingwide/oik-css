@@ -1,0 +1,194 @@
+# Copyright (C) 2017 oik-css
+# This file is distributed under the same license as the oik-css package.
+msgid ""
+msgstr ""
+"Project-Id-Version: oik-css 0.9.0\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/oik-css\n"
+"POT-Creation-Date: 2017-12-12 16:24:09+00:00\n"
+"MIME-Version: 1.0\n"
+"Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
+"Language: en_GB\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2017-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+#: admin/oik-activation.php:25
+msgid "Install"
+msgstr "Install"
+
+#: admin/oik-activation.php:54
+msgid "Activate"
+msgstr "Activate"
+
+#: admin/oik-activation.php:76
+msgid " Upgrade"
+msgstr " Upgrade"
+
+#: admin/oik-activation.php:191
+msgid "%1$s may not be fully functional."
+msgstr "%1$s may not be fully functional."
+
+#: admin/oik-activation.php:193
+msgid ""
+"Please install and activate the required minimum version of this plugin:"
+msgstr "Please install and activate the required minimum version of this plugin:"
+
+#: admin/oik-css.php:4
+msgid "oik-CSS options"
+msgstr "oik-CSS options"
+
+#: admin/oik-css.php:15
+msgid "Save changes"
+msgstr "Save changes"
+
+#: admin/oik-css.php:19
+msgid "To enable automatic paragraph creation use the [bw_autop] shortcode."
+msgstr "To enable automatic paragraph creation use the [bw_autop] shortcode."
+
+#: admin/oik-css.php:21
+msgid "To disable automatic paragraph creation use [bw_autop off]."
+msgstr "To disable automatic paragraph creation use [bw_autop off]."
+
+#. translators: opening curly double quote
+#: includes/formatting-later.php:115
+msgctxt "opening curly double quote"
+msgid "&#8220;"
+msgstr "&#8220;"
+
+#. translators: closing curly double quote
+#: includes/formatting-later.php:117
+msgctxt "closing curly double quote"
+msgid "&#8221;"
+msgstr "&#8221;"
+
+#. translators: apostrophe, for example in 'cause or can't
+#: includes/formatting-later.php:120
+msgctxt "apostrophe"
+msgid "&#8217;"
+msgstr "&#8217;"
+
+#. translators: prime, for example in 9' (nine feet)
+#: includes/formatting-later.php:123
+msgctxt "prime"
+msgid "&#8242;"
+msgstr "&#8242;"
+
+#. translators: double prime, for example in 9" (nine inches)
+#: includes/formatting-later.php:125
+msgctxt "double prime"
+msgid "&#8243;"
+msgstr "&#8243;"
+
+#. translators: opening curly single quote
+#: includes/formatting-later.php:128
+msgctxt "opening curly single quote"
+msgid "&#8216;"
+msgstr "&#8216;"
+
+#. translators: closing curly single quote
+#: includes/formatting-later.php:130
+msgctxt "closing curly single quote"
+msgid "&#8217;"
+msgstr "&#8217;"
+
+#. translators: en dash
+#: includes/formatting-later.php:133
+msgctxt "en dash"
+msgid "&#8211;"
+msgstr "&#8211;"
+
+#. translators: em dash
+#: includes/formatting-later.php:135
+msgctxt "em dash"
+msgid "&#8212;"
+msgstr "&#8212;"
+
+#: shortcodes/oik-autop.php:31
+msgid "Re-enable/disable automatic paragraph generation"
+msgstr "Re-enable/disable automatic paragraph generation"
+
+#: shortcodes/oik-background.php:83
+msgid "No thumbnail"
+msgstr "No thumbnail"
+
+#: shortcodes/oik-background.php:100
+msgid "Post ID to find image to display"
+msgstr "Post ID to find image to display"
+
+#: shortcodes/oik-background.php:101
+msgid "CSS selector for the background image"
+msgstr "CSS selector for the background image"
+
+#: shortcodes/oik-background.php:102
+msgid "Image size to use"
+msgstr "Image size to use"
+
+#: shortcodes/oik-background.php:103
+msgid "Post type"
+msgstr "Post type"
+
+#: shortcodes/oik-background.php:104
+msgid "Post mime type"
+msgstr "Post mime type"
+
+#: shortcodes/oik-css.php:106
+msgid "Add internal CSS styling"
+msgstr "Add internal CSS styling"
+
+#: shortcodes/oik-css.php:120 shortcodes/oik-css.php:121
+msgid "any"
+msgstr "any"
+
+#: shortcodes/oik-css.php:120
+msgid "Display the CSS"
+msgstr "Display the CSS"
+
+#: shortcodes/oik-css.php:121
+msgid "Display the CSS with this annotation"
+msgstr "Display the CSS with this annotation"
+
+#: shortcodes/oik-css.php:130
+msgid ""
+"When the &lt;code&gt; tag follows a &lt;p&gt; tag use a 14px font and "
+"different colours"
+msgstr "When the &lt;code&gt; tag follows a &lt;p&gt; tag use a 14px font and different colours"
+
+#: shortcodes/oik-css.php:133
+msgid "Elsewhere display &lt;code&gt; in blue."
+msgstr "Elsewhere display &lt;code&gt; in blue."
+
+#: shortcodes/oik-css.php:136
+msgid "Use a parameter to cause the CSS to be shown."
+msgstr "Use a parameter to cause the CSS to be shown."
+
+#: shortcodes/oik-geshi.php:93
+msgid "Programming language"
+msgstr "Programming language"
+
+#: shortcodes/oik-geshi.php:94
+msgid "Descriptive text to display"
+msgstr "Descriptive text to display"
+
+#. Plugin Name of the plugin/theme
+msgid "oik-css"
+msgstr "oik-css"
+
+#. Plugin URI of the plugin/theme
+msgid "https://www.oik-plugins.com/oik-plugins/oik-css"
+msgstr "https://www.oik-plugins.com/oik-plugins/oik-css"
+
+#. Description of the plugin/theme
+msgid ""
+"Implements [bw_css] shortcode for internal CSS styling and to help document "
+"CSS examples and [bw_geshi] for other languages"
+msgstr "Implements [bw_css] shortcode for internal CSS styling and to help document CSS examples and [bw_geshi] for other languages"
+
+#. Author of the plugin/theme
+msgid "bobbingwide"
+msgstr "bobbingwide"
+
+#. Author URI of the plugin/theme
+msgid "https://www.oik-plugins.com/author/bobbingwide"
+msgstr "https://www.oik-plugins.com/author/bobbingwide"
+
