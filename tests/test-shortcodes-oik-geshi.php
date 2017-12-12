@@ -5,52 +5,170 @@
  * 
  * Test the functions in shortcodes/oik-geshi.php
  */
-class Tests_oik_css extends BW_UnitTestCase {
+class Tests_shortcodes_oik_geshi extends BW_UnitTestCase {
 
 	function setUp() {
 		parent::setUp();
+		oik_require( "shortcodes/oik-geshi.php", "oik-css" );
 	}
 
 	/**
-	 *
+	 * In shortcodes/oik-css.php there was an 
 	 */
-	function test_() {
-		bw_better_autop( false );
-		$expected_output = "Test to be written";
-		$html = $expected_output;
-		$this->assertEquals( $expected_output, $html );
+	function test_no_unexpected_side_effects_in_setUp() {
 		$this->assertTrue( true );
 	}
 	
-	
-	function test_oik_css_validate_lang( $lang, &$text ) {
-	 $actual = oik_css_validate_lang( $lang, &$text );
+	/**
+	 * Tests oik_css_validate_lang
+	 * 
+	 * - Deals with some weirdness with $lang and $text parameters
+	 */
+	function test_oik_css_validate_lang() {
+		$languages = array( "css", "html", "javascript", "jquery", "php", "html5", "none", "mysql" );
+		foreach ( $languages as $lang ) {
+			$text = null;
+			$actual = oik_css_validate_lang( $lang, $text );
+			$this->assertEquals( $lang, $actual );
+			$this->assertNull( $text );
+		}
+		
+		foreach ( $languages as $lang ) {
+			$saved = $lang;
+			$actual = oik_css_validate_lang( "OOPS", $lang );
+			$this->assertEquals( $saved, $actual );
+			$this->assertEquals( "oops", $lang );
+		}
+		
+		 
 	}
 	
-	
-	function test_bw_format_content() {
-		bw_format_content( $atts, $content ) {
-	
+	/**
+	 * Tests invalid language - when user forgets it in the shortcode
+	 */
+	function test_oik_css_validate_lang_en_GB() {
+		//$this->setExpectedDeprecated( "bw_translate" );
+		$this->switch_to_locale( "en_GB" );
+		$text = null;																										
+		$actual = oik_css_validate_lang( null, $text );
+		$this->assertNull( $actual );
+		$html = bw_ret();
+		//$this->generate_expected_file( $html );
+		$this->assertArrayEqualsFile( $html );
 	}
 	
+	/**
+	 * Tests invalid language - when user forgets it in the shortcode
+	 */
+	function test_oik_css_validate_lang_bb_BB() {
+		//$this->setExpectedDeprecated( "bw_translate" );
+		$this->switch_to_locale( "bb_BB" );
+		$text = null;																										
+		$actual = oik_css_validate_lang( null, $text );
+		$this->assertNull( $actual );
+		$html = bw_ret();
+		//$this->generate_expected_file( $html );
+		$this->assertArrayEqualsFile( $html );
+		$this->switch_to_locale( "en_GB" );
+	}
+	
+	/**
+	 * 
+	 */
 	function test_oik_geshi() {
+		$atts = array( "lang" => "none", "text" => "Testing lang=none" );
+		$content = '[bw_css][bw_geshi]';
+		$html = oik_geshi( $atts, $content );
+		//$this->generate_expected_file( $html );
+		$this->assertArrayEqualsFile( $html );
 	
-		oik_geshi( $atts=null, $content=null, $tag=null ) {
+	}
 	
+	/**
+	 * Test bw_format_content for lang=php
+	 * 
+	 * We'll test a valid lang and content
+	 *
+	 * This requires bw_remove_unwanted_tags so we need to test oik_geshi first
+	 * since that loads the required file.
+	 */
+	function test_bw_format_content_lang_php() {
+		$atts = array( "lang" => "php", "text" => "Testing lang=php" );
+		$content = 'echo "Hello World!";';
+		bw_format_content( $atts, $content );
+		$html = bw_ret();
+		//$this->generate_expected_file( $html );
+		$this->assertArrayEqualsFile( $html );
 	}
 	
 	function test_bw_geshi_help() {
+		$this->switch_to_locale( "en_GB" );
+		$html = bw_geshi__help();
+		//$this->generate_expected_file( $html );
+		$this->assertArrayEqualsFile( $html );
+	}
 	
-	
-		// bw_geshi__help( $shortcode="bw_geshi" ) {
+	function test_bw_geshi__help_bb_BB() {
+		$this->switch_to_locale( "bb_BB" );
+		$html = bw_geshi__help();
+		//$this->generate_expected_file( $html );
+		$this->assertArrayEqualsFile( $html );
+		$this->switch_to_locale( "en_GB" );
 	}
 	
 	function test_bw_geshi__syntax() {
-		bw_geshi__syntax("bw_geshi" );
+		$this->switch_to_locale( "en_GB" );
+		oik_require_lib( "oik-sc-help" );
+		$array = bw_geshi__syntax("bw_css" );
+		$html = $this->arraytohtml( $array, true );
+		//$this->generate_expected_file( $html );
+		$this->assertArrayEqualsFile( $html );
+		$this->switch_to_locale( "en_GB" );
+	}
+	
+	function test_bw_geshi__syntax_bb_BB() {
+		$this->switch_to_locale( "bb_BB" );
+		oik_require_lib( "oik-sc-help" );
+		$array = bw_geshi__syntax("bw_css" );
+		$html = $this->arraytohtml( $array, true );
+		//$this->generate_expected_file( $html );
+		$this->assertArrayEqualsFile( $html );
+		$this->switch_to_locale( "en_GB" );
 	}
 	
 	function test_bw_geshi__example() {
-		bw_geshi__example( "bw_css" );
+		//$this->setExpectedDeprecated( "bw_translate" );
+		$this->switch_to_locale( "en_GB" );
+		bw_geshi__example();
+		$html = bw_ret();
+		//$this->generate_expected_file( $html );
+		$this->assertArrayEqualsFile( $html );
 	}
+	
+	function test_bw_geshi__example_bb_BB() {
+		//$this->setExpectedDeprecated( "bw_translate" );
+		$this->switch_to_locale( "bb_BB" );
+		bw_geshi__example();
+		$html = bw_ret();
+		//$this->generate_expected_file( $html );
+		$this->assertArrayEqualsFile( $html );
+		$this->switch_to_locale( "en_GB" );
+	}
+	
+	
+	/**
+	 * Reloads the text domains
+	 */
+	function reload_domains() {
+		$domains = array( "oik", "oik-css" );
+		foreach ( $domains as $domain ) {
+			$loaded = bw_load_plugin_textdomain( $domain );
+			$this->assertTrue( $loaded, "$domain not loaded" );
+		}
+		oik_require_lib( "oik-l10n" );
+		oik_l10n_enable_jti();
+	}
+	
+}
 
 

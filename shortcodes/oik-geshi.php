@@ -1,4 +1,4 @@
-<?php // (C) Copyright Bobbing Wide 2013-2016
+<?php // (C) Copyright Bobbing Wide 2013-2017
 
 /**
  * Validate the language for GeSHi
@@ -23,8 +23,8 @@ function oik_css_validate_lang( $lang, &$text ) {
     }  
   }
   if ( !$vlang ) {
-    p( "Invalid lang= parameter for bw_geshi shortcode. $lang" );
-    p( "$vlang,$text" );
+    BW_::p( sprintf( __( 'Invalid %1$s parameter for bw_geshi shortcode. %2$s', "oik-css" ), "lang=", $lang ) );
+    BW_::p( "$vlang,$text" );
   } 
   return( $vlang );
 }
@@ -79,20 +79,19 @@ function oik_geshi( $atts=null, $content=null, $tag=null ) {
  * Help hook for the bw_geshi shortcode
  */ 
 function bw_geshi__help( $shortcode="bw_geshi" ) {
-  return( "Generic Syntax Highlighting" );
+  return( __( "Generic Syntax Highlighting", "oik-css" ) );
 }
 
 /**
  * Syntax hook for the bw_geshi shortcode
  *
  * Added "content" for shortcode UI
- * Removed "content" for shortcode UI - since it now uses "inner_content"
+ * Removed "content" for shortcode UI (shortcake) - since it now uses "inner_content"
  * Added "none" language for no GeSHi processing
  */
 function bw_geshi__syntax( $shortcode="bw_geshi" ) {
-  $syntax = array( "lang" => bw_skv( null, "html|css|javascript|jquery|php|none|mysql", "Programming language" )
-                 , "text" => bw_skv( null, "<i>text</i>", "Descriptive text to display" )
-                 //, "content" => bw_skv( null, "textarea", "Content" )
+  $syntax = array( "lang" => BW_::bw_skv( null, "html|css|javascript|jquery|php|none|mysql", __( "Programming language", "oik-css" ) )
+                 , "text" => BW_::bw_skv( null, "<i>" . __( "text", "oik-css" ) .  "</i>", __( "Descriptive text to display", "oik-css" ) )
                  );
   return( $syntax );
 }
@@ -106,10 +105,10 @@ function bw_geshi__syntax( $shortcode="bw_geshi" ) {
  * @param string $shortcode 
  */
 function bw_geshi__example( $shortcode="bw_css" ) {
-  $text = "Demonstrating the HTML to create a link to www.oik-plugins.com";
-  p( $text );
+  $text = __( "Demonstrating the HTML to create a link to www.oik-plugins.com", "oik-css" );
+  BW_::p( $text );
   $example = "[$shortcode";
-  $example .= ' html .]<a href="http://www.oik-plugins.com">Visit oik-plugins.com</a>[/bw_geshi';
+  $example .= ' html .]<a href="http://www.oik-plugins.com">' . __( "Visit oik-plugins.com", "oik-css" ) . '</a>[/bw_geshi';
   $example .= ']';
   sp();
   stag( "code" );

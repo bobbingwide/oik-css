@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: oik-css 0.9.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/oik-css\n"
-"POT-Creation-Date: 2017-12-12 16:24:09+00:00\n"
+"POT-Creation-Date: 2017-12-12 19:31:16+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -161,12 +161,32 @@ msgstr ""
 msgid "Use a parameter to cause the CSS to be shown."
 msgstr ""
 
+#: shortcodes/oik-geshi.php:26
+msgid "Invalid %1$s parameter for bw_geshi shortcode. %2$s"
+msgstr ""
+
+#: shortcodes/oik-geshi.php:82
+msgid "Generic Syntax Highlighting"
+msgstr ""
+
 #: shortcodes/oik-geshi.php:93
 msgid "Programming language"
 msgstr ""
 
 #: shortcodes/oik-geshi.php:94
+msgid "text"
+msgstr ""
+
+#: shortcodes/oik-geshi.php:94
 msgid "Descriptive text to display"
+msgstr ""
+
+#: shortcodes/oik-geshi.php:108
+msgid "Demonstrating the HTML to create a link to www.oik-plugins.com"
+msgstr ""
+
+#: shortcodes/oik-geshi.php:111
+msgid "Visit oik-plugins.com"
 msgstr ""
 
 #. Plugin Name of the plugin/theme
