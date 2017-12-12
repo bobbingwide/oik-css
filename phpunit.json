@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="Tests_oik_css" file="C:\apache\htdocs\wordpress\wp-content\plugins\oik-css\tests\test-shortcodes-oik-css.php" tests="2" assertions="7" errors="1" failures="1" skipped="0" time="1.957768">
+    <testcase name="test_bw_enqueue_style" class="Tests_oik_css" classname="Tests_oik_css" file="C:\apache\htdocs\wordpress\wp-content\plugins\oik-css\tests\test-shortcodes-oik-css.php" line="18" assertions="4" time="1.858220">
+      <error type="PHPUnit\Framework\OutputError">Risky Test
+</error>
+      <system-out> </system-out>
+    </testcase>
+    <testcase name="test_bw_format_style" class="Tests_oik_css" classname="Tests_oik_css" file="C:\apache\htdocs\wordpress\wp-content\plugins\oik-css\tests\test-shortcodes-oik-css.php" line="30" assertions="3" time="0.099548">
+      <failure type="PHPUnit\Framework\ExpectationFailedException">Tests_oik_css::test_bw_format_style
+Failed asserting that file "tests/data/en_GB/test_bw_format_style.html" exists.
+
+C:\apache\htdocs\wordpress\wp-content\plugins\oik-batch\tests\class-bw-unittestcase.php:271
+C:\apache\htdocs\wordpress\wp-content\plugins\oik-batch\tests\class-bw-unittestcase.php:324
+C:\apache\htdocs\wordpress\wp-content\plugins\oik-css\tests\test-shortcodes-oik-css.php:35
+</failure>
+      <system-out>&#13;
+&lt;div class="bw_css"&gt;&#13;
+&lt;code&gt;&#13;
+&lt;span style="color: #6666ff;"&gt;.entry-content&lt;/span&gt; code &lt;span style="color: #00AA00;"&gt;&amp;#123;&lt;/span&gt; &lt;span style="color: #000000; font-weight: bold;"&gt;font-size&lt;/span&gt;&#13;
+&lt;span style="color: #00AA00;"&gt;:&lt;/span&gt; &lt;span style="color: #933;"&gt;200%&lt;/span&gt;&#13;
+&lt;span style="color: #00AA00;"&gt;;&lt;/span&gt; &lt;span style="color: #00AA00;"&gt;&amp;#125;&lt;/span&gt;&#13;
+&lt;/code&gt;&#13;
+&lt;/div&gt;&#13;
+</system-out>
+    </testcase>
+  </testsuite>
+</testsuites>
