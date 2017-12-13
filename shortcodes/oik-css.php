@@ -73,15 +73,27 @@ function bw_remove_unwanted_tags( $content ) {
   $dec = str_replace( "<br />", "", $dec );
   $dec = str_replace( "<p>", "", $dec );
   $dec = str_replace( "</p>", "", $dec );
-  
+	return $dec;
+}
+
+/**
+ * Detexturize content
+ *
+ * Reverse the texturizing that may have been performed against the content.
+ *
+ * @param string $content
+ * @return string Detexturized content
+ */
+function bw_detexturize( $content ) {
+  $dec = $content;
   $dec = str_replace( "&#8216;", "'", $dec );  // Left single quotation mark
   $dec = str_replace( "&#8217;", "'", $dec );  // Right single quotation mark
   $dec = str_replace( "&#8220;", '"', $dec );  // Left double quotation mark
   $dec = str_replace( "&#8221;", '"', $dec );  // Right double quotation mark
   $dec = str_replace( "&#038;", '&', $dec );   // Ampersand
   $dec = str_replace( "&#8211;", "-", $dec );  // en dash
-  //bw_trace2( $dec, "de-tagged content" );
-  return( $dec );
+  bw_trace2( $dec, "de-tagged content" );
+  return $dec;
 }
 
 /**
@@ -95,9 +107,10 @@ function bw_remove_unwanted_tags( $content ) {
  */
 function oik_css( $atts=null, $content=null, $tag=null ) {
   if ( $content ) {
-    $content = bw_remove_unwanted_tags( $content );
-    bw_enqueue_style( $atts, $content );
-    bw_format_style( $atts, $content );
+    $dec = bw_remove_unwanted_tags( $content );
+		$dec = bw_detexturize( $dec );
+    bw_enqueue_style( $atts, $dec );
+    bw_format_style( $atts, $dec );
   }
   return( bw_ret() );
 }

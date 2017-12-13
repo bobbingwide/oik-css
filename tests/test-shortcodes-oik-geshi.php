@@ -77,7 +77,7 @@ class Tests_shortcodes_oik_geshi extends BW_UnitTestCase {
 	 */
 	function test_oik_geshi() {
 		$atts = array( "lang" => "none", "text" => "Testing lang=none" );
-		$content = '[bw_css][bw_geshi]';
+		$content = '[bw_css] and [bw_geshi] are provided by oik-css';
 		$html = oik_geshi( $atts, $content );
 		//$this->generate_expected_file( $html );
 		$this->assertArrayEqualsFile( $html );
@@ -95,6 +95,87 @@ class Tests_shortcodes_oik_geshi extends BW_UnitTestCase {
 	function test_bw_format_content_lang_php() {
 		$atts = array( "lang" => "php", "text" => "Testing lang=php" );
 		$content = 'echo "Hello World!";';
+		bw_format_content( $atts, $content );
+		$html = bw_ret();
+		//$this->generate_expected_file( $html );
+		$this->assertArrayEqualsFile( $html );
+	}
+	
+	/**
+	 * Test bw_format_content for lang=css
+	 * 
+	 */
+	function test_bw_format_content_lang_css() {
+		$atts = array( "lang" => "css", "text" => "Testing lang=css" );
+		$content = ".entry-content code { font-size: 200%; }";   
+		bw_format_content( $atts, $content );
+		$html = bw_ret();
+		//$this->generate_expected_file( $html );
+		$this->assertArrayEqualsFile( $html );
+	}
+	
+	/**
+	 * Test bw_format_content for lang=html
+	 * 
+	 */
+	function test_bw_format_content_lang_html() {
+		$atts = array( "lang" => "html", "text" => "Testing lang=html" );
+		$content = "<p>This is <b>HTML</b>.</p>";   
+		bw_format_content( $atts, $content );
+		$html = bw_ret();
+		//$this->generate_expected_file( $html );
+		$this->assertArrayEqualsFile( $html );
+	}
+	
+	/**
+	 * Test bw_format_content for lang=html5
+	 * 
+	 */
+	function test_bw_format_content_lang_html5() {
+		$atts = array( "lang" => "html5", "text" => "Testing lang=html5" );
+		$content = "<p>This is <b>HTML5</b>.</p>";   
+		bw_format_content( $atts, $content );
+		$html = bw_ret();
+		//$this->generate_expected_file( $html );
+		$this->assertArrayEqualsFile( $html );
+	}
+	
+	
+	/**
+	 * Test bw_format_content for lang=javascript
+	 * 
+	 */
+	function test_bw_format_content_lang_javascript() {
+		$atts = array( "lang" => "javascript", "text" => "Testing lang=javascript" );
+		$content = "var canvas = document.createElement( 'canvas' );";   
+		bw_format_content( $atts, $content );
+		$html = bw_ret();
+		//$this->generate_expected_file( $html );
+		$this->assertArrayEqualsFile( $html );
+	}
+	
+	
+	/**
+	 * Test bw_format_content for lang=jquery
+	 * 
+	 */
+	function test_bw_format_content_lang_jquery() {
+		$atts = array( "lang" => "jquery", "text" => "Testing lang=jquery" );
+		$content = "$('.edd-no-js').hide();\n$('a.edd-add-to-cart').addClass('edd-has-js');";
+		bw_format_content( $atts, $content );
+		$html = bw_ret();
+		//$this->generate_expected_file( $html );
+		$this->assertArrayEqualsFile( $html );
+	}
+	
+	
+	/**
+	 * Test bw_format_content for lang=mysql
+	 * 
+	 */
+	function test_bw_format_content_lang_mysql() {
+		$atts = array( "lang" => "mysql", "text" => "Testing lang=mysql" );
+		$content = "SELECT option_name,  option_value FROM wp_options WHERE autoload = 'yes'";
 		bw_format_content( $atts, $content );
 		$html = bw_ret();
 		//$this->generate_expected_file( $html );
