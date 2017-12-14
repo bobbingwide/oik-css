@@ -47,21 +47,22 @@ class Tests_shortcodes_oik_css extends BW_UnitTestCase {
 		//$this->generate_expected_file( $html );
 		$this->assertArrayEqualsFile( $html );
 	}
-	
 	 
 	/**
-	 * When I split bw_remove_unwanted_tags
-	 * into two functions I suddenly got an extra space
+	 * Tests a leading space passed to GeSHi
+	 * 
+	 * When I split bw_remove_unwanted_tags into two functions I suddenly got an extra space
 	 * which was converted to &nbsp;
-	 * but don't know why yet.
+	 * 
+	 * When oik-ajax is activated then oika_oik_shortcode_content() would trim leading and trailing blanks.
+	 * This test doesn't involve that filter function so we should expect the &nbsp; to be in the output.
 	 */
 	function test_bw_geshi_it_leading_space() {
 		$content = " td code b { color: darkblue; } ";
 		$html = bw_geshi_it( $content );
-		$this->generate_expected_file( $html );
+		//$this->generate_expected_file( $html );
 		$this->assertArrayEqualsFile( $html );
 	}
-		 
 	
 	/**
 	 * Test that unwanted tags are removed
@@ -135,7 +136,7 @@ class Tests_shortcodes_oik_css extends BW_UnitTestCase {
 		$this->switch_to_locale( "en_GB" );
 		bw_css__example( "bw_css" );
 		$html = bw_ret();
-		$this->generate_expected_file( $html );
+		//$this->generate_expected_file( $html );
 		$this->assertArrayEqualsFile( $html );
 	}
 	
