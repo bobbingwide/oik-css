@@ -141,12 +141,12 @@ function bw_css__syntax( $shortcode="bw_css" ) {
  */
 function bw_css__example( $shortcode="bw_css" ) {
   $text = __( "When the &lt;code&gt; tag follows a &lt;p&gt; tag use a 14px font and different colours", "oik-css" );
-  $example = " ] p> code { font-size: 14px; color: white; background: #333; }[/bw_css";
+  $example = " ]p> code { font-size: 14px; color: white; background: #333; }[/bw_css";
   bw_invoke_shortcode( $shortcode, $example, $text );
   $text = __( "Elsewhere display &lt;code&gt; in blue.", "oik-css" );
-  $example = " ]code { color: blue; } [/bw_css";
+  $example = " ]code { color: blue; }[/bw_css";
   bw_invoke_shortcode( $shortcode, $example, $text );
   $text = __( "Use a parameter to cause the CSS to be shown.", "oik-css" );
-  $example = " .] td code b { color: darkblue; } [/bw_css";
+  $example = " .]td code b { color: darkblue; }[/bw_css";
   bw_invoke_shortcode( $shortcode, $example, $text );
 }

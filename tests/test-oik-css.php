@@ -1,5 +1,4 @@
-
-<?php // (C) Copyright Bobbing Wide 2016
+<?php // (C) Copyright Bobbing Wide 2016-2017
 
 /**
  * @package oik-bob-bing-wide
@@ -34,6 +33,17 @@ class Tests_oik_css extends BW_UnitTestCase {
 		$this->assertEquals( $expected_output, $html );
 		$this->assertTrue( true );
 	}
+	
+	function trimmed_parm_returned( $content ) {
+		$content = trim( $content );
+		return( $content );
+	}
+	
+	function test_trimmed_parm_returned() {
+		$actual = $this->trimmed_parm_returned( " eh? " );
+		$this->assertEquals( "eh?", $actual );
+	}
+		
 	
 }
 
