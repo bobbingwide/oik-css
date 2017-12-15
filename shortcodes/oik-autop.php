@@ -1,4 +1,4 @@
-<?php // (C) Copyright Bobbing Wide 2014
+<?php // (C) Copyright Bobbing Wide 2014-2017
 /**
  * Implement [bw_autop] shortcode
  * 
@@ -20,7 +20,7 @@ function bw_autop( $atts=null, $content=null, $tag=null ) {
  *
  */
 function bw_autop__help( $shortcode="bw_autop" ) {
-  return( "Dynamically re-enable/disable automatic paragraph generation" );
+  return( __( "Dynamically re-enable/disable automatic paragraph generation", "oik-css" ) );
 }
 
 /**
@@ -28,7 +28,7 @@ function bw_autop__help( $shortcode="bw_autop" ) {
  *
  */
 function bw_autop__syntax( $shortcode="bw_autop" ) {
-  $syntax = array( "autop,0" => bw_skv( "true", "false", "Re-enable/disable automatic paragraph generation" )
+  $syntax = array( "autop,0" => BW_::bw_skv( "true", "false", __( "Re-enable/disable automatic paragraph generation", "oik-css" ) )
                  );
   return( $syntax );
 }
