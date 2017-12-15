@@ -1,4 +1,4 @@
-<?php // (C) Copyright Bobbing Wide 2014,2015
+<?php // (C) Copyright Bobbing Wide 2014-2017
 
 /**
  * Return the default selector for the theme's background image
@@ -63,7 +63,7 @@ function bw_background( $atts=null, $content=null, $tag=null ) {
     // Don't set the ID yet.. let get_thumbnail_src do it.
   }
   $atts['thumbnail'] = bw_array_get( $atts, "thumbnail", "full" );
-  oik_require( "includes/bw_posts.inc" );
+  oik_require( "includes/bw_posts.php" );
   $thumbnail = bw_get_thumbnail_size( $atts );
   //$posts = bw_get_posts();
   //foreach ( $posts as $post ) {
@@ -90,18 +90,18 @@ function bw_background( $atts=null, $content=null, $tag=null ) {
  * Help hook for [bw_background] shortcode
  */
 function bw_background__help( $shortcode="bw_background" ) {
-  return( "Use attached image as the background" );
+  return( __( "Use attached image as the background", "oik-css" ) );
 }
 
 /**
  * Syntax hook for [bw_background] shortcode
  */
 function bw_background__syntax( $shortcode="bw_background" ) {
-	$syntax = array( "id,0" => bw_skv( "current ID", "<i>ID</i>", "Post ID to find image to display" )
-						, "selector,1" => bw_skv( "body", "<i>CSS selector</i>", "CSS selector for the background image" ) 
-						, "thumbnail" => bw_skv( "full", "thumbnail|medium|large", "Image size to use" )
-						, "post_type" => bw_skv( "attachment", "<i>post type</i>", "Post type" )
-						, "post_mime_type" => bw_skv( "image", "<i>post mime type</i>", "Post mime type" )
+	$syntax = array( "id,0" => BW_::bw_skv( __( "current ID", "oik-css" ), "<i>" . __( "ID", "oik-css" ) . "</i>", __( "Post ID to find image to display", "oik-css" ) )
+						, "selector,1" => BW_::bw_skv( "body", "<i>" . __( "CSS selector", "oik-css" ) . "</i>", __( "CSS selector for the background image", "oik-css" ) ) 
+						, "thumbnail" => BW_::bw_skv( "full", "thumbnail|medium|large", __( "Image size to use", "oik-css" ) )
+						, "post_type" => BW_::bw_skv( "attachment", "<i>" . __( "post type", "oik-css" ) . "</i>", __( "Post type", "oik-css" ) )
+						, "post_mime_type" => BW_::bw_skv( "image", "<i>" . __( "post mime type", "oik-css" ) . "</i>", __( "Post mime type", "oik-css" ) )
 						);
 	return( $syntax );
 }

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: oik-css 0.9.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/oik-css\n"
-"POT-Creation-Date: 2017-12-15 15:41:54+00:00\n"
+"POT-Creation-Date: 2017-12-15 17:00:05+00:00\n"
 "MIME-Version: 1.0\n"
 "Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 "Language: bb_BB\n"
@@ -143,9 +143,29 @@ msgid "No thumbnail"
 msgstr "NO tuhbmanil"
 
 
+#: shortcodes/oik-background.php:93
+msgid "Use attached image as the background"
+msgstr "UsE attcaehd iamge As thE bcagkornud"
+
+
+#: shortcodes/oik-background.php:100
+msgid "current ID"
+msgstr "cruernt ID"
+
+
+#: shortcodes/oik-background.php:100
+msgid "ID"
+msgstr "ID"
+
+
 #: shortcodes/oik-background.php:100
 msgid "Post ID to find image to display"
 msgstr "Psot ID tO fnid iamge tO dsilpay"
+
+
+#: shortcodes/oik-background.php:101
+msgid "CSS selector"
+msgstr "CSS sleceotr"
 
 
 #: shortcodes/oik-background.php:101
@@ -159,8 +179,18 @@ msgstr "Iamge szie tO UsE"
 
 
 #: shortcodes/oik-background.php:103
+msgid "post type"
+msgstr "psot tpye"
+
+
+#: shortcodes/oik-background.php:103
 msgid "Post type"
 msgstr "Psot tpye"
+
+
+#: shortcodes/oik-background.php:104
+msgid "post mime type"
+msgstr "psot mmie tpye"
 
 
 #: shortcodes/oik-background.php:104

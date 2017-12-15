@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: oik-css 0.9.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/oik-css\n"
-"POT-Creation-Date: 2017-12-15 15:41:54+00:00\n"
+"POT-Creation-Date: 2017-12-15 17:00:05+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -119,8 +119,24 @@ msgstr ""
 msgid "No thumbnail"
 msgstr ""
 
+#: shortcodes/oik-background.php:93
+msgid "Use attached image as the background"
+msgstr ""
+
+#: shortcodes/oik-background.php:100
+msgid "current ID"
+msgstr ""
+
+#: shortcodes/oik-background.php:100
+msgid "ID"
+msgstr ""
+
 #: shortcodes/oik-background.php:100
 msgid "Post ID to find image to display"
+msgstr ""
+
+#: shortcodes/oik-background.php:101
+msgid "CSS selector"
 msgstr ""
 
 #: shortcodes/oik-background.php:101
@@ -132,7 +148,15 @@ msgid "Image size to use"
 msgstr ""
 
 #: shortcodes/oik-background.php:103
+msgid "post type"
+msgstr ""
+
+#: shortcodes/oik-background.php:103
 msgid "Post type"
+msgstr ""
+
+#: shortcodes/oik-background.php:104
+msgid "post mime type"
 msgstr ""
 
 #: shortcodes/oik-background.php:104
