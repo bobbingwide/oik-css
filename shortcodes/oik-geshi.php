@@ -3,8 +3,8 @@
 /**
  * Validate the language for GeSHi
  *
- * Note: html5 is a special version which will also remove unwanted tags.
- * Use 'none' when you want the output to be displayed ASIS
+ * Use 'none' when you want the output to be displayed ASIS; GeSHi is not used for this.
+ * 'html' is an alias for 'html5'. It uses the same GeSHi code.
  *
  * @param string $lang - the required languange ( case insensitive )
  * @param string $text - alternative parameter for language ( case sensitive )
@@ -31,6 +31,10 @@ function oik_css_validate_lang( $lang, &$text ) {
 
 /**
  * Format the content for the chosen language
+ * 
+ * - For 'none' and 'html' we shouldn't strip p and br tags.
+ * - For other languages we have to remove them.
+ * - Detexturize undoes any unwanted texturizing.
  *
  * @param array $atts - array of parameters. The formal parameter name is "text" but ANY value will do the job
  * @param string $content - the CSS to be displayed
@@ -40,12 +44,19 @@ function bw_format_content( $atts, $content ) {
   $text = bw_array_get_from( $atts, "text,1", null );
   $lang = oik_css_validate_lang( $lang, $text );
   if ( $lang ) {
-    if ( $lang <> "html"  || $lang <> "none" ) {
-      $content = bw_remove_unwanted_tags( $content );
-    } else {
-      $lang = "html5"; 
-      //bw_trace2( $content, "html5-content" );
-    } 
+		switch ( $lang ) {
+			case 'html':
+			case 'html5':
+				$lang = 'html5';
+				
+			case 'none':
+				$content = bw_detexturize( $content );
+				break;
+			
+			default: // css, php, javascript, jquery, mysql
+				$content = bw_remove_unwanted_tags( $content );
+				$content = bw_detexturize( $content );
+		}
     sdiv( "bw_geshi $lang" );
     if ( $text <> "." ) {
       e( $text );
@@ -64,15 +75,12 @@ function bw_format_content( $atts, $content ) {
  * @return string syntax highlighted content
  */
 function oik_geshi( $atts=null, $content=null, $tag=null ) {
-  //bw_backtrace();
-  //bw_trace2( $content, "pre fiddled content" );
   if ( $content ) {
     oik_require( "shortcodes/oik-css.php", "oik-css" );
     bw_format_content( $atts, $content );
   }
 	$ret = bw_ret();
-	//bw_trace2( $ret, "returning", false );
-  return( $ret );
+  return $ret;
 }
 
 /** 
@@ -105,10 +113,10 @@ function bw_geshi__syntax( $shortcode="bw_geshi" ) {
  * @param string $shortcode 
  */
 function bw_geshi__example( $shortcode="bw_css" ) {
-  $text = __( "Demonstrating the HTML to create a link to www.oik-plugins.com", "oik-css" );
+  $text = __( "Demonstrating the HTML to create a link to oik-plugins.com", "oik-css" );
   BW_::p( $text );
   $example = "[$shortcode";
-  $example .= ' html .]<a href="http://www.oik-plugins.com">' . __( "Visit oik-plugins.com", "oik-css" ) . '</a>[/bw_geshi';
+  $example .= ' html .]<a href="https://www.oik-plugins.com">' . __( "Visit oik-plugins.com", "oik-css" ) . '</a>[/bw_geshi';
   $example .= ']';
   sp();
   stag( "code" );

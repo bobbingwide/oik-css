@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: oik-css 0.9.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/oik-css\n"
-"POT-Creation-Date: 2017-12-12 19:31:16+00:00\n"
+"POT-Creation-Date: 2017-12-15 11:21:42+00:00\n"
 "MIME-Version: 1.0\n"
 "Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 "Language: bb_BB\n"
@@ -158,27 +158,27 @@ msgid "Post mime type"
 msgstr "Psot mmie tpye"
 
 
-#: shortcodes/oik-css.php:106
+#: shortcodes/oik-css.php:144
 msgid "Add internal CSS styling"
 msgstr "Add itnreanl CSS sytilng"
 
 
-#: shortcodes/oik-css.php:120 shortcodes/oik-css.php:121
+#: shortcodes/oik-css.php:158 shortcodes/oik-css.php:159
 msgid "any"
 msgstr "Any"
 
 
-#: shortcodes/oik-css.php:120
+#: shortcodes/oik-css.php:158
 msgid "Display the CSS"
 msgstr "Dsilpay thE CSS"
 
 
-#: shortcodes/oik-css.php:121
+#: shortcodes/oik-css.php:159
 msgid "Display the CSS with this annotation"
 msgstr "Dsilpay thE CSS wtih tihs anntotaoin"
 
 
-#: shortcodes/oik-css.php:130
+#: shortcodes/oik-css.php:168
 msgid ""
 "When the &lt;code&gt; tag follows a &lt;p&gt; tag use a 14px font and "
 "different colours"
@@ -187,12 +187,12 @@ msgstr ""
 "dfiefernt clouors"
 
 
-#: shortcodes/oik-css.php:133
+#: shortcodes/oik-css.php:171
 msgid "Elsewhere display &lt;code&gt; in blue."
 msgstr "Eslweehre dsilpay &lt;code&gt; In bule."
 
 
-#: shortcodes/oik-css.php:136
+#: shortcodes/oik-css.php:174
 msgid "Use a parameter to cause the CSS to be shown."
 msgstr "UsE A pramateer tO cuase thE CSS tO bE sohwn."
 
@@ -202,32 +202,32 @@ msgid "Invalid %1$s parameter for bw_geshi shortcode. %2$s"
 msgstr "Ivnlaid %1$s pramateer fOr bw_gsehi sohtrocde. %2$s"
 
 
-#: shortcodes/oik-geshi.php:82
+#: shortcodes/oik-geshi.php:90
 msgid "Generic Syntax Highlighting"
 msgstr "Gnereic Snyatx Hgilhgithnig"
 
 
-#: shortcodes/oik-geshi.php:93
+#: shortcodes/oik-geshi.php:101
 msgid "Programming language"
 msgstr "Porrgmaimng lnauggae"
 
 
-#: shortcodes/oik-geshi.php:94
+#: shortcodes/oik-geshi.php:102
 msgid "text"
 msgstr "txet"
 
 
-#: shortcodes/oik-geshi.php:94
+#: shortcodes/oik-geshi.php:102
 msgid "Descriptive text to display"
 msgstr "Dsercpiitve txet tO dsilpay"
 
 
-#: shortcodes/oik-geshi.php:108
-msgid "Demonstrating the HTML to create a link to www.oik-plugins.com"
-msgstr "Dmenotsaritng thE HMTL tO certae A lnik tO www.OIk-puligns.cOm"
+#: shortcodes/oik-geshi.php:116
+msgid "Demonstrating the HTML to create a link to oik-plugins.com"
+msgstr "Dmenotsaritng thE HMTL tO certae A lnik tO OIk-puligns.cOm"
 
 
-#: shortcodes/oik-geshi.php:111
+#: shortcodes/oik-geshi.php:119
 msgid "Visit oik-plugins.com"
 msgstr "Vsiit OIk-puligns.cOm"
 

@@ -56,6 +56,7 @@ class Tests_shortcodes_oik_css extends BW_UnitTestCase {
 	 * 
 	 * When oik-ajax is activated then oika_oik_shortcode_content() would trim leading and trailing blanks.
 	 * This test doesn't involve that filter function so we should expect the &nbsp; to be in the output.
+	 * oik-ajax has now been updated so that leading and trailing blanks are only stripped when pagination is intended.
 	 */
 	function test_bw_geshi_it_leading_space() {
 		$content = " td code b { color: darkblue; } ";
