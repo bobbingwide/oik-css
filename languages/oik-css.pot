@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: oik-css 0.9.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/oik-css\n"
-"POT-Creation-Date: 2017-12-15 11:21:42+00:00\n"
+"POT-Creation-Date: 2017-12-15 12:22:42+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -37,15 +37,19 @@ msgstr ""
 msgid "oik-CSS options"
 msgstr ""
 
-#: admin/oik-css.php:15
+#: admin/oik-css.php:10
+msgid "Disable automatic paragraph creation"
+msgstr ""
+
+#: admin/oik-css.php:12
 msgid "Save changes"
 msgstr ""
 
-#: admin/oik-css.php:19
+#: admin/oik-css.php:14
 msgid "To enable automatic paragraph creation use the [bw_autop] shortcode."
 msgstr ""
 
-#: admin/oik-css.php:21
+#: admin/oik-css.php:15
 msgid "To disable automatic paragraph creation use [bw_autop off]."
 msgstr ""
 
