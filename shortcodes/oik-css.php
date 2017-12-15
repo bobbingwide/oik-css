@@ -33,6 +33,28 @@ function bw_format_style( $atts, $content ) {
 }
 
 /**
+ * Our version of geshi_highlight
+ *
+ * Disables links for html, mysql etc
+ *
+ * @param string $string   The code to highlight
+ * @param string $language The language to highlight the code in
+ * @param string $path     The path to the language files. You can leave this blank if you need
+ *                         as from version 1.0.7 the path should be automatically detected
+ * @param boolean $return  Whether to return the result or to echo
+ * @return string The code highlighted
+ */
+function bw_geshi_highlight($string, $language) {
+		if ( !class_exists('GeSHi') ) {
+			oik_require( "geshi/geshi.php", "oik-css" );
+		}
+	$geshi = new GeSHi($string, $language);
+	$geshi->set_header_type(GESHI_HEADER_NONE);
+	$geshi->enable_keyword_links( false );
+	return '<code>' . $geshi->parse_code() . '</code>';
+}
+
+/**
  * Perform GeSHi - Generic Syntax Highlighter processing
  * 
  * If geshi_highlight() is already available then we don't need to load our version
@@ -40,16 +62,13 @@ function bw_format_style( $atts, $content ) {
  * After highlighting convert any remaining '[' to &#091; to stop plugins such as NextGen from expanding the shortcodes.
  * Note: It shouldn't matter if we do this to CSS 
  * 
- * @param string $content - the code to be put through GESHI highlighting
+ * @param string $content - the code to be put through GeSHi highlighting
  * @param string $language - the language to use.
  * @return string the highlighted code
  */
 function bw_geshi_it( $content, $language="CSS" ) {
 	if ( $language != "none" ) {
-		if ( !function_exists('geshi_highlight') ) {
-			oik_require( "geshi/geshi.php", "oik-css" );
-		}
-		$geshid = geshi_highlight( $content, $language, null, true );
+		$geshid = bw_geshi_highlight( $content, $language, null, true );
 	} else {
 		$content = esc_html( $content );
 		$geshid = "<pre>" . $content . "</pre>";
@@ -115,6 +134,12 @@ function oik_css( $atts=null, $content=null, $tag=null ) {
   return( bw_ret() );
 }
 
+/**
+ * Help hook for [bw_css] shortcode
+ *
+ * @param string $shortcode shortcode name
+ * @return string Short description of the shortcode
+ */
 function bw_css__help( $shortcode="bw_css" ) {
   return( __( "Add internal CSS styling", "oik-css" ) );
 }
