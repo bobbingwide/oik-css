@@ -203,8 +203,19 @@ function oik_css_oik_menu_box() {
 /**
  * Implement "admin_notices" for oik-css to check plugin dependency
  * 
- * Now dependent upon oik v2.3
- * 2015/12/17 Now dependent upon oik v2.5or higher
+ * Version | Dependent on
+ * ------- | ------------
+ * 0.1     | v2.0-beta
+ * 0.2     | v2.0
+ * 0.3     | v2.0
+ * 0.4     | v2.0
+ * 0.5     | v2.1
+ * 0.6     | v2.1
+ * 0.7     | v2.3 
+ * 0.8.0   | v2.3
+ * 0.8.1   | v2.5
+ * 0.8.2   | v2.5
+ * 0.9.0   | v3.2.3
  */ 
 function oik_css_activation() {
   static $plugin_basename = null;
@@ -215,7 +226,7 @@ function oik_css_activation() {
       require_once( "admin/oik-activation.php" );
     }
   }  
-  $depends = "oik:2.5";
+  $depends = "oik:3.2.3";
   oik_plugin_lazy_activation( __FILE__, $depends, "oik_plugin_plugin_inactive" );
 }
 
