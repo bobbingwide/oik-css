@@ -12,17 +12,50 @@ class Tests_shortcodes_oik_background extends BW_UnitTestCase {
 		oik_require( "shortcodes/oik-background.php", "oik-css" );
 	}
 	
-	
+	/**
+	 * Test [bw_background] shortcode with no thumbnail attached to the selected post
+	 */
 	function test_bw_background_no_thumbnail() {
-		$this->setExpectedDeprecated( "bw_translate" );
-	
+		$this->switch_to_locale( "en_GB" );
 		$post = $this->dummy_post( 1 );
-		//$attachment = $this->dummy_attachment( $post->ID );
 		$atts = array( "id" => $post->ID );
 		$html = bw_background( $atts );
 		//$this->generate_expected_file( $html );
 		$this->assertArrayEqualsFile( $html );
 	}
+
+	/**
+	 * Test [bw_background] shortcode with no thumbnail attached to the selected post	- bb_BB lang
+	 */
+	function test_bw_background_no_thumbnail_bb_BB() {
+		$this->switch_to_locale( "bb_BB" );
+		$post = $this->dummy_post( 1 );
+		$atts = array( "id" => $post->ID );
+		$html = bw_background( $atts );
+		//$this->generate_expected_file( $html );
+		$this->assertArrayEqualsFile( $html );
+		$this->switch_to_locale( "en_GB" );
+	}
+	
+	
+	/**
+	 * Test [bw_background] shortcode with a thumbnail attached to the selected post
+	 *
+	 * We have to remove the uploaded file afterwards... Could be rather risky?
+	 */
+	function test_bw_background() {
+		$post = $this->dummy_post( 1 );
+		$attachment = $this->dummy_attachment( $post->ID );
+		$atts = array( "id" => $post->ID );
+		$html = bw_background( $atts );
+		
+		$html = str_replace( $attachment->guid, "screenshot-1.png", $html );
+		$html = $this->replace_home_url( $html );
+		//$this->generate_expected_file( $html );
+		$this->assertArrayEqualsFile( $html );
+		$this->delete_uploaded_files( $attachment );
+	}
+	
 	
 	function test_bw_background__help() {
 		$this->switch_to_locale( "en_GB" );
@@ -94,11 +127,28 @@ class Tests_shortcodes_oik_background extends BW_UnitTestCase {
 								 , 'file' => oik_path( '!.png' )
 								 , 'post_title' => ' !'
 								 );
-		$id = self::factory()->attachment->create_upload_object( oik_path( "screenshot-1.jpg", "oik-css" ), $parent );
+		$id = self::factory()->attachment->create_upload_object( oik_path( "screenshot-1.png", "oik-css" ), $parent );
 		$this->assertGreaterThan( 0, $id );
 		$post = get_post( $id );
 		//print_r( $post );
 		return $post;
+	}
+	
+	/**
+	 * Non generic routine to delete the uploaded files
+	 *
+	 * @TODO Improve logic to work with specific upload files
+	 * This was copied from oik-nivo-slider tests
+	 */
+	function delete_uploaded_files( $attachment ) {
+		$dir = wp_upload_dir();
+		$path = bw_array_get( $dir, "path", null );
+		$this->assertNotNull( $path );
+		$files = glob( $path . '/screenshot-1*.png' );
+		if ( $files ) {
+			array_map( "unlink", $files );
+		}
+		// $files = glob( $path . '/screenshot-1*.png' );
 	}
 	
 }

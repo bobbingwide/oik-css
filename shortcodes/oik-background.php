@@ -80,7 +80,7 @@ function bw_background( $atts=null, $content=null, $tag=null ) {
       etag( "style" );
       
     } else {
-      p( "No thumbnail" );
+      BW_::p( __( "No thumbnail", "oik-css" ) );
     }
   //}
   return( bw_ret() );
