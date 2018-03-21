@@ -134,6 +134,8 @@ function bw_better_autop( $autop=false ) {
   remove_filter( 'the_content', 'wpautop' );
   remove_filter( 'the_content', 'shortcode_unautop' );
 	remove_filter( 'the_content', 'wptexturize' );
+	remove_filter( 'the_content', 'gutenberg_wpautop', 8 );
+	//remove_filter( 'the_content', 'do_blocks', 9 );
 	if ( !function_exists( "do_shortcode_earlier" ) ) {
 		oik_require( "includes/shortcodes-earlier.php", "oik-css" );
 	}
