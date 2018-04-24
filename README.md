@@ -4,7 +4,8 @@
 * Donate link: https://www.oik-plugins.com/oik/oik-donate/
 * Tags: shortcode, CSS, GeSHi, [bw_css], [bw_geshi], [bw_autop], [bw_background], oik, lazy, smart
 * Requires at least: 4.9
-* Tested up to: 4.9.1
+* Tested up to: 5.0-alpha
+* Gutenberg compatible: Yes
 * Stable tag: 0.9.0
 * License: GPLv2 or later
 * License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -77,11 +78,24 @@ Only a small selection of the languages are supported by oik-css. These are the 
 
 * Note: oik-css will only load the GeSHi code if it is not already loaded.
 
+# What about Gutenberg? 
+oik-css has been tested with the Gutenberg plugin and some problems were detected.
+For details see https://github.com/bobbingwide/oik-css/issues/9.
+Changes have been made to undo the unwanted wpautop processing that affected the output of the bw_geshi shortcode.
+
+In the future you may want to convert your shortcodes to blocks.
+We are developing a new plugin for this... https://github.com/bobbingwide/oik-block.
+This new plugin depends on Gutenberg, the oik base plugin and oik-css.
+
+
 ## Screenshots 
 1. [bw_css] - syntax and examples
 2. [bw_geshi] - examples
 
 ## Upgrade Notice 
+# 0.9.1 
+Upgrade for improved compatibility with the Gutenberg plugin.
+
 # 0.9.0 
 Upgrade for improvements to the [bw_geshi] shortcode. Now depends on oik v3.2.3. Available in US English. Localized in UK English.
 
@@ -116,6 +130,12 @@ Dependent upon the oik base plugin v2.0 (or higher)
 Dependent upon the oik base plugin
 
 ## Changelog 
+# 0.9.1 
+* Changed: removes the gutenberg_wpautop filter hook from the_content https://github.com/bobbingwide/oik-css/issues/9
+* Tested: With PHP 7.1 and 7.2
+* Tested: With WordPress 4.9.5, 5.0-alpha and WordPress Multisite
+* Tested: With Gutenberg 2.7.0
+
 # 0.9.0 
 * Changed: Disable GeSHi's keyword linking https://github.com/bobbingwide/oik-css/issues/8
 * Changed: Update GeSHi to 1.0.9.0 - May 2017 and change to support PHP 7.2 https://github.com/bobbingwide/oik-css/issues/5
