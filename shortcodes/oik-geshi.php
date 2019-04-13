@@ -40,7 +40,7 @@ function oik_css_validate_lang( $lang, &$text ) {
  * @param string $content - the CSS to be displayed
  */
 function bw_format_content( $atts, $content ) {
-  $lang = bw_array_get_from( $atts, "lang,0", null );
+  $lang = bw_array_get_from( $atts, "lang,0", "none" );
   $text = bw_array_get_from( $atts, "text,1", null );
   $lang = oik_css_validate_lang( $lang, $text );
   if ( $lang ) {
