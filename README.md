@@ -3,10 +3,10 @@
 * Contributors: bobbingwide, vsgloik
 * Donate link: https://www.oik-plugins.com/oik/oik-donate/
 * Tags: shortcode, CSS, GeSHi, [bw_css], [bw_geshi], [bw_autop], [bw_background], oik, lazy, smart
-* Requires at least: 4.9
-* Tested up to: 5.0-alpha
+* Requires at least: 5.0
+* Tested up to: 5.1.1
 * Gutenberg compatible: Yes
-* Stable tag: 0.9.0
+* Stable tag: 0.9.2
 * License: GPLv2 or later
 * License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -93,6 +93,9 @@ This new plugin depends on Gutenberg, the oik base plugin and oik-css.
 2. [bw_geshi] - examples
 
 ## Upgrade Notice 
+# 0.9.2 
+For the GesHi block in oik-blocks accept default lang=none
+
 # 0.9.1 
 Upgrade for improved compatibility with the Gutenberg plugin.
 
@@ -130,6 +133,9 @@ Dependent upon the oik base plugin v2.0 (or higher)
 Dependent upon the oik base plugin
 
 ## Changelog 
+# 0.9.2 
+* Changed: [bw_geshi] shortcode; default the lang parameter to none, https://github.com/bobbingwide/oik-css/issues/9
+
 # 0.9.1 
 * Changed: removes the gutenberg_wpautop filter hook from the_content https://github.com/bobbingwide/oik-css/issues/9
 * Tested: With PHP 7.1 and 7.2
