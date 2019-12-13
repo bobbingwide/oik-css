@@ -220,6 +220,7 @@ function oik_css_oik_menu_box() {
  * 0.8.1   | v2.5
  * 0.8.2   | v2.5
  * 0.9.0   | v3.2.3
+ * 1.0.0   | The new block logic is not dependent upon oik
  */ 
 function oik_css_activation() {
   static $plugin_basename = null;
@@ -238,11 +239,12 @@ function oik_css_activation() {
  * Function to run when the plugin file is loaded 
  */
 function oik_css_plugin_loaded() {
-  add_action( "admin_notices", "oik_css_activation", 11 );
+  // add_action( "admin_notices", "oik_css_activation", 11 );
   add_action( "oik_admin_menu", "oik_css_admin_menu" );
   add_action( "oik_loaded", "oik_css_oik_loaded" );
   add_action( "oik_add_shortcodes", "oik_css_init" );
   add_action( 'init', 'oik_css_init_blocks');
+  add_action( 'plugins_loaded', 'oik_css_plugins_loaded' );
 }
 
 /**
@@ -331,6 +333,10 @@ function oik_css_register_dynamic_blocks() {
 					'text'   =>[ 'type'=>'string' ],
 					'content'=>[ 'type'=>'string' ]
 				]
+				, 'editor_script' => 'oik_css-blocks-js'
+				, 'editor_style' => null
+				, 'script' => null
+				, 'style' => 'oik_css-blocks.css'
 			]
 		);
 
@@ -365,6 +371,23 @@ function oik_css_dynamic_block_css( $attributes ) {
 }
 
 /**
+ * Renders the GeSHi block
+ *
+ * @param array $attributes lang, type, content
+ */
+function oik_css_dynamic_block_geshi( $attributes ) {
+	$html=oik_css_check_server_func( "shortcodes/oik-geshi.php", "oik-css", "oik_geshi" );
+	if ( ! $html ) {
+		$content=bw_array_get( $attributes, "content", null );
+		$html   =oik_geshi( $attributes, $content );
+		if ( ! $html ) {
+			$html="empty";
+		}
+	}
+	return $html;
+}
+
+/**
  * Checks if the server function is available
  *
  * Returns null if everything is OK, HTML if there's a problem.
@@ -395,5 +418,29 @@ function oik_css_check_server_func( $filename, $plugin, $funcname ) {
 	}
 
 	return $html;
+}
+
+/**
+ * Implements 'plugins_loaded' action for oik-blocks
+ *
+ * Prepares use of shared libraries if this has not already been done.
+ */
+function oik_css_plugins_loaded() {
+	oik_css_boot_libs();
+	oik_require_lib( 'bwtrace' );
+	oik_require_lib( 'bobbfunc');
+}
+
+/**
+ * Boot up process for shared libraries
+ *
+ * ... if not already performed
+ */
+function oik_css_boot_libs() {
+	if ( ! function_exists( "oik_require" ) ) {
+		$oik_boot_file=__DIR__ . "/libs/oik_boot.php";
+		$loaded       =include_once( $oik_boot_file );
+	}
+	oik_lib_fallback( __DIR__ . "/libs" );
 }
 

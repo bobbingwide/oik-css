@@ -40,8 +40,15 @@ function oik_css_validate_lang( $lang, &$text ) {
  * @param string $content - the CSS to be displayed
  */
 function bw_format_content( $atts, $content ) {
-  $lang = bw_array_get_from( $atts, "lang,0", "none" );
-  $text = bw_array_get_from( $atts, "text,1", null );
+	if ( function_exists( 'bw_array_get_from') ) {
+		$lang=bw_array_get_from( $atts, "lang,0", "none" );
+		$text=bw_array_get_from( $atts, "text,1", null );
+	} else {
+		$lang=bw_array_get( $atts, "lang", "none" );
+		$text=bw_array_get( $atts, "text", null );
+		oik_require_lib( 'class-BW-');
+
+	}
   $lang = oik_css_validate_lang( $lang, $text );
   if ( $lang ) {
 		switch ( $lang ) {

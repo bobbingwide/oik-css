@@ -1,4 +1,10 @@
-<?php // (C) Copyright Bobbing Wide 2013-2017
+<?php
+
+/**
+ * @copyright (C) Copyright Bobbing Wide 2013-2019
+ * @package oik-css
+ */
+
 /**
  * Enqueue the internal CSS styling
  *
