@@ -21,7 +21,11 @@ function bw_enqueue_style( $atts, $content ) {
  * @param string $content - the CSS to be displayed
  */
 function bw_format_style( $atts, $content ) {
-  $text = bw_array_get_from( $atts, "text,0", null );
+	if ( function_exists( 'bw_array_get_from') ) {
+		$text=bw_array_get_from( $atts, "text,0", null );
+	} else {
+		$text = bw_array_get( $atts, 'text', null );
+	}
   if ( $text ) {
     sdiv( "bw_css" ); 
     if ( $text <> "." ) {

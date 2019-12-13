@@ -3,9 +3,9 @@
 Plugin Name: oik-css
 Plugin URI: https://www.oik-plugins.com/oik-plugins/oik-css
 Description: Implements [bw_css] shortcode for internal CSS styling and to help document CSS examples and [bw_geshi] for other languages
-Version: 0.9.2  
+Version: 1.0.0-alpha-20191213
 Author: bobbingwide
-Author URI: https://www.oik-plugins.com/author/bobbingwide
+Author URI: https://bobbingwide.com/about-bobbing-wide
 Text Domain: oik-css
 Domain Path: /languages/
 License: GPLv2 or later
@@ -28,6 +28,8 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
     http://www.gnu.org/licenses/gpl-2.0.html
 
 */
+
+use function oik\oik_blocks_boot_libs;
 
 oik_css_plugin_loaded();
 
@@ -240,5 +242,158 @@ function oik_css_plugin_loaded() {
   add_action( "oik_admin_menu", "oik_css_admin_menu" );
   add_action( "oik_loaded", "oik_css_oik_loaded" );
   add_action( "oik_add_shortcodes", "oik_css_init" );
+  add_action( 'init', 'oik_css_init_blocks');
+}
+
+/**
+ * This logic is expected to run independent of oik and oik-blocks
+ */
+function oik_css_init_blocks() {
+	//oik_require_lib( 'oik-blocks');
+	oik_css_register_editor_scripts();
+	oik_css_register_block_styles();
+	oik_css_register_dynamic_blocks();
+
+}
+
+/**
+ * Registers the scripts we'll need     for the editor
+ *
+ * Not sure why we'll need Gutenberg scripts for the front-end.
+ * But we might need Javascript stuff for some things, so these can be registered here.
+ *
+ * Dependencies were initially
+ * `[ 'wp-i18n', 'wp-element', 'wp-blocks', 'wp-components', 'wp-api' ]`
+ *
+ * why do we need the dependencies?
+ */
+function oik_css_register_editor_scripts() {
+	//bw_trace2();
+	//bw_backtrace();
+
+	$scripts=array(
+		'oik_css-blocks-js'=>'blocks/build/js/editor.blocks.js'
+	);
+	foreach ( $scripts as $name=>$blockPath ) {
+		wp_register_script( $name,
+			plugins_url( $blockPath, __FILE__ ),
+			// [],
+			[ 'wp-blocks', 'wp-element', 'wp-components', 'wp-editor', 'wp-i18n', 'wp-data' ],
+			filemtime( plugin_dir_path( __FILE__ ) . $blockPath )
+		);
+		wp_set_script_translations( $name, 'oik-css' );
+	}
+
+}
+
+function oik_css_register_block_styles() {
+	$stylePath='blocks/build/css/blocks.style.css';
+	// Enqueue frontend and editor block styles
+	wp_enqueue_style(
+			'oik_css-blocks-css',
+			plugins_url( $stylePath, __FILE__ ),
+			[],
+			filemtime( plugin_dir_path( __FILE__ ) . $stylePath )
+		);
+}
+
+/**
+ * Registers action/filter hooks for oik-css's dynamic blocks
+ *
+ * We have to do this during init, which comes after _enqueue_ stuff
+ *
+ * script, style, editor_script, and editor_style
+ */
+function oik_css_register_dynamic_blocks() {
+	if ( function_exists( "register_block_type" ) ) {
+		//oik_blocks_register_editor_scripts();
+		//oik_blocks_boot_libs();
+
+
+		register_block_type( 'oik-css/css',
+			[
+				'render_callback'=>'oik_css_dynamic_block_css',
+				'attributes'     =>[
+					'css' =>[ 'type'=>'string' ],
+					'text'=>[ 'type'=>'string' ]
+				]
+				, 'editor_script' => 'oik_css-blocks-js'
+				, 'editor_style' => null
+				, 'script' => null
+				, 'style' => 'oik_css-blocks.css'
+			] );
+
+		register_block_type( 'oik-css/geshi',
+			[
+				'render_callback'=>'oik_css_dynamic_block_geshi',
+				'attributes'     =>[
+					'lang'   =>[ 'type'=>'string' ],
+					'text'   =>[ 'type'=>'string' ],
+					'content'=>[ 'type'=>'string' ]
+				]
+			]
+		);
+
+
+	}
+}
+
+
+
+/**
+ * Server rendering dynamic CSS block with content
+ *
+ * Assumes that the oik-css plugin is installed.
+ * The plugin doesn't need to be activated.
+ *
+ * @param array $attributes
+ *
+ * @return string generated HTML
+ */
+function oik_css_dynamic_block_css( $attributes ) {
+
+	//bw_backtrace();
+	$html=oik_css_check_server_func( "shortcodes/oik-css.php", "oik-css", "oik_css" );
+	if ( ! $html ) {
+		$content=bw_array_get( $attributes, "css", null );
+		bw_trace2( $content, "Content" );
+		//$content = oik_blocks_fetch_dynamic_content( "wp:oik-blocks/css" );
+		$html=oik_css( $attributes, $content );
+	}
+
+	return $html;
+}
+
+/**
+ * Checks if the server function is available
+ *
+ * Returns null if everything is OK, HTML if there's a problem.
+ *
+ * @TODO Check if the implementing plugin is actually activated!
+ *
+ * @param $filename - relative path for the file to load
+ * @param $plugin - plugin name
+ * @param $funcname - required function name
+ *
+ * @return string| null
+ */
+
+function oik_css_check_server_func( $filename, $plugin, $funcname ) {
+	$html=null;
+	if ( is_callable( $funcname ) ) {
+		return $html;
+	}
+
+	if ( $filename && $plugin ) {
+		$path=oik_path( $filename, $plugin );
+		if ( file_exists( $path ) ) {
+			require_once $path;
+		}
+	}
+	if ( ! is_callable( $funcname ) ) {
+		$html="Server function $funcname not available. <br />Check $plugin is installed and activated.";
+	}
+
+	return $html;
 }
 

@@ -1,0 +1,484 @@
+<?php
+namespace oik/oik-blocks;
+
+if ( !defined( "OIK_BLOCKS_INCLUDED" ) ) {
+	define( "OIK_BLOCKS_INCLUDED", "3.0.0" );
+	define( "OIK_BLOCKS_FILE", __FILE__ );
+
+	/**
+	 * @copyright (C) Bobbing Wide 2019
+	 * Library: oik-blocks
+	 * Depends:
+	 * Provides: oik-blocks
+	 */
+
+
+	/**
+	 * Enqueues block editor JavaScript and CSS
+	 *
+	 * Notes:
+	 * - This routine shouldn't be invoked when using the classic-editor
+	 * - But we can no longer perform tests on the classic-editor parameter alone
+	 * - It should only enqueue scripts for the Gutenberg editor
+	 * - Not in other admin areas
+	 *
+	 * @TODO Check purpose of the wp_localize_script !
+	 */
+	function oik_blocks_editor_scripts( $prefix ) {
+		bw_trace2();
+		bw_backtrace();
+
+
+		if ( isset( $_GET['classic-editor'] ) ) {
+			//gob();
+		}
+
+		//if ( doing_filter( "replace_editor" ) ) {
+		oik_blocks_register_editor_scripts();
+		wp_enqueue_script( 'oik_blocks-blocks-js' );
+		// Pass in REST URL
+		wp_localize_script(
+			'oik_blocks-blocks-js',
+			'oik_blocks_globals',
+			[
+				'rest_url'=>esc_url( rest_url() )
+			] );
+		//}
+		// Enqueue optional editor only styles
+		$editorStylePath='blocks/build/css/blocks.editor.css';
+
+		wp_enqueue_style(
+			'oik_blocks-blocks-editor-css',
+			plugins_url( $editorStylePath, __FILE__ ),
+			[ 'wp-blocks' ],
+			filemtime( plugin_dir_path( __FILE__ ) . $editorStylePath )
+		);
+	}
+
+	/**
+	 * Enqueue block editor JavaScript and CSS
+	 *
+	 * It's not the setting of classic-editor that's the problem
+	 * it's the fact that enqueueing the scripts when we're not in the editor
+	 * but are loading TinyMCE that we get the problem.
+	 *
+	 * But which of the scripts is to blame!
+	 * Try knocking out the dependencies one by one.
+	 *
+	 */
+	function oik_blocks_frontend_scripts() {
+		gob();
+		$blockPath='blocks/build/js/frontend.blocks.js';
+		// Make paths variables so we don't write em twice ;)
+
+		bw_backtrace();
+		bw_trace2( $_GET, "_GET" );
+
+		// Don't do Gutenberg stuff when loading the classic editor
+		if ( array_key_exists( 'classic-editor', $_GET ) ) {
+			remove_filter( 'wp_editor_settings', 'gutenberg_disable_editor_settings_wpautop' );
+
+			//gob();
+			return;
+		}
+
+		if ( is_admin() ) {
+			return;
+		}
+
+
+		// Enqueue the bundled block JS file
+		wp_enqueue_script(
+			'oik_blocks-blocks-frontend-js',
+			plugins_url( $blockPath, __FILE__ ),
+			//[ 'wp-i18n', 'wp-element', 'wp-blocks', 'wp-components', 'wp-api' ],
+
+			[],
+			filemtime( plugin_dir_path( __FILE__ ) . $blockPath )
+		);
+
+
+	}
+
+	function oik_blocks_frontend_styles() {
+
+		$stylePath='blocks/build/css/blocks.style.css';
+		// Enqueue frontend and editor block styles
+		wp_enqueue_style(
+			'oik_blocks-blocks-css',
+			plugins_url( $stylePath, __FILE__ ),
+			[],
+			filemtime( plugin_dir_path( __FILE__ ) . $stylePath )
+		);
+
+
+	}
+
+
+
+
+
+
+
+
+	/**
+	 * Renders the GeSHi block
+	 *
+	 * @param array $attributes lang, type, content
+	 */
+	function oik_blocks_dynamic_block_geshi( $attributes ) {
+		oik_require( "shortcodes/oik-geshi.php", "oik-css" );
+		$content=bw_array_get( $attributes, "content", null );
+		$html   =oik_geshi( $attributes, $content );
+		if ( ! $html ) {
+			$html="empty";
+		}
+
+		return $html;
+	}
+
+
+	/**
+	 * Checks if the server function is available
+	 *
+	 * Returns null if everything is OK, HTML if there's a problem.
+	 *
+	 * @TODO Check if the implementing plugin is actually activated!
+	 *
+	 * @param $filename - relative path for the file to load
+	 * @param $plugin - plugin name
+	 * @param $funcname - required function name
+	 *
+	 * @return string| null
+	 */
+
+	function oik_blocks_check_server_func( $filename, $plugin, $funcname ) {
+		$html=null;
+		if ( is_callable( $funcname ) ) {
+			return $html;
+		}
+
+		if ( $filename && $plugin ) {
+			$path=oik_path( $filename, $plugin );
+			if ( file_exists( $path ) ) {
+				require_once $path;
+			}
+		}
+		if ( ! is_callable( $funcname ) ) {
+			$html="Server function $funcname not available. <br />Check $plugin is installed and activated.";
+		}
+
+		return $html;
+	}
+
+	/**
+	 * Returns the content of the dynamic block
+	 *
+	 * This is a quick and dirty hack while we're waiting on a fix for Gutenberg issue #5760
+	 *
+	 * Assumptions:
+	 * - The block doesn't contain nested blocks of the same name
+	 * - The block has an end block marker ( e.g. <!-- /wp:oik-blocks/css --> )
+	 *
+	 * Supports:
+	 * - Multiple blocks of the same name
+	 * - Should support attributes...
+	 *
+	 *
+	 * @param string $blockname - of the form wp:prefix/block e.g. wp:oik-blocks/css
+	 *
+	 * @return string the dynamic content for the block
+	 */
+	function oik_blocks_fetch_dynamic_content( $blockname ) {
+		static $content=null;
+		if ( null === $content ) {
+			$content=null;
+			$post   =get_post();
+			if ( $post ) {
+				$content=$post->post_content;
+			}
+		}
+		if ( $content ) {
+			$start        =strpos( $content, "<!-- " . $blockname );
+			$content      =substr( $content, $start + strlen( $blockname ) + 4 );
+			$end_comment  =strpos( $content, " -->" );
+			$content      =substr( $content, $end_comment + 4 );
+			$end          =strpos( $content, "<!-- /" . $blockname );
+			$block_content=substr( $content, 0, $end );
+			$content      =substr( $content, $end + strlen( $blockname ) + 11 );
+			bw_trace2( $content, "content" );
+		}
+
+		return $block_content;
+	}
+
+
+	/**
+	 * Server rendering for /blocks/examples/13-dynamic-lat
+	 */
+	function oik_blocks_dynamic_alt_block_render( $attributes ) {
+
+		$posts=wp_get_recent_posts( array(
+			'numberposts'=>5,
+			'post_status'=>'publish',
+		) );
+
+		if ( count( $posts ) === 0 ) {
+			return 'No posts';
+		}
+
+		$markup='<ul>';
+		foreach ( $posts as $post ) {
+
+			$markup.=sprintf(
+				'<li><a class="wp-block-my-plugin-latest-post" href="%1$s">%2$s</a></li>',
+				esc_url( get_permalink( $post['ID'] ) ),
+				esc_html( get_the_title( $post['ID'] ) )
+			);
+
+		}
+
+		return $markup;
+
+	}
+
+	/**
+	 * Implements actions for "oik_loaded"
+	 *
+	 * Now we know it's safe to respond to shortcodes
+	 */
+	function oik_blocks_oik_loaded() {
+		//add_action( "oik_add_shortcodes", "oik_blocks_oik_add_shortcodes" );
+	}
+
+	/**
+	 * Adds our shortcodes.
+	 *
+	 * oik-blocks doesn't have any. see oik-block instead
+	 */
+	function oik_blocks_oik_add_shortcodes() {
+	}
+
+	/**
+	 * Registers oik-blocks processing when plugin loaded
+	 */
+	function oik_blocks_loaded() {
+
+		// Hook scripts and styles functions into enqueue_block_assets hook
+
+		//add_action('enqueue_block_assets', 'oik_blocks_frontend_scripts');
+		add_action( 'enqueue_block_assets', 'oik_blocks_frontend_styles' );
+
+		// Hook scripts function into block editor hook
+		add_action( 'enqueue_block_editor_assets', 'oik_blocks_editor_scripts' );
+
+		add_action( "oik_loaded", "oik_blocks_oik_loaded" );
+		add_action( "plugins_loaded", "oik_blocks_plugins_loaded", 100 );
+
+		add_action( "init", "oik_blocks_register_dynamic_blocks" );
+		add_action( "oik_pre_theme_field", "oik_blocks_pre_theme_field" );
+
+
+		if ( ! defined( 'DOING_AJAX' ) ) {
+		}
+
+	}
+
+	/**
+	 * Implements oik_pre_theme_field
+	 *
+	 * This allows the Fields block to ensure shortcodes are loaded during server side rendering.
+	 */
+	function oik_blocks_pre_theme_field() {
+		do_action( "oik_add_shortcodes" );
+	}
+
+	/**
+	 * Registers action/filter hooks for oik's dynamic blocks
+	 *
+	 * We have to do this during init, which comes after _enqueue_ stuff
+	 *
+	 * script, style, editor_script, and editor_style
+	 */
+	function oik_blocks_register_dynamic_blocks() {
+		if ( function_exists( "register_block_type" ) ) {
+			//oik_blocks_register_editor_scripts();
+			oik_blocks_boot_libs();
+			register_block_type( 'oik-block/contact-form',
+				[
+					'render_callback'=>'oik_blocks_dynamic_block_contact_form'
+					,
+					'editor_script'  =>'oik_blocks-blocks-js'
+					,
+					'editor_style'   =>null
+					,
+					'script'         =>null
+					,
+					'style'          =>null
+				] );
+			register_block_type( 'oik-block/css',
+				[
+					'render_callback'=>'oik_blocks_dynamic_block_css',
+					'attributes'     =>[
+						'css' =>[ 'type'=>'string' ],
+						'text'=>[ 'type'=>'string' ]
+					]
+				] );
+			register_block_type( 'oik-block/csv',
+				[
+					'render_callback'=>'oik_blocks_dynamic_block_csv',
+					'attributes'     =>[
+						'content'=>[ 'type'=>'string' ],
+						'uo'     =>[ 'type'=>'string' ],
+						'th'     =>[ 'type'=>'boolean' ]
+					]
+
+				] );
+			register_block_type( 'oik-block/dummy',
+				[
+					'render_callback'=>'oik_blocks_dummy'
+					,
+					'editor_script'  =>'oik_blocks-dummy-js'
+					,
+					'script'         =>'oik_blocks-dummy-js'
+				]
+			);
+			register_block_type( 'oik-block/shortcode-block', [ 'render_callback'=>'oik_blocks_dynamic_block_shortcode' ] );
+			register_block_type( 'oik-block/wp',
+				[
+					'render_callback'=>'oik_blocks_dynamic_block_wp',
+					'attributes'     =>[
+						'v'=>[ 'type'=>'string', ]
+						,
+						'p'=>[ 'type'=>'string' ]
+						,
+						'm'=>[ 'type'=>'string' ]
+					]
+				]
+			);
+			register_block_type( 'oik-block/geshi',
+				[
+					'render_callback'=>'oik_blocks_dynamic_block_geshi',
+					'attributes'     =>[
+						'lang'   =>[ 'type'=>'string', ]
+						,
+						'text'   =>[ 'type'=>'string' ]
+						,
+						'content'=>[ 'type'=>'string' ]
+					]
+				]
+			);
+			register_block_type( "oik-block/search",
+				[ 'render_callback'=>'oik_blocks_dynamic_block_search' ]
+			);
+
+			register_block_type( "oik-block/uk-tides",
+				[
+					'render_callback'=>'oik_blocks_dynamic_block_uk_tides',
+					'attributes'     =>[
+						'site'=>[ 'type'=>'string' ]
+						,
+						'port'=>[ 'type'=>'string' ]
+					]
+				]
+
+			);
+			register_block_type( "oik-block/fields",
+				[
+					'render_callback'=>'oik_blocks_dynamic_block_fields',
+					'attributes'     =>[
+						'fields'=>[ 'type'=>'string' ],
+						'labels'=>[ 'type'=>'string' ],
+
+					]
+				]
+
+			);
+			register_block_type( "oik-block/address",
+				[
+					'render_callback'=>'oik_blocks_dynamic_block_address',
+					'attributes'     =>[
+						'tag'=>[ 'type'=>'string' ]
+					]
+				]
+
+			);
+			register_block_type( "oik-block/person",
+				[
+					'render_callback'=>'oik_blocks_dynamic_block_person',
+					'attributes'     =>[
+						'user'     =>[ 'type'=>'string' ],
+						'fields'   =>[ 'type'=>'string', 'default'=>'gravatar/about,bio,follow_me' ],
+						'className'=>[ 'type'=>'string' ],
+						'theme'    =>[ 'type'=>'string' ]
+					]
+				]
+
+			);
+		}
+	}
+
+	/**
+	 * Registers the scripts we'll need     for the editor
+	 *
+	 * Not sure why we'll need Gutenberg scripts for the front-end.
+	 * But we might need Javascript stuff for some things, so these can be registered here.
+	 *
+	 * Dependencies were initially
+	 * `[ 'wp-i18n', 'wp-element', 'wp-blocks', 'wp-components', 'wp-api' ]`
+	 *
+	 * why do we need the dependencies?
+	 */
+	function oik_blocks_register_editor_scripts() {
+		bw_trace2();
+		bw_backtrace();
+
+		$scripts=array(
+			'oik_blocks-blocks-js'=>'blocks/build/js/editor.blocks.js'
+		,
+			'oik_blocks-dummy-js' =>'/blocks/build/js/dummy.blocks.js'
+		);
+		foreach ( $scripts as $name=>$blockPath ) {
+			wp_register_script( $name,
+				plugins_url( $blockPath, __FILE__ ),
+				// [],
+				[ 'wp-blocks', 'wp-element', 'wp-components', 'wp-editor', 'wp-i18n', 'wp-data' ],
+				filemtime( plugin_dir_path( __FILE__ ) . $blockPath )
+			);
+			wp_set_script_translations( $name, 'oik-block' );
+		}
+
+	}
+
+	/**
+	 * Implements 'plugins_loaded' action for oik-blocks
+	 *
+	 * Prepares use of shared libraries if this has not already been done.
+	 */
+	function oik_blocks_plugins_loaded() {
+		oik_blocks_boot_libs();
+		oik_require_lib( "bwtrace" );
+	}
+
+	/**
+	 * Boot up process for shared libraries
+	 *
+	 * ... if not already performed
+	 */
+	function oik_blocks_boot_libs() {
+		if ( ! function_exists( "oik_require" ) ) {
+			$oik_boot_file=__DIR__ . "/libs/oik_boot.php";
+			$loaded       =include_once( $oik_boot_file );
+		}
+		oik_lib_fallback( __DIR__ . "/libs" );
+	}
+
+	oik_blocks_loaded();
+
+}
+
+
+
+
+
+

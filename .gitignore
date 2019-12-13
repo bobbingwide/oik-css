@@ -1,2 +1,5 @@
-.idea
-flh0grep.*
+node_modules
+node_modules-renamed
+package-lock.json
+.idea/
+.~lock*
