@@ -8,7 +8,7 @@
  * @copyright (C) Copyright Bobbing Wide 2018,2019
  * @author Herb Miller @bobbingwide
  */
-//import './style.scss';
+import './style.scss';
 //import './editor.scss';
 
 // Get just the __() localization function from wp.i18n
@@ -94,7 +94,8 @@ export default registerBlockType(
         example: {
             attributes: {
                 lang: 'php',
-                content: __( 'echo "Code is poetry."' ),
+                text: 'WordPress motto',
+                content: __( 'echo "Code is Poetry."' ),
              },
         },
 

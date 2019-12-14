@@ -29,8 +29,6 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 */
 
-use function oik\oik_blocks_boot_libs;
-
 oik_css_plugin_loaded();
 
 /** 
@@ -244,16 +242,21 @@ function oik_css_plugin_loaded() {
   add_action( "oik_loaded", "oik_css_oik_loaded" );
   add_action( "oik_add_shortcodes", "oik_css_init" );
   add_action( 'init', 'oik_css_init_blocks');
-  add_action( 'plugins_loaded', 'oik_css_plugins_loaded' );
+  //add_action( 'plugins_loaded', 'oik_css_plugins_loaded' );
+  add_action( 'parse_request', 'oik_css_plugins_loaded' );
 }
 
 /**
  * This logic is expected to run independent of oik and oik-blocks
  */
 function oik_css_init_blocks() {
-	//oik_require_lib( 'oik-blocks');
-	oik_css_register_editor_scripts();
-	oik_css_register_block_styles();
+	oik_css_boot_libs();
+	$library_file = oik_require_lib( 'oik-blocks');
+	bw_trace2( $library_file, "library_file", false );
+	oik\oik_blocks\oik_blocks_register_editor_scripts(  'oik-css', 'oik-css');
+	oik\oik_blocks\oik_blocks_register_block_styles( 'oik-css' );
+	//oik_css_register_editor_scripts();
+	//oik_css_register_block_styles();
 	oik_css_register_dynamic_blocks();
 
 }
@@ -274,7 +277,7 @@ function oik_css_register_editor_scripts() {
 	//bw_backtrace();
 
 	$scripts=array(
-		'oik_css-blocks-js'=>'blocks/build/js/editor.blocks.js'
+		'oik-css-blocks-js'=>'blocks/build/js/editor.blocks.js'
 	);
 	foreach ( $scripts as $name=>$blockPath ) {
 		wp_register_script( $name,
@@ -319,10 +322,10 @@ function oik_css_register_dynamic_blocks() {
 					'css' =>[ 'type'=>'string' ],
 					'text'=>[ 'type'=>'string' ]
 				]
-				, 'editor_script' => 'oik_css-blocks-js'
+				, 'editor_script' => 'oik-css-blocks-js'
 				, 'editor_style' => null
 				, 'script' => null
-				, 'style' => 'oik_css-blocks.css'
+				, 'style' => 'oik-css-blocks-css'
 			] );
 
 		register_block_type( 'oik-css/geshi',
@@ -333,10 +336,10 @@ function oik_css_register_dynamic_blocks() {
 					'text'   =>[ 'type'=>'string' ],
 					'content'=>[ 'type'=>'string' ]
 				]
-				, 'editor_script' => 'oik_css-blocks-js'
+				, 'editor_script' => 'oik-css-blocks-js'
 				, 'editor_style' => null
 				, 'script' => null
-				, 'style' => 'oik_css-blocks.css'
+				, 'style' => 'oik-css-blocks-css'
 			]
 		);
 
@@ -352,83 +355,46 @@ function oik_css_register_dynamic_blocks() {
  * Assumes that the oik-css plugin is installed.
  * The plugin doesn't need to be activated.
  *
- * @param array $attributes
- *
+ * @param array $attributes array of block attributes.
  * @return string generated HTML
  */
 function oik_css_dynamic_block_css( $attributes ) {
-
-	//bw_backtrace();
-	$html=oik_css_check_server_func( "shortcodes/oik-css.php", "oik-css", "oik_css" );
+	$html = \oik\oik_blocks\oik_blocks_check_server_func( 'shortcodes/oik-css.php', 'oik-css', 'oik_css' );
 	if ( ! $html ) {
-		$content=bw_array_get( $attributes, "css", null );
-		bw_trace2( $content, "Content" );
-		//$content = oik_blocks_fetch_dynamic_content( "wp:oik-blocks/css" );
-		$html=oik_css( $attributes, $content );
+		$content = bw_array_get( $attributes, 'css', null );
+		bw_trace2( $content, 'Content' );
+		$html = oik_css( $attributes, $content );
 	}
-
 	return $html;
 }
 
 /**
  * Renders the GeSHi block
  *
- * @param array $attributes lang, type, content
+ * @param array $attributes lang, type, content.
+ * @return string generated HTML
  */
 function oik_css_dynamic_block_geshi( $attributes ) {
-	$html=oik_css_check_server_func( "shortcodes/oik-geshi.php", "oik-css", "oik_geshi" );
+	$html = \oik\oik_blocks\oik_blocks_check_server_func( 'shortcodes/oik-geshi.php', 'oik-css', 'oik_geshi' );
 	if ( ! $html ) {
-		$content=bw_array_get( $attributes, "content", null );
-		$html   =oik_geshi( $attributes, $content );
+		$content = bw_array_get( $attributes, 'content', null );
+		$html    = oik_geshi( $attributes, $content );
 		if ( ! $html ) {
-			$html="empty";
+			$html = 'empty';
 		}
 	}
 	return $html;
 }
 
 /**
- * Checks if the server function is available
- *
- * Returns null if everything is OK, HTML if there's a problem.
- *
- * @TODO Check if the implementing plugin is actually activated!
- *
- * @param $filename - relative path for the file to load
- * @param $plugin - plugin name
- * @param $funcname - required function name
- *
- * @return string| null
- */
-
-function oik_css_check_server_func( $filename, $plugin, $funcname ) {
-	$html=null;
-	if ( is_callable( $funcname ) ) {
-		return $html;
-	}
-
-	if ( $filename && $plugin ) {
-		$path=oik_path( $filename, $plugin );
-		if ( file_exists( $path ) ) {
-			require_once $path;
-		}
-	}
-	if ( ! is_callable( $funcname ) ) {
-		$html="Server function $funcname not available. <br />Check $plugin is installed and activated.";
-	}
-
-	return $html;
-}
-
-/**
- * Implements 'plugins_loaded' action for oik-blocks
+ * Implements 'parse_request' action for oik-blocks
  *
  * Prepares use of shared libraries if this has not already been done.
  */
 function oik_css_plugins_loaded() {
 	oik_css_boot_libs();
 	oik_require_lib( 'bwtrace' );
-	oik_require_lib( 'bobbfunc');
+	oik_require_lib( 'bobbfunc' );
 }
 
 /**
@@ -437,10 +403,10 @@ function oik_css_plugins_loaded() {
  * ... if not already performed
  */
 function oik_css_boot_libs() {
-	if ( ! function_exists( "oik_require" ) ) {
-		$oik_boot_file=__DIR__ . "/libs/oik_boot.php";
-		$loaded       =include_once( $oik_boot_file );
+	if ( ! function_exists( 'oik_require' ) ) {
+		$oik_boot_file = __DIR__ . '/libs/oik_boot.php';
+		$loaded        = include_once( $oik_boot_file );
 	}
-	oik_lib_fallback( __DIR__ . "/libs" );
+	oik_lib_fallback( __DIR__ . '/libs' );
 }
 

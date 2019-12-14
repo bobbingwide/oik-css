@@ -1,7 +1,7 @@
 /**
  * Implements CSS block
  *
- * Uses [bw_css] shortcode from oik-css plugin
+ * Uses the logic for the [bw_css] shortcode
  *
  * @copyright (C) Copyright Bobbing Wide 2018, 2019
  * @author Herb Miller @bobbingwide
@@ -88,6 +88,12 @@ export default registerBlockType(
 					},
 					
         },
+		example: {
+			attributes: {
+				css: 'div.bw_css { color: red;}',
+				text: __( 'This sentence will be red.' ),
+			},
+		},
 				
 		supports: {
 			customClassName: false,
