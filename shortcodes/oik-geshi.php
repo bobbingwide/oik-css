@@ -1,4 +1,4 @@
-<?php // (C) Copyright Bobbing Wide 2013-2017
+<?php // (C) Copyright Bobbing Wide 2013-2019
 
 /**
  * Validate the language for GeSHi
@@ -12,7 +12,6 @@
  * 
  */
 function oik_css_validate_lang( $lang, &$text ) {
-  //bw_trace2();
   $lang = strtolower( $lang );
   $valid = bw_assoc( bw_as_array( "css,html,javascript,jquery,php,html5,none,mysql" ));
   $vlang = bw_array_get( $valid, $lang, null );
@@ -20,10 +19,10 @@ function oik_css_validate_lang( $lang, &$text ) {
     $vlang = bw_array_get( $valid, $text, null );
     if ( $vlang ) {
       $text = $lang; 
-    }  
+    }
   }
   if ( !$vlang ) {
-    BW_::p( sprintf( __( 'Invalid %1$s parameter for bw_geshi shortcode. %2$s', "oik-css" ), "lang=", $lang ) );
+    BW_::p( sprintf( __( 'Invalid %1$s parameter for GeSHi. %2$s', "oik-css" ), "lang=", $lang ) );
     BW_::p( "$vlang,$text" );
   } 
   return( $vlang );
@@ -133,10 +132,3 @@ function bw_geshi__example( $shortcode="bw_css" ) {
   $expanded = apply_filters( 'the_content', $example );
   e( $expanded );
 }
-
-
-
-
-  
-
-

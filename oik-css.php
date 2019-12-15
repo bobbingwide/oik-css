@@ -3,7 +3,7 @@
 Plugin Name: oik-css
 Plugin URI: https://www.oik-plugins.com/oik-plugins/oik-css
 Description: Implements [bw_css] shortcode for internal CSS styling and to help document CSS examples and [bw_geshi] for other languages
-Version: 1.0.0-alpha-20191213
+Version: 1.0.0-alpha-20191214
 Author: bobbingwide
 Author URI: https://bobbingwide.com/about-bobbing-wide
 Text Domain: oik-css
@@ -250,9 +250,10 @@ function oik_css_plugin_loaded() {
  * This logic is expected to run independent of oik and oik-blocks
  */
 function oik_css_init_blocks() {
-	oik_css_boot_libs();
+	//oik_css_boot_libs();
+	oik_css_plugins_loaded();
 	$library_file = oik_require_lib( 'oik-blocks');
-	bw_trace2( $library_file, "library_file", false );
+	//bw_trace2( $library_file, "library_file", false );
 	oik\oik_blocks\oik_blocks_register_editor_scripts(  'oik-css', 'oik-css');
 	oik\oik_blocks\oik_blocks_register_block_styles( 'oik-css' );
 	//oik_css_register_editor_scripts();
@@ -377,6 +378,11 @@ function oik_css_dynamic_block_css( $attributes ) {
 function oik_css_dynamic_block_geshi( $attributes ) {
 	$html = \oik\oik_blocks\oik_blocks_check_server_func( 'shortcodes/oik-geshi.php', 'oik-css', 'oik_geshi' );
 	if ( ! $html ) {
+		$lang = bw_array_get( $attributes, 'lang', null );
+		if  ( empty( $lang ) ) {
+			$attributes['lang'] = 'none';
+		}
+
 		$content = bw_array_get( $attributes, 'content', null );
 		$html    = oik_geshi( $attributes, $content );
 		if ( ! $html ) {
