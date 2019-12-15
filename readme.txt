@@ -3,7 +3,7 @@ Contributors: bobbingwide, vsgloik
 Donate link: https://www.oik-plugins.com/oik/oik-donate/
 Tags: shortcode, CSS, GeSHi, [bw_css], [bw_geshi], [bw_autop], [bw_background], oik, lazy, smart
 Requires at least: 5.0
-Tested up to: 5.1.1
+Tested up to: 5.3.1
 Gutenberg compatible: Yes
 Stable tag: 0.9.2
 License: GPLv2 or later
@@ -11,6 +11,9 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
 Allows internal CSS styling to be included in the content of the page.
+Use the CSS block to add custom CSS.
+
+Use the GeSHi block to syntax highlight: CSS, HTML, JavaScript, jQuery, PHP and MySQL.
 
 Use the [bw_css] shortcode to add custom CSS as and when you need it.
 
@@ -92,6 +95,12 @@ This new plugin depends on Gutenberg, the oik base plugin and oik-css.
 2. [bw_geshi] - examples 
 
 == Upgrade Notice ==
+= 1.0.0-beta-20191215 = 
+Updates after testing on cwiccer.com
+
+= 1.0.0-alpha-20191214 = 
+Now delivers two blocks which are not dependent upon oik.
+
 = 0.9.2 = 
 For the GesHi block in oik-blocks accept default lang=none
 
@@ -132,6 +141,16 @@ Dependent upon the oik base plugin v2.0 (or higher)
 Dependent upon the oik base plugin 
 
 == Changelog ==
+= 1.0.0-beta-20191215 =
+* Fixed: Fix problems noted on cwiccer.com during standalone testing  
+
+= 1.0.0-alpha-20191214 = 
+* Added: oik-css/css and oik-css/geshi blocks
+* Added: Shared library logic to reduce dependency on oik
+* Tested: With WordPress 5.3.1 and WordPress Multi Site
+* Tested: With PHP 7.3 and PHP 7.4
+* Tested: With Gutenberg 7.1.0
+
 = 0.9.2 = 
 * Changed: [bw_geshi] shortcode; default the lang parameter to none, [github bobbingwide oik-css issues 9]
 

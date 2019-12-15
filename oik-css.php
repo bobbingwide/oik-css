@@ -3,7 +3,7 @@
 Plugin Name: oik-css
 Plugin URI: https://www.oik-plugins.com/oik-plugins/oik-css
 Description: Implements [bw_css] shortcode for internal CSS styling and to help document CSS examples and [bw_geshi] for other languages
-Version: 1.0.0-alpha-20191214
+Version: 1.0.0-beta-20191215
 Author: bobbingwide
 Author URI: https://bobbingwide.com/about-bobbing-wide
 Text Domain: oik-css
