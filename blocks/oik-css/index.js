@@ -3,7 +3,7 @@
  *
  * Uses the logic for the [bw_css] shortcode
  *
- * @copyright (C) Copyright Bobbing Wide 2018, 2019
+ * @copyright (C) Copyright Bobbing Wide 2018-2020
  * @author Herb Miller @bobbingwide
  */
 import './style.scss';
@@ -19,10 +19,12 @@ const {
 
 const {
 	Editable,
-  InspectorControls,
-	PlainText,
 	ServerSideRender,
  } = wp.editor;
+const {
+	InspectorControls,
+	PlainText,
+} = wp.blockEditor;
 	 
 const {
   Toolbar,
@@ -70,7 +72,6 @@ export default registerBlockType(
         // Dashicons Options - https://goo.gl/aTM1DQ
         icon: 'admin-appearance',
 
-        // Limit to 3 Keywords / Phrases
         keywords: [
             __( 'CSS' ),
             __( 'oik' ),
@@ -161,15 +162,6 @@ export default registerBlockType(
 				);
 			}
 		),
-				
-			saver() {
-				 // Rendering in PHP but we still need the content
-					return ( 
-					<p>div  color: re; </p>
-					);
-			},
-		
-
 		/**
 		 * We intend to render this dynamically but we need the content created by the user
 		 */
