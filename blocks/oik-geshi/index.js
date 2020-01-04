@@ -5,7 +5,7 @@
  *
  * Uses [bw_geshi] shortcode from oik-css plugin
  *
- * @copyright (C) Copyright Bobbing Wide 2018,2019
+ * @copyright (C) Copyright Bobbing Wide 2018-2020
  * @author Herb Miller @bobbingwide
  */
 import './style.scss';
@@ -16,12 +16,15 @@ const { __ } = wp.i18n;
 // Get registerBlockType from wp.blocks
 const {
     registerBlockType,
+    createBlock,
 } = wp.blocks;
+const {
+    ServerSideRender,
+} = wp.editor;
 const {
     InspectorControls,
     PlainText,
-    ServerSideRender,
-} = wp.editor;
+} = wp.blockEditor;
 
 const {
     Toolbar,
@@ -72,8 +75,14 @@ export default registerBlockType(
         // Limit to 3 Keywords / Phrases
         keywords: [
             __( 'GeSHi' ),
-            __( 'oik' ),
-            __( 'php html js'),
+            __( 'syntax' ),
+            __( 'highlight' ),
+            __( 'PHP' ),
+            __( 'HTML' ),
+            __( 'JavaScript' ),
+            __( 'CSS' ),
+            __( 'MySQL' ),
+
         ],
 
         // Set for each piece of dynamic data used in your block
@@ -97,6 +106,21 @@ export default registerBlockType(
                 text: 'WordPress motto',
                 content: __( 'echo "Code is Poetry."' ),
              },
+        },
+        transforms: {
+            from: [
+                {
+                    type: 'block',
+                    blocks: ['oik-block/geshi'],
+                    transform: function( attributes ) {
+                        return createBlock( 'oik-css/geshi', {
+                            lang: attributes.lang,
+                            text: attributes.text,
+                            content: attributes.content
+                        });
+                    },
+                },
+            ],
         },
 
 
