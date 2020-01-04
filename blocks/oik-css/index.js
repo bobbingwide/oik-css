@@ -13,7 +13,8 @@ import './editor.scss';
 const { __ } = wp.i18n;
 // Get registerBlockType and Editable from wp.blocks
 const { 
-	registerBlockType, 
+	registerBlockType,
+	createBlock,
 } = wp.blocks;
 
 const {
@@ -93,6 +94,20 @@ export default registerBlockType(
 				css: 'div.bw_css { color: red;}',
 				text: __( 'This sentence will be red.' ),
 			},
+		},
+		transforms: {
+			from: [
+				{
+					type: 'block',
+					blocks: ['oik-block/css'],
+					transform: function( attributes ) {
+						return createBlock( 'oik-css/css', {
+							css: attributes.css,
+							text: attributes.text
+						});
+					},
+				},
+			],
 		},
 				
 		supports: {
