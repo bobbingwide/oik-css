@@ -2,8 +2,8 @@
 /*
 Plugin Name: oik-css
 Plugin URI: https://www.oik-plugins.com/oik-plugins/oik-css
-Description: Implements [bw_css] shortcode for internal CSS styling and to help document CSS examples and [bw_geshi] for other languages
-Version: 1.0.0-beta-20191215
+Description: Implements CSS and GeSHi blocks for internal CSS styling and to help document source code examples
+Version: 1.0.0-beta-20200105
 Author: bobbingwide
 Author URI: https://bobbingwide.com/about-bobbing-wide
 Text Domain: oik-css
@@ -11,7 +11,7 @@ Domain Path: /languages/
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-    Copyright 2013-2019 Bobbing Wide (email : herb@bobbingwide.com )
+    Copyright 2013-2020 Bobbing Wide (email : herb@bobbingwide.com )
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License version 2,
@@ -244,13 +244,13 @@ function oik_css_plugin_loaded() {
   add_action( 'init', 'oik_css_init_blocks');
   //add_action( 'plugins_loaded', 'oik_css_plugins_loaded' );
   add_action( 'parse_request', 'oik_css_plugins_loaded' );
+  //add_action( 'enqueue_block_assets', 'oik_css_enqueue_block_assets');
 }
 
 /**
  * This logic is expected to run independent of oik and oik-blocks
  */
 function oik_css_init_blocks() {
-	//oik_css_boot_libs();
 	oik_css_plugins_loaded();
 	$library_file = oik_require_lib( 'oik-blocks');
 	//bw_trace2( $library_file, "library_file", false );
@@ -393,7 +393,7 @@ function oik_css_dynamic_block_geshi( $attributes ) {
 }
 
 /**
- * Implements 'parse_request' action for oik-blocks
+ * Implements 'parse_request' action for oik-css.
  *
  * Prepares use of shared libraries if this has not already been done.
  */
@@ -401,6 +401,9 @@ function oik_css_plugins_loaded() {
 	oik_css_boot_libs();
 	oik_require_lib( 'bwtrace' );
 	oik_require_lib( 'bobbfunc' );
+	if ( ! function_exists( 'bw_add_shortcode' ) ) {
+		oik_require_lib( 'oik-shortcodes' );
+	}
 }
 
 /**

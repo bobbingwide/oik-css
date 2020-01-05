@@ -3,7 +3,7 @@ Contributors: bobbingwide, vsgloik
 Donate link: https://www.oik-plugins.com/oik/oik-donate/
 Tags: shortcode, CSS, GeSHi, [bw_css], [bw_geshi], [bw_autop], [bw_background], oik, lazy, smart
 Requires at least: 5.0
-Tested up to: 5.3.1
+Tested up to: 5.3.2
 Gutenberg compatible: Yes
 Stable tag: 0.9.2
 License: GPLv2 or later
@@ -11,31 +11,37 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
 Allows internal CSS styling to be included in the content of the page.
-Use the CSS block to add custom CSS.
 
-Use the GeSHi block to syntax highlight: CSS, HTML, JavaScript, jQuery, PHP and MySQL.
+- Use the CSS block to add custom CSS.
+- Use the GeSHi block to syntax highlight: CSS, HTML, JavaScript, jQuery, PHP, MySQL or None.
 
-Use the [bw_css] shortcode to add custom CSS as and when you need it.
+For backward compatibility: 
+
+- Use the [bw_css] shortcode to add custom CSS as and when you need it.
 
 For designers, developers and documentors [bw_css] supports echoing of the custom CSS, allowing you to document the CSS you are using.
 For readability, the CSS is processed using the Generic Syntax Highlighter (GeSHi) processing.
 
-Use the [bw_geshi] shortcode for syntax highlighting of: CSS, HTML(5), JavaScript and jQuery, PHP and MySQL. 
+- Use the [bw_geshi] shortcode for syntax highlighting of: CSS, HTML(5), JavaScript and jQuery, PHP and MySQL. 
 Also supports language: none.
 
-Implemented as a lazy smart shortcode this code is dependent upon the oik base plugin.
+- Use the [bw_autop] shortcode to disable or re-enable WordPress's wpautop() logic.
 
-Use the [bw_autop] shortcode to disable or re-enable WordPress's wpautop() logic.
-
-Use the experimental [bw_background] shortcode to display an attached image in the background.
+- Use the experimental [bw_background] shortcode to display an attached image in the background.
 
 
 == Installation ==
 1. Upload the contents of the oik-css plugin to the `/wp-content/plugins/oik-css' directory
 1. Activate the oik-css plugin through the 'Plugins' menu in WordPress
-1. Use the [bw_css] shortcode inside your content
+1. Use the CSS and GeSHi blocks within your content.
 
 == Frequently Asked Questions ==
+
+= What are the dependencies? =
+ 
+This code is no longer dependent upon the oik base plugin; it uses shared libraries.
+If you want to use the shortcodes then using oik v3.3.7 or higher is still recommended.
+
 = What is the syntax? =
 `
 [bw_css] your CSS goes here [/bw_css] 
@@ -95,6 +101,9 @@ This new plugin depends on Gutenberg, the oik base plugin and oik-css.
 2. [bw_geshi] - examples 
 
 == Upgrade Notice ==
+= 1.0.0-beta-20200105 = 
+Version for testing backward compatibility with oik and uk-tides, both of which now use the oik-shortcodes shared library. 
+
 = 1.0.0-beta-20191215 = 
 Updates after testing on cwiccer.com
 
@@ -141,6 +150,13 @@ Dependent upon the oik base plugin v2.0 (or higher)
 Dependent upon the oik base plugin 
 
 == Changelog ==
+= 1.0.0-beta-20200105 =
+* Added: oik-shortcodes shared library,[github bobbingwide oik-css issues 9]
+* Changed: Support migration from oik-block/css and oik-block/geshi
+* Tested: With WordPress 5.3.2 and WordPress Multi Site
+* Tested: With PHP 7.3 and PHP 7.4
+* Tested: With PHPUnit 8
+
 = 1.0.0-beta-20191215 =
 * Fixed: Fix problems noted on cwiccer.com during standalone testing  
 
