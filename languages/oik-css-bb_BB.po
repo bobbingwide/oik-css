@@ -1,44 +1,46 @@
-# Copyright (C) 2018 oik-css
+# Copyright (C) 2020 oik-css
 # This file is distributed under the same license as the oik-css package.
 msgid ""
 msgstr ""
-"Project-Id-Version: oik-css 0.9.0\n"
+"Project-Id-Version: oik-css 1.0.0-beta-20200109\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/oik-css\n"
-"POT-Creation-Date: 2018-04-24 14:51:46+00:00\n"
+"POT-Creation-Date: 2020-01-09 15:17:24+00:00\n"
 "MIME-Version: 1.0\n"
 "Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 "Language: bb_BB\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2018-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2020-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-#: admin/oik-activation.php:23
+#: admin/oik-activation.php:29 libs/oik-depends.php:284
 msgid "Install %1$s"
 msgstr "Isnatll %1$s"
 
 
-#: admin/oik-activation.php:55
+#: admin/oik-activation.php:61 libs/oik-depends.php:312
 msgid "Activate %1$s"
 msgstr "Atcvitae %1$s"
 
 
-#: admin/oik-activation.php:73
+#: admin/oik-activation.php:79 libs/oik-depends.php:330
 msgid "Upgrade %1$s"
 msgstr "Ugparde %1$s"
 
 
-#: admin/oik-activation.php:189
+#: admin/oik-activation.php:195 libs/oik-depends.php:100
+#: libs/oik-depends.php:147
 msgid " version "
 msgstr " vreison "
 
 
-#: admin/oik-activation.php:191
+#: admin/oik-activation.php:197 libs/oik-depends.php:150
 msgid "%1$s may not be fully functional."
 msgstr "%1$s mAy nOt bE fluly fnutcoianl."
 
 
-#: admin/oik-activation.php:193
+#: admin/oik-activation.php:199 libs/oik-depends.php:106
+#: libs/oik-depends.php:152
 msgid ""
 "Please install and activate the required minimum version of this plugin: %1$s"
 msgstr ""
@@ -133,6 +135,26 @@ msgid "&#8212;"
 msgstr "&#8212;"
 
 
+#: libs/class-BW-.php:108
+msgid "Toggle panel: %s"
+msgstr "Tgolge pnael: %s"
+
+
+#: libs/oik-depends.php:103
+msgid "Plugin %1$s may not be fully functional."
+msgstr "Pulign %1$s mAy nOt bE fluly fnutcoianl."
+
+
+#: libs/oik-shortcodes.php:30
+msgid "<b>Unable to locate routine to expand shortcode.</b>"
+msgstr "<b>Unable tO lcotae ruoitne tO epxnad shortcode.</b>"
+
+
+#: libs/oik-shortcodes.php:245
+msgid "missing post processing function: %1$s"
+msgstr "msiisng psot porecssnig fnutcoin: %1$s"
+
+
 #: shortcodes/oik-autop.php:23
 msgid "Dynamically re-enable/disable automatic paragraph generation"
 msgstr "Dnymacilaly rE-eanlbe/dsibale atumotaic pragaarph gneretaoin"
@@ -203,27 +225,27 @@ msgid "Post mime type"
 msgstr "Psot mmie tpye"
 
 
-#: shortcodes/oik-css.php:144
+#: shortcodes/oik-css.php:154
 msgid "Add internal CSS styling"
 msgstr "Add itnreanl CSS sytilng"
 
 
-#: shortcodes/oik-css.php:158 shortcodes/oik-css.php:159
+#: shortcodes/oik-css.php:168 shortcodes/oik-css.php:169
 msgid "any"
 msgstr "Any"
 
 
-#: shortcodes/oik-css.php:158
+#: shortcodes/oik-css.php:168
 msgid "Display the CSS"
 msgstr "Dsilpay thE CSS"
 
 
-#: shortcodes/oik-css.php:159
+#: shortcodes/oik-css.php:169
 msgid "Display the CSS with this annotation"
 msgstr "Dsilpay thE CSS wtih tihs anntotaoin"
 
 
-#: shortcodes/oik-css.php:168
+#: shortcodes/oik-css.php:178
 msgid ""
 "When the &lt;code&gt; tag follows a &lt;p&gt; tag use a 14px font and "
 "different colours"
@@ -232,47 +254,47 @@ msgstr ""
 "dfiefernt clouors"
 
 
-#: shortcodes/oik-css.php:171
+#: shortcodes/oik-css.php:181
 msgid "Elsewhere display &lt;code&gt; in blue."
 msgstr "Eslweehre dsilpay &lt;code&gt; In bule."
 
 
-#: shortcodes/oik-css.php:174
+#: shortcodes/oik-css.php:184
 msgid "Use a parameter to cause the CSS to be shown."
 msgstr "UsE A pramateer tO cuase thE CSS tO bE sohwn."
 
 
-#: shortcodes/oik-geshi.php:26
-msgid "Invalid %1$s parameter for bw_geshi shortcode. %2$s"
-msgstr "Ivnlaid %1$s pramateer fOr bw_gsehi sohtrocde. %2$s"
+#: shortcodes/oik-geshi.php:25
+msgid "Invalid %1$s parameter for GeSHi. %2$s"
+msgstr "Ivnlaid %1$s pramateer fOr GSeHi. %2$s"
 
 
-#: shortcodes/oik-geshi.php:90
+#: shortcodes/oik-geshi.php:96
 msgid "Generic Syntax Highlighting"
 msgstr "Gnereic Snyatx Hgilhgithnig"
 
 
-#: shortcodes/oik-geshi.php:101
+#: shortcodes/oik-geshi.php:107
 msgid "Programming language"
 msgstr "Porrgmaimng lnauggae"
 
 
-#: shortcodes/oik-geshi.php:102
+#: shortcodes/oik-geshi.php:108
 msgid "text"
 msgstr "txet"
 
 
-#: shortcodes/oik-geshi.php:102
+#: shortcodes/oik-geshi.php:108
 msgid "Descriptive text to display"
 msgstr "Dsercpiitve txet tO dsilpay"
 
 
-#: shortcodes/oik-geshi.php:116
+#: shortcodes/oik-geshi.php:122
 msgid "Demonstrating the HTML to create a link to oik-plugins.com"
 msgstr "Dmenotsaritng thE HMTL tO certae A lnik tO OIk-puligns.cOm"
 
 
-#: shortcodes/oik-geshi.php:119
+#: shortcodes/oik-geshi.php:125
 msgid "Visit oik-plugins.com"
 msgstr "Vsiit OIk-puligns.cOm"
 
@@ -289,11 +311,11 @@ msgstr "https://www.oik-plugins.com/oik-plugins/oik-css"
 
 #. Description of the plugin/theme
 msgid ""
-"Implements [bw_css] shortcode for internal CSS styling and to help document "
-"CSS examples and [bw_geshi] for other languages"
+"Implements CSS and GeSHi blocks for internal CSS styling and to help "
+"document source code examples"
 msgstr ""
-"Ipmelemtns [bw_css] sohtrocde fOr itnreanl CSS sytilng And tO hlep dcomunet "
-"CSS eaxpmels And [bw_geshi] fOr ohter lnauggaes"
+"Ipmelemtns CSS And GSeHi bolkcs fOr itnreanl CSS sytilng And tO hlep "
+"dcomunet suocre cdoe eaxpmels"
 
 
 #. Author of the plugin/theme
@@ -302,6 +324,6 @@ msgstr "bboibgniwde"
 
 
 #. Author URI of the plugin/theme
-msgid "https://www.oik-plugins.com/author/bobbingwide"
-msgstr "https://www.oik-plugins.com/author/bobbingwide"
+msgid "https://bobbingwide.com/about-bobbing-wide"
+msgstr "https://bobbingwide.com/about-bobbing-wide"
 
