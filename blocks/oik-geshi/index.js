@@ -33,6 +33,7 @@ const {
     FormToggle,
 
     TextControl,
+    TextareaControl,
     SelectControl,
 
 } = wp.components;
@@ -121,6 +122,17 @@ export default registerBlockType(
                     },
                 },
             ],
+            from: [
+                {
+                    type: 'block',
+                    blocks: ['core/paragraph', 'core/code', 'core/preformatted'],
+                    transform: function( attributes ) {
+                        return createBlock( 'oik-css/geshi', {
+                            content: attributes.content
+                        });
+                    },
+                },
+            ],
         },
 
 
@@ -174,7 +186,7 @@ export default registerBlockType(
                             />
                         </PanelRow>
                         <PanelRow>
-                            <TextControl label="Text"
+                            <TextareaControl label="Text"
                                          value={ props.attributes.text }
                                          onChange={ onChangeText }
                             />
