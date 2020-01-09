@@ -241,7 +241,7 @@ function oik_css_plugin_loaded() {
   add_action( "oik_admin_menu", "oik_css_admin_menu" );
   add_action( "oik_loaded", "oik_css_oik_loaded" );
   add_action( "oik_add_shortcodes", "oik_css_init" );
-  add_action( 'init', 'oik_css_init_blocks');
+  add_action( 'init', 'oik_css_init_blocks', 100);
   //add_action( 'plugins_loaded', 'oik_css_plugins_loaded' );
   add_action( 'parse_request', 'oik_css_plugins_loaded' );
   //add_action( 'enqueue_block_assets', 'oik_css_enqueue_block_assets');
@@ -402,7 +402,13 @@ function oik_css_plugins_loaded() {
 	oik_require_lib( 'bwtrace' );
 	oik_require_lib( 'bobbfunc' );
 	if ( ! function_exists( 'bw_add_shortcode' ) ) {
-		oik_require_lib( 'oik-shortcodes' );
+		$oik_shortcodes_path = oik_path( 'oik-add-shortcodes.php' );
+		if ( file_exists( $oik_shortcodes_path ) ) {
+			/* Don't load oik-shortcodes library */
+			require_once $oik_shortcodes_path;
+		} else {
+			oik_require_lib( 'oik-shortcodes' );
+		}
 	}
 }
 
