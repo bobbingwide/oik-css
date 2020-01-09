@@ -1,4 +1,4 @@
-<?php // (C) Copyright Bobbing Wide 2016-2017
+<?php // (C) Copyright Bobbing Wide 2016-2017, 2020
 
 /**
  * @package oik-bob-bing-wide
@@ -7,7 +7,7 @@
  */
 class Tests_oik_css extends BW_UnitTestCase {
 
-	function setUp() {
+	function setUp(): void {
 		parent::setUp();
 	}
 

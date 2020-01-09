@@ -1,4 +1,4 @@
-<?php // (C) Copyright Bobbing Wide 2017
+<?php // (C) Copyright Bobbing Wide 2017, 2020
 
 /**
  * @package oik-css
@@ -7,7 +7,7 @@
  */
 class Tests_shortcodes_oik_css extends BW_UnitTestCase {
 
-	function setUp() {
+	function setUp(): void {
 		parent::setUp();
 		oik_require( "shortcodes/oik-css.php", "oik-css" );
 	}

@@ -1,4 +1,4 @@
-<?php // (C) Copyright Bobbing Wide 2017
+<?php // (C) Copyright Bobbing Wide 2017, 2020
 
 /**
  * @package oik-css
@@ -7,8 +7,9 @@
  */
 class Tests_shortcodes_oik_background extends BW_UnitTestCase {
 
-	function setUp() {
+	function setUp(): void {
 		parent::setUp();
+		include_once ABSPATH . 'wp-admin/includes/image.php';
 		oik_require( "shortcodes/oik-background.php", "oik-css" );
 	}
 	
