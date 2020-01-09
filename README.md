@@ -102,6 +102,9 @@ This new plugin depends on Gutenberg, the oik base plugin and oik-css.
 2. [bw_geshi] - examples
 
 ## Upgrade Notice 
+# 1.0.0-beta-20200109 
+Improved version for backward compatibility with oik and uk-tides. Needed on herbmiller.me
+
 # 1.0.0-beta-20200105 
 Version for testing backward compatibility with oik and uk-tides, both of which now use the oik-shortcodes shared library.
 
@@ -151,6 +154,10 @@ Dependent upon the oik base plugin v2.0 (or higher)
 Dependent upon the oik base plugin
 
 ## Changelog 
+# 1.0.0-beta-20200109 
+* Fixed: Caters for an old version of oik
+* Changed: Added transforms from core blocks and from CSS to GeSHi
+
 # 1.0.0-beta-20200105 
 * Added: oik-shortcodes shared library,https://github.com/bobbingwide/oik-css/issues/9
 * Changed: Support migration from oik-block/css and oik-block/geshi

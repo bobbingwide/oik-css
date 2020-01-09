@@ -31,7 +31,6 @@ const {
     PanelBody,
     PanelRow,
     FormToggle,
-
     TextControl,
     TextareaControl,
     SelectControl,

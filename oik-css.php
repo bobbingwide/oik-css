@@ -3,7 +3,7 @@
 Plugin Name: oik-css
 Plugin URI: https://www.oik-plugins.com/oik-plugins/oik-css
 Description: Implements CSS and GeSHi blocks for internal CSS styling and to help document source code examples
-Version: 1.0.0-beta-20200105
+Version: 1.0.0-beta-20200109
 Author: bobbingwide
 Author URI: https://bobbingwide.com/about-bobbing-wide
 Text Domain: oik-css
@@ -218,7 +218,7 @@ function oik_css_oik_menu_box() {
  * 0.8.1   | v2.5
  * 0.8.2   | v2.5
  * 0.9.0   | v3.2.3
- * 1.0.0   | The new block logic is not dependent upon oik
+ * 1.0.0   | @TODO No longer dependent upon oik except when oik is active!
  */ 
 function oik_css_activation() {
   static $plugin_basename = null;
@@ -253,11 +253,8 @@ function oik_css_plugin_loaded() {
 function oik_css_init_blocks() {
 	oik_css_plugins_loaded();
 	$library_file = oik_require_lib( 'oik-blocks');
-	//bw_trace2( $library_file, "library_file", false );
 	oik\oik_blocks\oik_blocks_register_editor_scripts(  'oik-css', 'oik-css');
 	oik\oik_blocks\oik_blocks_register_block_styles( 'oik-css' );
-	//oik_css_register_editor_scripts();
-	//oik_css_register_block_styles();
 	oik_css_register_dynamic_blocks();
 
 }

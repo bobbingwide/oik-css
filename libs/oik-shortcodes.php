@@ -2,8 +2,9 @@
 if ( !defined( 'OIK_SHORTCODES_INCLUDED' ) ) {
 	define( 'OIK_SHORTCODES_INCLUDED', "3.4.0" );
 	/**
-	 * Library: oik-l10n
-	 * Provides: oik-l10n
+	 * Library: oik-shortcodes
+	 * Provides: oik-shortcodes
+	 * Type: shared
 	 * Type: shared
 	 * Depends:    bwtrace
 	 * @copyright (C) Copyright Bobbing Wide 2020
