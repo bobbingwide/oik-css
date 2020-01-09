@@ -2,7 +2,7 @@
 ![banner](https://raw.githubusercontent.com/bobbingwide/oik-css/master/assets/oik-css-banner-772x250.jpg)
 * Contributors: bobbingwide, vsgloik
 * Donate link: https://www.oik-plugins.com/oik/oik-donate/
-* Tags: shortcode, CSS, GeSHi, [bw_css], [bw_geshi], [bw_autop], [bw_background], oik, lazy, smart
+* Tags: CSS, GeSHi, blocks, shortcodes, [bw_css], [bw_geshi], [bw_autop], [bw_background], oik, lazy, smart
 * Requires at least: 5.0
 * Tested up to: 5.3.2
 * Gutenberg compatible: Yes
