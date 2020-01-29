@@ -3,7 +3,7 @@
 Plugin Name: oik-css
 Plugin URI: https://www.oik-plugins.com/oik-plugins/oik-css
 Description: Implements CSS and GeSHi blocks for internal CSS styling and to help document source code examples
-Version: 1.0.0-beta-20200109
+Version: 1.0.0
 Author: bobbingwide
 Author URI: https://bobbingwide.com/about-bobbing-wide
 Text Domain: oik-css
@@ -49,14 +49,18 @@ function oik_css_oik_loaded() {
 }
 
 /**
- * Implement "oik_add_shortcodes" action for oik-css
- * 
+ * Implements "oik_add_shortcodes" action for oik-css.
+ *
+ * Note: If oik's not really loaded we can't use bw_background or bw_autop.
  */
 function oik_css_init() {
   bw_add_shortcode( "bw_css", "oik_css", oik_path( "shortcodes/oik-css.php", "oik-css" ), false );
   bw_add_shortcode( "bw_geshi", "oik_geshi", oik_path( "shortcodes/oik-geshi.php", "oik-css" ), false );
-  bw_add_shortcode( "bw_background", "bw_background", oik_path( "shortcodes/oik-background.php", "oik-css" ), false );
-  bw_add_shortcode( "bw_autop", "bw_autop", oik_path( "shortcodes/oik-autop.php", "oik-css" ), false );
+
+  if ( class_exists( 'BW_') ) {
+	  bw_add_shortcode( "bw_background", "bw_background", oik_path( "shortcodes/oik-background.php", "oik-css" ), false );
+	  bw_add_shortcode( "bw_autop", "bw_autop", oik_path( "shortcodes/oik-autop.php", "oik-css" ), false );
+  }
 }
 
 /**
@@ -86,9 +90,8 @@ function bw_no_texturize_shortcodes( $shortcodes ) {
  * More often than not wpautop() can appear to be more trouble than it's worth.
  * When we do use it, the results are better if we don't allow newlines to be converted to br tags.
  *
- * 
- * @param string $pee - the content with new lines to be converted to paragraphs
- * @return string - the content with automatically generated paragraphs
+ * @param string $pee - the content with new lines to be converted to paragraphs.
+ * @return string - the content with automatically generated paragraphs.
  */
 function bw_wpautop( $pee ) {
   return( wpautop( $pee, false ) ); 
@@ -244,7 +247,6 @@ function oik_css_plugin_loaded() {
   add_action( 'init', 'oik_css_init_blocks', 100);
   //add_action( 'plugins_loaded', 'oik_css_plugins_loaded' );
   add_action( 'parse_request', 'oik_css_plugins_loaded' );
-  //add_action( 'enqueue_block_assets', 'oik_css_enqueue_block_assets');
 }
 
 /**
@@ -252,52 +254,10 @@ function oik_css_plugin_loaded() {
  */
 function oik_css_init_blocks() {
 	oik_css_plugins_loaded();
-	$library_file = oik_require_lib( 'oik-blocks');
-	oik\oik_blocks\oik_blocks_register_editor_scripts(  'oik-css', 'oik-css');
+	$library_file = oik_require_lib( 'oik-blocks' );
+	oik\oik_blocks\oik_blocks_register_editor_scripts( 'oik-css', 'oik-css' );
 	oik\oik_blocks\oik_blocks_register_block_styles( 'oik-css' );
 	oik_css_register_dynamic_blocks();
-
-}
-
-/**
- * Registers the scripts we'll need     for the editor
- *
- * Not sure why we'll need Gutenberg scripts for the front-end.
- * But we might need Javascript stuff for some things, so these can be registered here.
- *
- * Dependencies were initially
- * `[ 'wp-i18n', 'wp-element', 'wp-blocks', 'wp-components', 'wp-api' ]`
- *
- * why do we need the dependencies?
- */
-function oik_css_register_editor_scripts() {
-	//bw_trace2();
-	//bw_backtrace();
-
-	$scripts=array(
-		'oik-css-blocks-js'=>'blocks/build/js/editor.blocks.js'
-	);
-	foreach ( $scripts as $name=>$blockPath ) {
-		wp_register_script( $name,
-			plugins_url( $blockPath, __FILE__ ),
-			// [],
-			[ 'wp-blocks', 'wp-element', 'wp-components', 'wp-editor', 'wp-i18n', 'wp-data' ],
-			filemtime( plugin_dir_path( __FILE__ ) . $blockPath )
-		);
-		wp_set_script_translations( $name, 'oik-css' );
-	}
-
-}
-
-function oik_css_register_block_styles() {
-	$stylePath='blocks/build/css/blocks.style.css';
-	// Enqueue frontend and editor block styles
-	wp_enqueue_style(
-			'oik_css-blocks-css',
-			plugins_url( $stylePath, __FILE__ ),
-			[],
-			filemtime( plugin_dir_path( __FILE__ ) . $stylePath )
-		);
 }
 
 /**
@@ -309,10 +269,6 @@ function oik_css_register_block_styles() {
  */
 function oik_css_register_dynamic_blocks() {
 	if ( function_exists( "register_block_type" ) ) {
-		//oik_blocks_register_editor_scripts();
-		//oik_blocks_boot_libs();
-
-
 		register_block_type( 'oik-css/css',
 			[
 				'render_callback'=>'oik_css_dynamic_block_css',
@@ -340,8 +296,6 @@ function oik_css_register_dynamic_blocks() {
 				, 'style' => 'oik-css-blocks-css'
 			]
 		);
-
-
 	}
 }
 
