@@ -169,8 +169,8 @@ Dependent upon the oik base plugin
 * Changed: Only enable [bw_background] and [bw_autop] when oik is activated
 
 = 1.0.0-beta-20200109 = 
-Fixed: Caters for an old version of oik
-Changed: Added transforms from core blocks and from CSS to GeSHi
+* Fixed: Caters for an old version of oik
+* Changed: Added transforms from core blocks and from CSS to GeSHi
 
 = 1.0.0-beta-20200105 =
 * Added: oik-shortcodes shared library,[github bobbingwide oik-css issues 9]
