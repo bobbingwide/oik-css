@@ -120,8 +120,6 @@ export default registerBlockType(
                         });
                     },
                 },
-            ],
-            from: [
                 {
                     type: 'block',
                     blocks: ['core/paragraph', 'core/code', 'core/preformatted'],

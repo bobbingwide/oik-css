@@ -108,8 +108,6 @@ export default registerBlockType(
 						});
 					},
 				},
-			],
-			from: [
 				{
 					type: 'block',
 					blocks: ['core/paragraph', 'core/code', 'core/preformatted'],
@@ -120,19 +118,7 @@ export default registerBlockType(
 					},
 				},
 			],
-			to: [
-				{
-					type: 'block',
-					blocks: ['oik-css/geshi' ],
-					transform: function( attributes ) {
-						return createBlock( 'oik-css/geshi', {
-							content: attributes.css,
-							lang: 'css',
-							text: attributes.text,
-						});
-					},
-				},
-			],
+
 		},
 				
 		supports: {
