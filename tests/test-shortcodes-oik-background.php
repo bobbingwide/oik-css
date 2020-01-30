@@ -50,7 +50,7 @@ class Tests_shortcodes_oik_background extends BW_UnitTestCase {
 		$atts = array( "id" => $post->ID );
 		$html = bw_background( $atts );
 		
-		$html = str_replace( $attachment->guid, "screenshot-1.png", $html );
+		$html = str_replace( $attachment->guid, "screenshot-1.jpg", $html );
 		$html = $this->replace_home_url( $html );
 		//$this->generate_expected_file( $html );
 		$this->assertArrayEqualsFile( $html );
@@ -128,7 +128,7 @@ class Tests_shortcodes_oik_background extends BW_UnitTestCase {
 								 , 'file' => oik_path( '!.png' )
 								 , 'post_title' => ' !'
 								 );
-		$id = self::factory()->attachment->create_upload_object( oik_path( "screenshot-1.png", "oik-css" ), $parent );
+		$id = self::factory()->attachment->create_upload_object( oik_path( "screenshot-1.jpg", "oik-css" ), $parent );
 		$this->assertGreaterThan( 0, $id );
 		$post = get_post( $id );
 		//print_r( $post );
@@ -145,7 +145,7 @@ class Tests_shortcodes_oik_background extends BW_UnitTestCase {
 		$dir = wp_upload_dir();
 		$path = bw_array_get( $dir, "path", null );
 		$this->assertNotNull( $path );
-		$files = glob( $path . '/screenshot-1*.png' );
+		$files = glob( $path . '/screenshot-1*.jpg' );
 		if ( $files ) {
 			array_map( "unlink", $files );
 		}
