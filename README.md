@@ -6,7 +6,7 @@
 * Requires at least: 5.0
 * Tested up to: 5.3.2
 * Gutenberg compatible: Yes
-* Stable tag: 0.9.2
+* Stable tag: 1.0.0
 * License: GPLv2 or later
 * License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -25,6 +25,8 @@ For readability, the CSS is processed using the Generic Syntax Highlighter (GeSH
 
 * - Use the [bw_geshi] shortcode for syntax highlighting of: CSS, HTML(5), JavaScript and jQuery, PHP and MySQL.
 * Also supports language: none.
+
+If the oik base plugin is activated
 
 - Use the [bw_autop] shortcode to disable or re-enable WordPress's wpautop() logic.
 
@@ -77,7 +79,7 @@ Supported languages are:
 * MySQL
 * none
 
-If you want to display syntax highlighted CSS without affecting the current display use [bw_geshi css]
+If you want to display syntax highlighted CSS without affecting the current display use [bw_geshi css].
 
 
 # What version of GeSHi does oik-css use? 
@@ -98,10 +100,17 @@ This new plugin depends on Gutenberg, the oik base plugin and oik-css.
 
 
 ## Screenshots 
-1. [bw_css] - syntax and examples
-2. [bw_geshi] - examples
+1. CSS block example
+2. GeSHi block example
+3. [bw_css] - syntax and examples
+4. [bw_geshi] - examples
+5. oik-CSS options - available when oik is active
+
 
 ## Upgrade Notice 
+# 1.0.0 
+Upgrade to use the CSS and GesHi blocks in the block editor.
+
 # 1.0.0-beta-20200109 
 Improved version for backward compatibility with oik and uk-tides. Needed on herbmiller.me
 
@@ -154,6 +163,12 @@ Dependent upon the oik base plugin v2.0 (or higher)
 Dependent upon the oik base plugin
 
 ## Changelog 
+# 1.0.0 
+* Changed: Improved transforms from blocks and shortcodes
+* Added: Screenshots for the blocks
+* Changed: Updated tests
+* Changed: Only enable [bw_background] and [bw_autop] when oik is activated
+
 # 1.0.0-beta-20200109 
 * Fixed: Caters for an old version of oik
 * Changed: Added transforms from core blocks and from CSS to GeSHi
