@@ -3,9 +3,9 @@ Contributors: bobbingwide, vsgloik
 Donate link: https://www.oik-plugins.com/oik/oik-donate/
 Tags: CSS, GeSHi, blocks, shortcodes, [bw_css], [bw_geshi], [bw_autop], [bw_background], oik, lazy, smart
 Requires at least: 5.0
-Tested up to: 5.3.2
+Tested up to: 5.5.1
 Gutenberg compatible: Yes
-Stable tag: 1.0.0
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -107,6 +107,9 @@ This new plugin depends on Gutenberg, the oik base plugin and oik-css.
 
 
 == Upgrade Notice ==
+= 1.1.0 = 
+Upgrade to resolve a problem when embedding content from WordPress sites.
+
 = 1.0.0 = 
 Upgrade to use the CSS and GesHi blocks in the block editor. 
 
@@ -162,6 +165,12 @@ Dependent upon the oik base plugin v2.0 (or higher)
 Dependent upon the oik base plugin 
 
 == Changelog ==
+= 1.1.0 = 
+* Changed: Update do_shortcode_earlier to be more like do_shortcode, [github bobbingwide oik-css issues 11]
+* Tested: With WordPress 5.5.1 and WordPress Multi Site
+* Tested: With PHP 7.4
+* Tested: With PHPUnit 8
+
 = 1.0.0 =
 * Changed: Improved transforms from blocks and shortcodes
 * Added: Screenshots for the blocks

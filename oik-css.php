@@ -3,7 +3,7 @@
 Plugin Name: oik-css
 Plugin URI: https://www.oik-plugins.com/oik-plugins/oik-css
 Description: Implements CSS and GeSHi blocks for internal CSS styling and to help document source code examples
-Version: 1.0.0
+Version: 1.1.0
 Author: bobbingwide
 Author URI: https://bobbingwide.com/about-bobbing-wide
 Text Domain: oik-css
@@ -178,7 +178,16 @@ function bw_better_autop( $autop=false ) {
       oik_require( "includes/formatting-later.php", "oik-css" );
     }  
     add_filter( 'the_content', "wptexturize_blocks", 98 );
+    //add_filter( 'option_blogname', 'oik_css_pesky_shortcodes');
+    //add_filter( 'oembed_response_data')
   }
+}
+
+function oik_css_pesky_shortcodes( $name ) {
+    //bw_trace2();
+    //bw_backtrace();
+    $name = str_replace( '[', '&#91;', $name );
+    return $name;
 }
 
     
