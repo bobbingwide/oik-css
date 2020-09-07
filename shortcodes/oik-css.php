@@ -136,10 +136,12 @@ function bw_detexturize( $content ) {
  */
 function oik_css( $atts=null, $content=null, $tag=null ) {
   if ( $content ) {
+  	sdiv();
     $dec = bw_remove_unwanted_tags( $content );
 		$dec = bw_detexturize( $dec );
     bw_enqueue_style( $atts, $dec );
     bw_format_style( $atts, $dec );
+    ediv();
   }
   return( bw_ret() );
 }
