@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the oik-css package.
 msgid ""
 msgstr ""
-"Project-Id-Version: oik-css 1.0.0-beta-20200109\n"
+"Project-Id-Version: oik-css 1.1.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/oik-css\n"
-"POT-Creation-Date: 2020-01-09 15:17:24+00:00\n"
+"POT-Creation-Date: 2020-12-19 16:11:14+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -121,11 +121,11 @@ msgstr ""
 msgid "Plugin %1$s may not be fully functional."
 msgstr ""
 
-#: libs/oik-shortcodes.php:30
+#: libs/oik-shortcodes.php:28
 msgid "<b>Unable to locate routine to expand shortcode.</b>"
 msgstr ""
 
-#: libs/oik-shortcodes.php:245
+#: libs/oik-shortcodes.php:243
 msgid "missing post processing function: %1$s"
 msgstr ""
 
@@ -185,33 +185,33 @@ msgstr ""
 msgid "Post mime type"
 msgstr ""
 
-#: shortcodes/oik-css.php:154
+#: shortcodes/oik-css.php:156
 msgid "Add internal CSS styling"
 msgstr ""
 
-#: shortcodes/oik-css.php:168 shortcodes/oik-css.php:169
+#: shortcodes/oik-css.php:170 shortcodes/oik-css.php:171
 msgid "any"
 msgstr ""
 
-#: shortcodes/oik-css.php:168
+#: shortcodes/oik-css.php:170
 msgid "Display the CSS"
 msgstr ""
 
-#: shortcodes/oik-css.php:169
+#: shortcodes/oik-css.php:171
 msgid "Display the CSS with this annotation"
 msgstr ""
 
-#: shortcodes/oik-css.php:178
+#: shortcodes/oik-css.php:180
 msgid ""
 "When the &lt;code&gt; tag follows a &lt;p&gt; tag use a 14px font and "
 "different colours"
 msgstr ""
 
-#: shortcodes/oik-css.php:181
+#: shortcodes/oik-css.php:183
 msgid "Elsewhere display &lt;code&gt; in blue."
 msgstr ""
 
-#: shortcodes/oik-css.php:184
+#: shortcodes/oik-css.php:186
 msgid "Use a parameter to cause the CSS to be shown."
 msgstr ""
 

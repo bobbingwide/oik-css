@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the oik-css package.
 msgid ""
 msgstr ""
-"Project-Id-Version: oik-css 1.0.0-beta-20200109\n"
+"Project-Id-Version: oik-css 1.1.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/oik-css\n"
-"POT-Creation-Date: 2020-01-09 15:17:24+00:00\n"
+"POT-Creation-Date: 2020-12-19 16:11:14+00:00\n"
 "MIME-Version: 1.0\n"
 "Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 "Language: en_GB\n"
@@ -60,55 +60,46 @@ msgstr "To enable automatic paragraph creation use the [bw_autop] shortcode."
 msgid "To disable automatic paragraph creation use [bw_autop off]."
 msgstr "To disable automatic paragraph creation use [bw_autop off]."
 
-#. translators: opening curly double quote
 #: includes/formatting-later.php:115
 msgctxt "opening curly double quote"
 msgid "&#8220;"
 msgstr "&#8220;"
 
-#. translators: closing curly double quote
 #: includes/formatting-later.php:117
 msgctxt "closing curly double quote"
 msgid "&#8221;"
 msgstr "&#8221;"
 
-#. translators: apostrophe, for example in 'cause or can't
 #: includes/formatting-later.php:120
 msgctxt "apostrophe"
 msgid "&#8217;"
 msgstr "&#8217;"
 
-#. translators: prime, for example in 9' (nine feet)
 #: includes/formatting-later.php:123
 msgctxt "prime"
 msgid "&#8242;"
 msgstr "&#8242;"
 
-#. translators: double prime, for example in 9" (nine inches)
 #: includes/formatting-later.php:125
 msgctxt "double prime"
 msgid "&#8243;"
 msgstr "&#8243;"
 
-#. translators: opening curly single quote
 #: includes/formatting-later.php:128
 msgctxt "opening curly single quote"
 msgid "&#8216;"
 msgstr "&#8216;"
 
-#. translators: closing curly single quote
 #: includes/formatting-later.php:130
 msgctxt "closing curly single quote"
 msgid "&#8217;"
 msgstr "&#8217;"
 
-#. translators: en dash
 #: includes/formatting-later.php:133
 msgctxt "en dash"
 msgid "&#8211;"
 msgstr "&#8211;"
 
-#. translators: em dash
 #: includes/formatting-later.php:135
 msgctxt "em dash"
 msgid "&#8212;"
@@ -122,11 +113,11 @@ msgstr "Toggle panel: %s"
 msgid "Plugin %1$s may not be fully functional."
 msgstr "Plugin %1$s may not be fully functional."
 
-#: libs/oik-shortcodes.php:30
+#: libs/oik-shortcodes.php:28
 msgid "<b>Unable to locate routine to expand shortcode.</b>"
 msgstr "<b>Unable to locate routine to expand shortcode.</b>"
 
-#: libs/oik-shortcodes.php:245
+#: libs/oik-shortcodes.php:243
 msgid "missing post processing function: %1$s"
 msgstr "missing post processing function: %1$s"
 
@@ -186,33 +177,33 @@ msgstr "post mime type"
 msgid "Post mime type"
 msgstr "Post mime type"
 
-#: shortcodes/oik-css.php:154
+#: shortcodes/oik-css.php:156
 msgid "Add internal CSS styling"
 msgstr "Add internal CSS styling"
 
-#: shortcodes/oik-css.php:168 shortcodes/oik-css.php:169
+#: shortcodes/oik-css.php:170 shortcodes/oik-css.php:171
 msgid "any"
 msgstr "any"
 
-#: shortcodes/oik-css.php:168
+#: shortcodes/oik-css.php:170
 msgid "Display the CSS"
 msgstr "Display the CSS"
 
-#: shortcodes/oik-css.php:169
+#: shortcodes/oik-css.php:171
 msgid "Display the CSS with this annotation"
 msgstr "Display the CSS with this annotation"
 
-#: shortcodes/oik-css.php:178
+#: shortcodes/oik-css.php:180
 msgid ""
 "When the &lt;code&gt; tag follows a &lt;p&gt; tag use a 14px font and "
 "different colours"
 msgstr "When the &lt;code&gt; tag follows a &lt;p&gt; tag use a 14px font and different colours"
 
-#: shortcodes/oik-css.php:181
+#: shortcodes/oik-css.php:183
 msgid "Elsewhere display &lt;code&gt; in blue."
 msgstr "Elsewhere display &lt;code&gt; in blue."
 
-#: shortcodes/oik-css.php:184
+#: shortcodes/oik-css.php:186
 msgid "Use a parameter to cause the CSS to be shown."
 msgstr "Use a parameter to cause the CSS to be shown."
 
@@ -244,25 +235,20 @@ msgstr "Demonstrating the HTML to create a link to oik-plugins.com"
 msgid "Visit oik-plugins.com"
 msgstr "Visit oik-plugins.com"
 
-#. Plugin Name of the plugin/theme
 msgid "oik-css"
 msgstr "oik-css"
 
-#. Plugin URI of the plugin/theme
 msgid "https://www.oik-plugins.com/oik-plugins/oik-css"
 msgstr "https://www.oik-plugins.com/oik-plugins/oik-css"
 
-#. Description of the plugin/theme
 msgid ""
 "Implements CSS and GeSHi blocks for internal CSS styling and to help "
 "document source code examples"
 msgstr "Implements CSS and GeSHi blocks for internal CSS styling and to help document source code examples"
 
-#. Author of the plugin/theme
 msgid "bobbingwide"
 msgstr "bobbingwide"
 
-#. Author URI of the plugin/theme
 msgid "https://bobbingwide.com/about-bobbing-wide"
 msgstr "https://bobbingwide.com/about-bobbing-wide"
 
