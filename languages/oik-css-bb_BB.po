@@ -1,16 +1,16 @@
-# Copyright (C) 2020 oik-css
+# Copyright (C) 2021 oik-css
 # This file is distributed under the same license as the oik-css package.
 msgid ""
 msgstr ""
-"Project-Id-Version: oik-css 1.1.1\n"
+"Project-Id-Version: oik-css 1.2.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/oik-css\n"
-"POT-Creation-Date: 2020-12-19 16:11:14+00:00\n"
+"POT-Creation-Date: 2021-03-19 17:56:59+00:00\n"
 "MIME-Version: 1.0\n"
 "Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 "Language: bb_BB\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2020-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2021-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 #: admin/oik-activation.php:29 libs/oik-depends.php:284
@@ -25,9 +25,8 @@ msgstr "Atcvitae %1$s"
 msgid "Upgrade %1$s"
 msgstr "Ugparde %1$s"
 
-#: admin/oik-activation.php:195 libs/oik-depends.php:100
-#: libs/oik-depends.php:147
-msgid " version "
+#: admin/oik-activation.php:195 libs/oik-depends.php:147
+msgid "version"
 msgstr "vreison"
 
 #: admin/oik-activation.php:197 libs/oik-depends.php:150
@@ -108,6 +107,10 @@ msgstr "&#8212;"
 #: libs/class-BW-.php:108
 msgid "Toggle panel: %s"
 msgstr "Tgolge pnael: %s"
+
+#: libs/oik-depends.php:100
+msgid " version "
+msgstr "vreison"
 
 #: libs/oik-depends.php:103
 msgid "Plugin %1$s may not be fully functional."
