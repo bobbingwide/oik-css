@@ -283,7 +283,8 @@ function oik_css_register_dynamic_blocks() {
 				'render_callback'=>'oik_css_dynamic_block_css',
 				'attributes'     =>[
 					'css' =>[ 'type'=>'string' ],
-					'text'=>[ 'type'=>'string' ]
+					'text'=>[ 'type'=>'string' ],
+					'src' => ['type'=>'string']
 				]
 				, 'editor_script' => 'oik-css-blocks-js'
 				, 'editor_style' => null
@@ -297,7 +298,8 @@ function oik_css_register_dynamic_blocks() {
 				'attributes'     =>[
 					'lang'   =>[ 'type'=>'string' ],
 					'text'   =>[ 'type'=>'string' ],
-					'content'=>[ 'type'=>'string' ]
+					'content'=>[ 'type'=>'string' ],
+					'src' => ['type' => 'string']
 				]
 				, 'editor_script' => 'oik-css-blocks-js'
 				, 'editor_style' => null
@@ -384,4 +386,3 @@ function oik_css_boot_libs() {
 	}
 	oik_lib_fallback( __DIR__ . '/libs' );
 }
-
