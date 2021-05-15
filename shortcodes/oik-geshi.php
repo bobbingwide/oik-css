@@ -127,11 +127,11 @@ function bw_geshi__syntax( $shortcode="bw_geshi" ) {
  *
  * @param string $shortcode 
  */
-function bw_geshi__example( $shortcode="bw_css" ) {
+function bw_geshi__example( $shortcode="bw_geshi" ) {
   $text = __( "Demonstrating the HTML to create a link to oik-plugins.com", "oik-css" );
   BW_::p( $text );
   $example = "[$shortcode";
-  $example .= ' html .]<a href="https://www.oik-plugins.com">' . __( "Visit oik-plugins.com", "oik-css" ) . '</a>[/bw_geshi';
+  $example .= ' lang=html]<a href="https://www.oik-plugins.com">' . __( "Visit oik-plugins.com", "oik-css" ) . '</a>[/bw_geshi';
   $example .= ']';
   sp();
   stag( "code" );
