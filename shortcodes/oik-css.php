@@ -135,6 +135,15 @@ function bw_detexturize( $content ) {
  * 
  */
 function oik_css( $atts=null, $content=null, $tag=null ) {
+	if ( !$content ) {
+		oik_require_lib( 'class-oik-attachment-contents');
+		if ( class_exists( 'Oik_attachment_contents') ) {
+			$oik_attachment_contents=new Oik_attachment_contents();
+			$content=$oik_attachment_contents->get_content( $atts, $content );
+		} else {
+			e( "Oik_attachment_contents not loaded");
+		}
+	}
   if ( $content ) {
   	sdiv();
     $dec = bw_remove_unwanted_tags( $content );

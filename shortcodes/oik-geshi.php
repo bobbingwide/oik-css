@@ -81,6 +81,15 @@ function bw_format_content( $atts, $content ) {
  * @return string syntax highlighted content
  */
 function oik_geshi( $atts=null, $content=null, $tag=null ) {
+	if ( !$content ) {
+		oik_require_lib( 'class-oik-attachment-contents');
+		if ( class_exists( 'Oik_attachment_contents') ) {
+			$oik_attachment_contents=new Oik_attachment_contents();
+			$content=$oik_attachment_contents->get_content( $atts, $content );
+		} else {
+			e( "Oik_attachment_contents not loaded");
+		}
+	}
   if ( $content ) {
     oik_require( "shortcodes/oik-css.php", "oik-css" );
     bw_format_content( $atts, $content );
