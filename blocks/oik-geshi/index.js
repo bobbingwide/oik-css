@@ -5,7 +5,7 @@
  *
  * Uses [bw_geshi] shortcode from oik-css plugin
  *
- * @copyright (C) Copyright Bobbing Wide 2018-2020
+ * @copyright (C) Copyright Bobbing Wide 2018-2021
  * @author Herb Miller @bobbingwide
  */
 import './style.scss';
@@ -97,6 +97,10 @@ export default registerBlockType(
             content: {
                 type: 'string',
             },
+            src: {
+                type: 'string',
+                default: ''
+            }
 
 
         },
@@ -150,6 +154,9 @@ export default registerBlockType(
             const onChangeContent = ( value ) => {
                 props.setAttributes( { content: value } );
             };
+            const onChangeSrc = ( value ) => {
+                props.setAttributes( { src: value } );
+            }
 
         /**
         * Attempt a generic function to apply a change
@@ -188,6 +195,17 @@ export default registerBlockType(
                                          onChange={ onChangeText }
                             />
                         </PanelRow>
+                        <PanelBody>
+                            <PanelRow>
+                                <TextControl
+                                    label={ __( 'Source file: ID, URL or path' ) }
+                                    value={  props.attributes.src }
+                                    onChange={ onChangeSrc }
+
+                                />
+
+                            </PanelRow>
+                        </PanelBody>
 
                     </PanelBody>
 
@@ -202,7 +220,7 @@ export default registerBlockType(
                     <div className="wp-block-oik-css-geshi wp-block-shortcode" key="content-input">
                     <PlainText
                         value={props.attributes.content}
-                        placeholder={__('Write code')}
+                        placeholder={__('Write code or specify a source file.')}
                         onChange={onChangeContent}
                     />
                     </div>

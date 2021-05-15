@@ -3,7 +3,7 @@
  *
  * Uses the logic for the [bw_css] shortcode
  *
- * @copyright (C) Copyright Bobbing Wide 2018-2020
+ * @copyright (C) Copyright Bobbing Wide 2018-2021
  * @author Herb Miller @bobbingwide
  */
 import './style.scss';
@@ -80,15 +80,17 @@ export default registerBlockType(
         // Set for each piece of dynamic data used in your block
         attributes: {
 				
-          css: {
-            type: 'string',
- 
-          },
-					text: {
-						type: 'string',
-						default: '',
-					},
-					
+        	css: {
+        		type: 'string',
+        	},
+			text: {
+				type: 'string',
+				default: '',
+			},
+			src: {
+        		type: 'string',
+				default: '',
+			}
         },
 		example: {
 			attributes: {
@@ -139,6 +141,10 @@ export default registerBlockType(
 				const onChangeCSS = ( value ) => {
 					setAttributes( { css: value } );
 				};
+
+				const onChangeSrc = ( value ) => {
+					setAttributes( { src: value } );
+				}
 	
 				return (
 					<Fragment>
@@ -147,6 +153,17 @@ export default registerBlockType(
 								<PanelBody>
 									<TextareaControl label="Text" value={attributes.text} onChange={onChangeText} />
 								</PanelBody>
+					<PanelBody>
+						<PanelRow>
+							<TextControl
+								label={ __( 'Source file: ID, URL or path' ) }
+								value={  attributes.src }
+								onChange={ onChangeSrc }
+
+							/>
+
+						</PanelRow>
+					</PanelBody>
               </InspectorControls>
 						<Fragment>
 
@@ -154,7 +171,7 @@ export default registerBlockType(
 							<PlainText
 								id={inputId}
 								value={attributes.css}
-								placeholder={__('Write CSS')}
+								placeholder={__('Write CSS or specify a source file.')}
 								onChange={onChangeCSS}
 							/>
 						</div>
