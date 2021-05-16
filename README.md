@@ -4,9 +4,9 @@
 * Donate link: https://www.oik-plugins.com/oik/oik-donate/
 * Tags: CSS, GeSHi, blocks, shortcodes, [bw_css], [bw_geshi], [bw_autop], [bw_background], oik, lazy, smart
 * Requires at least: 5.0
-* Tested up to: 5.7
+* Tested up to: 5.7.2
 * Gutenberg compatible: Yes
-* Stable tag: 1.1.0
+* Stable tag: 1.3.0
 * License: GPLv2 or later
 * License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -108,6 +108,9 @@ This new plugin depends on Gutenberg, the oik base plugin and oik-css.
 
 
 ## Upgrade Notice 
+# 1.3.0 
+Upgrade for improvements to the CSS and GeSHi blocks. Now support loading from an attachment or file.
+
 # 1.2.0 
 Upgrade for PHP 8.0 support.
 
@@ -172,6 +175,16 @@ Dependent upon the oik base plugin v2.0 (or higher)
 Dependent upon the oik base plugin
 
 ## Changelog 
+# 1.3.0 
+* Added: Add src attribute to CSS and GeSHi blocks.,https://github.com/bobbingwide/oik-css/issues/15
+* Changed: [bw_css] and [bw_geshi] src parameter is not positional,https://github.com/bobbingwide/oik-css/issues/15
+* Fixed: Correct bw_geshi__example and its tests.https://github.com/bobbingwide/oik-css/issues/15
+* Added: Implement class-oik-attachment-contents shared library. Copied from oik-bob-bing-wide.
+* Tested: With WordPress 5.7.2 and WordPress Multi Site
+* Tested: With Gutenberg 10.6
+* Tested: With PHP 8.0
+* Tested: With PHPUnit 9
+
 # 1.2.0 
 * Changed: Updated for PHP 8.0 support
 * Tested: With WordPress 5.7 and WordPress Multi Site
