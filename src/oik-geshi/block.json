@@ -1,14 +1,23 @@
 {
 	"apiVersion": 2,
-	"name": "oik-mp/magnetic-poetry",
-	"title": "Magnetic poetry",
-	"category": "formatting",
-	"icon": "editor-customchar",
-	"description": "Write magnetic poetry refrigerator messages",
+	"name": "oik-css/geshi",
+	"title": "GeSHi",
+	"category": "layout",
+	"icon": "editor-code",
+	"description": "Generic Syntax Highlighting - for code examples",
 	"attributes": {
+	  "lang": {
+		"type": "string"
+	  },
+	  "text": {
+		"type": "string"
+	  },
 		"content": {
 	  		"type": "string"
 		},
+	  "src": {
+		"type": "string"
+	  },
 		"textAlign": {
 			"type": "string"
 	  	},
@@ -48,8 +57,8 @@
 			"lineHeight": true
 	  	}
 	  },
-    "keywords": [ "magnetic", "poetry", "oik", "verse" ],
-	"textdomain": "oik-magnetic-poetry",
+    "keywords": [ "GeSHi", "syntax", "highlight", "PHP", "HTML", "JavaScript", "CSS", "MySQL" ],
+  	"textdomain": "oik-css",
 	"editorScript": "file:./build/index.js",
 	"editorStyle": "file:./build/index.css",
 	"style": "file:./build/style-index.css"
