@@ -10,4 +10,5 @@
  */
 
 import './oik-css';          // From oik-css bw_css
-import './oik-geshi';        // From oik-css bw_geshi shortcode
+//import './oik-geshi';        // From oik-css bw_geshi shortcode
+//import './oik-wp';  // Copied oik-wp from oik-bob-bing-wide
