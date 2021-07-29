@@ -40,9 +40,7 @@
 			"type": "string"
 	  	}
 	},
-  	"example": {
-	},
-	"supports": {
+  	"supports": {
 		"html": false,
 		"customClassName": true,
 		"className": true,
@@ -59,7 +57,7 @@
 	  },
     "keywords": [ "GeSHi", "syntax", "highlight", "PHP", "HTML", "JavaScript", "CSS", "MySQL" ],
   	"textdomain": "oik-css",
-	"editorScript": "file:./build/index.js",
-	"editorStyle": "file:./build/index.css",
-	"style": "file:./build/style-index.css"
+	"editorScript": "file:../../build/index.js",
+	"editorStyle": "file:../../build/index.css",
+	"style": "file:../../build/style-index.css"
 }

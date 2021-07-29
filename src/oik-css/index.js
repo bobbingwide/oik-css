@@ -9,95 +9,37 @@
 import './style.scss';
 import './editor.scss';
 
-// Get just the __() localization function from wp.i18n
-const { __ } = wp.i18n;
-// Get registerBlockType and Editable from wp.blocks
-const { 
-	registerBlockType,
-	createBlock,
-} = wp.blocks;
+import { __ } from '@wordpress/i18n';
+import classnames from 'classnames';
 
-const {
-	Editable,
-	ServerSideRender,
- } = wp.editor;
-const {
-	InspectorControls,
-	PlainText,
-} = wp.blockEditor;
-	 
-const {
-  Toolbar,
-  Button,
-  Tooltip,
-  PanelBody,
-  PanelRow,
-  FormToggle,
+import { registerBlockType, createBlock } from '@wordpress/blocks';
+import {AlignmentControl, BlockControls, InspectorControls, useBlockProps, PlainText} from '@wordpress/block-editor';
+import ServerSideRender from '@wordpress/server-side-render';
+import {
+	Toolbar,
+	PanelBody,
+	PanelRow,
+	FormToggle,
 	TextControl,
 	TextareaControl,
+	SelectControl } from '@wordpress/components';
+import { Fragment} from '@wordpress/element';
+import { map, partial } from 'lodash';
 
-} = wp.components;
-const Fragment = wp.element.Fragment;
-
-const {
-	withInstanceId,
-} = wp.compose;
-
-
-const RawHTML = wp.element.RawHTML;
-// Set the header for the block since it is reused
-//const blockHeader = <h3>{ __( 'Person' ) }</h3>;
-
-//var TextControl = wp.blocks.InspectorControls.TextControl;
+import metadata from './block.json';
 
 /**
- * Register the oik-css/css block
- * 
- * registerBlockType is a function which takes the name of the block to register
- * and an object that contains the properties of the block.
- * Some of these properties are objects and others are functions
+ * Registers the oik-css/css block.
  */
-export default registerBlockType(
-    // Namespaced, hyphens, lowercase, unique name
-		'oik-css/css',
-    {
-        // Localize title using wp.i18n.__()
-        title: __( 'CSS' ),
-				
-				description: 'Inline CSS',
-
-        // Category Options: common, formatting, layout, widgets, embed
-        category: 'layout',
-
-        // Dashicons Options - https://goo.gl/aTM1DQ
-        icon: 'admin-appearance',
-
-        keywords: [
-            __( 'CSS' ),
-            __( 'oik' ),
-        ],
-
-        // Set for each piece of dynamic data used in your block
-        attributes: {
-				
-        	css: {
-        		type: 'string',
-        	},
-			text: {
-				type: 'string',
-				default: '',
-			},
-			src: {
-        		type: 'string',
-				default: '',
-			}
-        },
+export default registerBlockType( metadata,
+	{
 		example: {
 			attributes: {
-				css: 'div.bw_css { color: red;}',
-				text: __( 'This sentence will be red.' ),
+				css: 'div.wp-block-oik-css-css { color: red;}',
+				text: __( 'This sentence will be very red.' ),
 			},
 		},
+		/*
 		transforms: {
 			from: [
 				{
@@ -122,22 +64,25 @@ export default registerBlockType(
 			],
 
 		},
-				
-		supports: {
-			customClassName: false,
-			className: false,
-			html: false,
-		},
-			
-		edit: withInstanceId(
-			( { attributes, setAttributes, instanceId, focus, isSelected } ) => {
+		*/
+
+
+		edit: props => {
+			const { attributes, setAttributes, instanceId, focus, isSelected } = props;
+			const { textAlign, label } = props.attributes;
+			const blockProps = useBlockProps( {
+				className: classnames( {
+					[ `has-text-align-${ textAlign }` ]: textAlign,
+				} ),
+			} );
+
 				const inputId = `blocks-css-input-${ instanceId }`;
-				
-				
+
+
 				const onChangeText = ( value ) => {
 						setAttributes( { text: value } );
 				};
-				
+
 				const onChangeCSS = ( value ) => {
 					setAttributes( { css: value } );
 				};
@@ -145,10 +90,10 @@ export default registerBlockType(
 				const onChangeSrc = ( value ) => {
 					setAttributes( { src: value } );
 				}
-	
+
 				return (
 					<Fragment>
-				
+
             <InspectorControls key="css">
 								<PanelBody>
 									<TextareaControl label="Text" value={attributes.text} onChange={onChangeText} />
@@ -166,8 +111,8 @@ export default registerBlockType(
 					</PanelBody>
               </InspectorControls>
 						<Fragment>
+							<div { ...blockProps}>
 
-						<div className="wp-block-oik-css-css " key="css-input">
 							<PlainText
 								id={inputId}
 								value={attributes.css}
@@ -178,25 +123,24 @@ export default registerBlockType(
 
 							{!isSelected &&
 
-
+							<div { ...blockProps}>
 							<ServerSideRender
 								block="oik-css/css" attributes={attributes}
 							/>
+							</div>
 							}
 						</Fragment>
 
 					</Fragment>
 				);
-			}
-		),
+			},
+
 		/**
 		 * We intend to render this dynamically but we need the content created by the user
 		 */
 		save( { attributes } ) {
-			//console.log( attributes.css );
-			//return <RawHTML></RawHTML>;
 			return null;
-		},
-	},
+		}
+	}
 );
 

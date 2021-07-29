@@ -9,36 +9,25 @@
  * @author Herb Miller @bobbingwide
  */
 import './style.scss';
-//import './editor.scss';
 
-// Get just the __() localization function from wp.i18n
-const { __ } = wp.i18n;
-// Get registerBlockType from wp.blocks
-const {
-    registerBlockType,
-    createBlock,
-} = wp.blocks;
-const {
-    ServerSideRender,
-} = wp.editor;
-const {
-    InspectorControls,
-    PlainText,
-} = wp.blockEditor;
+import { __ } from '@wordpress/i18n';
+import classnames from 'classnames';
 
-const {
-    Toolbar,
-    PanelBody,
-    PanelRow,
-    FormToggle,
-    TextControl,
-    TextareaControl,
-    SelectControl,
-
-} = wp.components;
-
+import { registerBlockType, createBlock } from '@wordpress/blocks';
+import {AlignmentControl, BlockControls, InspectorControls, useBlockProps, PlainText} from '@wordpress/block-editor';
+import ServerSideRender from '@wordpress/server-side-render';
+import {
+	Toolbar,
+	PanelBody,
+	PanelRow,
+	FormToggle,
+	TextControl,
+	TextareaControl,
+	SelectControl } from '@wordpress/components';
+import { Fragment} from '@wordpress/element';
 import { map, partial } from 'lodash';
-const Fragment = wp.element.Fragment;
+
+import metadata from './block.json';
 
 /**
 * These are the different options for the GeSHi lang= attribute.
@@ -57,53 +46,9 @@ const langOptions =
 /**
  * Register the WordPress block
  */
-export default registerBlockType(
-    // Namespaced, hyphens, lowercase, unique name
-    'oik-css/geshi',
+export default registerBlockType( metadata,
+
     {
-        // Localize title using wp.i18n.__()
-        title: __( 'GeSHi' ),
-
-        description: 'Generic Syntax Highlighting - for code examples',
-
-        // Category Options: common, formatting, layout, widgets, embed
-        category: 'layout',
-
-        // Dashicons Options - https://goo.gl/aTM1DQ
-        icon: 'editor-code',
-
-        // Limit to 3 Keywords / Phrases
-        keywords: [
-            __( 'GeSHi' ),
-            __( 'syntax' ),
-            __( 'highlight' ),
-            __( 'PHP' ),
-            __( 'HTML' ),
-            __( 'JavaScript' ),
-            __( 'CSS' ),
-            __( 'MySQL' ),
-
-        ],
-
-        // Set for each piece of dynamic data used in your block
-        attributes: {
-            lang: {
-                type: 'string',
-                default: '',
-            },
-            text: {
-                type: 'string',
-            },
-            content: {
-                type: 'string',
-            },
-            src: {
-                type: 'string',
-                default: ''
-            }
-
-
-        },
         example: {
             attributes: {
                 lang: 'php',
@@ -136,12 +81,6 @@ export default registerBlockType(
             ],
         },
 
-
-        supports: {
-            customClassName: false,
-            className: false,
-            html: false,
-        },
 
         edit: props => {
 
@@ -235,6 +174,6 @@ export default registerBlockType(
 
         save() {
             return null;
-        },
-    },
+        }
+    }
 );

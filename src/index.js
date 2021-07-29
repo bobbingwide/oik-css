@@ -2,11 +2,10 @@
  * @package oik-css
  * Imports oik-css blocks
  *
- * Each block is in a separate folder
+ * Each block is in a separate folder within src
  * The build directory is the target.
- * See webpack.config.js
  *
- * @copyright (C) Copyright Bobbing Wide 2019
+ * @copyright (C) Copyright Bobbing Wide 2019-2021
  * @author Herb Miller @bobbingwide
  */
 
