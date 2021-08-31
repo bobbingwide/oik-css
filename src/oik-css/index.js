@@ -9,35 +9,22 @@
 import './style.scss';
 import './editor.scss';
 import Edit from './edit';
+import save from './save';
 
 import { __ } from '@wordpress/i18n';
-import classnames from 'classnames';
 
 import { registerBlockType, createBlock } from '@wordpress/blocks';
-import {AlignmentControl, BlockControls, InspectorControls, useBlockProps, PlainText} from '@wordpress/block-editor';
-import ServerSideRender from '@wordpress/server-side-render';
-import {
-	Toolbar,
-	PanelBody,
-	PanelRow,
-	FormToggle,
-	TextControl,
-	TextareaControl,
-	SelectControl } from '@wordpress/components';
-import { Fragment} from '@wordpress/element';
-import { map, partial } from 'lodash';
-
-//import metadata from './block.json';
 
 /**
  * Registers the oik-css/css block.
  */
 export default registerBlockType( 'oik-css/css',
 	{
+
 		example: {
 			attributes: {
 				css: 'div.wp-block-oik-css-css { color: red;}',
-				text: __( 'This sentence will be very red.' ),
+				text: __( 'This sentence will be very red.', 'oik-css' ),
 			},
 		},
 
@@ -66,14 +53,16 @@ export default registerBlockType( 'oik-css/css',
 
 		},
 
-		edit: Edit,
+
 
 		/**
-		 * We intend to render this dynamically but we need the content created by the user
+		 * @see ./edit.js
 		 */
-		save( { attributes } ) {
-			return null;
-		}
+		edit: Edit,
+		/**
+		 * @see ./save.js
+		 */
+		save
 	}
 );
 

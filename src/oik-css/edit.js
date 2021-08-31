@@ -40,9 +40,6 @@ export default function Edit  ( props ) {
 		} ),
 	} );
 
-	const inputId = `blocks-css-input-${ instanceId }`;
-
-
 	const onChangeText = ( value ) => {
 		setAttributes( { text: value } );
 	};
@@ -58,14 +55,14 @@ export default function Edit  ( props ) {
 	return (
 		<Fragment>
 
-			<InspectorControls key="css">
+			<InspectorControls>
 				<PanelBody>
-					<TextareaControl label="Text" value={attributes.text} onChange={onChangeText} />
+					<TextareaControl label={ __( "Text", 'oik-css' ) } value={attributes.text} onChange={onChangeText} />
 				</PanelBody>
 				<PanelBody>
 					<PanelRow>
 						<TextControl
-							label={ __( 'Source file: ID, URL or path' ) }
+							label={ __( 'Source file: ID, URL or path', 'oik-css' ) }
 							value={  attributes.src }
 							onChange={ onChangeSrc }
 
@@ -74,26 +71,25 @@ export default function Edit  ( props ) {
 					</PanelRow>
 				</PanelBody>
 			</InspectorControls>
-			<Fragment>
-				<div { ...blockProps}>
+			<div { ...blockProps}>
 
 					<PlainText
-						id={inputId}
 						value={attributes.css}
-						placeholder={__('Write CSS or specify a source file.')}
+						placeholder={__('Write CSS or specify a source file.', 'oik-css')}
 						onChange={onChangeCSS}
 					/>
-				</div>
+
 
 				{!isSelected &&
 
-				<div { ...blockProps}>
+
 					<ServerSideRender
 						block="oik-css/css" attributes={attributes}
 					/>
-				</div>
+
 				}
-			</Fragment>
+
+			</div>
 
 		</Fragment>
 	);
