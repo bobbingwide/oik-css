@@ -317,6 +317,13 @@ function oik_css_register_dynamic_blocks() {
 		$args = [ 'render_callback' => 'oik_css_dynamic_block_geshi'];
 		$registered = register_block_type_from_metadata( __DIR__ .'/src/oik-geshi', $args );
 		bw_trace2( $registered, "registered", false);
+
+		/**
+		 * Localise the script by loading the required strings for the build/index.js file
+		 * from the locale specific .json file in the languages folder.
+		 */
+		$ok = wp_set_script_translations( 'oik-css-css-editor-script', 'oik-css' , __DIR__ .'/languages' );
+		add_filter( 'load_script_textdomain_relative_path', 'oik_css_load_script_textdomain_relative_path', 10, 2);
 	}
 }
 
@@ -338,6 +345,26 @@ function oik_css_block_type_metadata( $metadata ) {
 		}
 	}
 	return $metadata;
+}
+
+/**
+ * Filters $relative so that md5's match what's expected.
+ *
+ * Depending on how it was built the `build/index.js` may be preceded by `./` or `src/block-name/../../`.
+ * In either of these situations we want the $relative value to be returned as `build/index.js`.
+ * This then produces the correct md5 value and the .json file is found.
+ *
+ * @param $relative
+ * @param $src
+ *
+ * @return mixed
+ */
+function oik_css_load_script_textdomain_relative_path( $relative, $src ) {
+	if ( false !== strrpos( $relative, './build/index.js' )) {
+		$relative = 'build/index.js';
+	}
+	//bw_trace2( $relative, "relative");
+	return $relative;
 }
 
 
