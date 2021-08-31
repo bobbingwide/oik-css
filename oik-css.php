@@ -296,27 +296,11 @@ function oik_css_register_dynamic_blocks() {
 		*/
 		$args = [ 'render_callback' => 'oik_css_dynamic_block_css'];
 		$registered = register_block_type_from_metadata( __DIR__ .'/src/oik-css', $args );
-		bw_trace2( $registered, "registered", false);
- /*
-		register_block_type( 'oik-css/geshi',
-			[
-				'render_callback'=>'oik_css_dynamic_block_geshi',
-				'attributes'     =>[
-					'lang'   =>[ 'type'=>'string' ],
-					'text'   =>[ 'type'=>'string' ],
-					'content'=>[ 'type'=>'string' ],
-					'src' => ['type' => 'string']
-				]
-				, 'editor_script' => 'oik-css-blocks-js'
-				, 'editor_style' => null
-				, 'script' => null
-				, 'style' => 'oik-css-blocks-css'
-			]
-		);
- */
-		$args = [ 'render_callback' => 'oik_css_dynamic_block_geshi'];
+		//bw_trace2( $registered, "registered", false);
+		
+ 		$args = [ 'render_callback' => 'oik_css_dynamic_block_geshi'];
 		$registered = register_block_type_from_metadata( __DIR__ .'/src/oik-geshi', $args );
-		bw_trace2( $registered, "registered", false);
+		//bw_trace2( $registered, "registered", false);
 
 		/**
 		 * Localise the script by loading the required strings for the build/index.js file
@@ -366,8 +350,6 @@ function oik_css_load_script_textdomain_relative_path( $relative, $src ) {
 	//bw_trace2( $relative, "relative");
 	return $relative;
 }
-
-
 
 /**
  * Server rendering dynamic CSS block with content

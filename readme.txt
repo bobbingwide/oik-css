@@ -3,9 +3,9 @@ Contributors: bobbingwide, vsgloik
 Donate link: https://www.oik-plugins.com/oik/oik-donate/
 Tags: CSS, GeSHi, blocks, shortcodes, [bw_css], [bw_geshi], [bw_autop], [bw_background], oik, lazy, smart
 Requires at least: 5.0
-Tested up to: 5.7.2
+Tested up to: 5.8
 Gutenberg compatible: Yes
-Stable tag: 1.3.0
+Stable tag: 2.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -19,7 +19,7 @@ For backward compatibility:
 
 - Use the [bw_css] shortcode to add custom CSS as and when you need it.
 
-For designers, developers and documentors [bw_css] supports echoing of the custom CSS, allowing you to document the CSS you are using.
+For designers, developers and documenters [bw_css] supports echoing of the custom CSS, allowing you to document the CSS you are using.
 For readability, the CSS is processed using the Generic Syntax Highlighter (GeSHi) processing.
 
 - Use the [bw_geshi] shortcode for syntax highlighting of: CSS, HTML(5), JavaScript and jQuery, PHP and MySQL. 
@@ -107,6 +107,9 @@ This new plugin depends on Gutenberg, the oik base plugin and oik-css.
 
 
 == Upgrade Notice ==
+= 2.0.0 = 
+Upgrade to use the CSS and GeSHi blocks in the block widget editor.
+
 = 1.3.0 = 
 Upgrade for improvements to the CSS and GeSHi blocks. Now support loading from an attachment or file. 
 
@@ -174,6 +177,12 @@ Dependent upon the oik base plugin v2.0 (or higher)
 Dependent upon the oik base plugin 
 
 == Changelog ==
+= 2.0.0 =
+* Changed: Refactor to use wp-scripts,[github bobbingwide oik-css issues 16]
+* Tested: With WordPress 5.8 and WordPress Multi Site
+* Tested: With PHP 8.0
+* Tested: With Gutenberg 11.2.0
+
 = 1.3.0 = 
 * Added: Add src attribute to CSS and GeSHi blocks.,[github bobbingwide oik-css issues 15]
 * Changed: [bw_css] and [bw_geshi] src parameter is not positional,[github bobbingwide oik-css issues 15]
