@@ -34,13 +34,13 @@ import metadata from './block.json';
  * It's tricky getting it to accept lang=none!
 */
 const langOptions =
-    { none: "None",
-        html: "HTML",
-        css: "CSS",
-        javascript: "JavaScript",
-        jquery: "jQuery",
-        php: "PHP",
-        mysql: "MySQL",
+    { none: __( "None", 'oik-css' ),
+        html: __( "HTML", 'oik-css' ),
+        css: __( "CSS", 'oik-css' ),
+        javascript: __( "JavaScript", 'oik-css' ),
+        jquery: __( "jQuery", 'oik-css' ),
+        php: __( "PHP", 'oik-css' ),
+        mysql: __( "MySQL", 'oik-css' ),
     };
 
 /**
@@ -52,8 +52,8 @@ export default registerBlockType( metadata,
         example: {
             attributes: {
                 lang: 'php',
-                text: 'WordPress motto',
-                content: __( 'echo "Code is Poetry."' ),
+                text: __( 'WordPress motto', 'oik-css' ),
+                content: __( 'echo "Code is Poetry."', 'oik-css' ),
              },
         },
         transforms: {
@@ -125,13 +125,13 @@ export default registerBlockType( metadata,
                 	<InspectorControls >
                     	<PanelBody>
                         	<PanelRow>
-                            	<SelectControl label="Lang" value={props.attributes.lang}
+                            	<SelectControl label={__("Lang",'oik-css')} value={props.attributes.lang}
                                            options={ map( langOptions, ( key, label ) => ( { value: label, label: key } ) ) }
                                            onChange={partial( onChangeAttr, 'lang' )}
                             	/>
                         	</PanelRow>
                         	<PanelRow>
-                            	<TextareaControl label="Text"
+                            	<TextareaControl label={ __( "Text", 'oik-css' ) }
                                          value={ props.attributes.text }
                                          onChange={ onChangeText }
                             	/>
@@ -140,7 +140,7 @@ export default registerBlockType( metadata,
 						<PanelBody>
 							<PanelRow>
 								<TextControl
-									label={ __( 'Source file: ID, URL or path' ) }
+									label={ __( 'Source file: ID, URL or path', 'oik-css' ) }
 									value={  props.attributes.src }
 									onChange={ onChangeSrc }
 								/>
@@ -158,7 +158,7 @@ export default registerBlockType( metadata,
 
                     <PlainText
                         value={props.attributes.content}
-                        placeholder={__('Write code or specify a source file.')}
+                        placeholder={__('Write code or specify a source file.', 'oik-css')}
                         onChange={onChangeContent}
                     />
 
