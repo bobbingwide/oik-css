@@ -83,6 +83,13 @@ export default registerBlockType( metadata,
 
 
         edit: props => {
+			const { attributes, setAttributes, instanceId, focus, isSelected } = props;
+			const { textAlign, label } = props.attributes;
+			const blockProps = useBlockProps( {
+				className: classnames( {
+					[ `has-text-align-${ textAlign }` ]: textAlign,
+				} ),
+			} );
 
             const onChangeLang =  ( event ) => {
                 props.setAttributes( { lang: event } );
@@ -113,42 +120,34 @@ export default registerBlockType( metadata,
                 props.setAttributes( { [key] : value } );
             };
 
-            const isSelected = props.isSelected;
-
-
-
-
             return (
                 <Fragment>
-                <InspectorControls >
-                    <PanelBody>
-                        <PanelRow>
-                            <SelectControl label="Lang" value={props.attributes.lang}
+                	<InspectorControls >
+                    	<PanelBody>
+                        	<PanelRow>
+                            	<SelectControl label="Lang" value={props.attributes.lang}
                                            options={ map( langOptions, ( key, label ) => ( { value: label, label: key } ) ) }
                                            onChange={partial( onChangeAttr, 'lang' )}
-                            />
-                        </PanelRow>
-                        <PanelRow>
-                            <TextareaControl label="Text"
+                            	/>
+                        	</PanelRow>
+                        	<PanelRow>
+                            	<TextareaControl label="Text"
                                          value={ props.attributes.text }
                                          onChange={ onChangeText }
-                            />
-                        </PanelRow>
-                        <PanelBody>
-                            <PanelRow>
-                                <TextControl
-                                    label={ __( 'Source file: ID, URL or path' ) }
-                                    value={  props.attributes.src }
-                                    onChange={ onChangeSrc }
-
-                                />
-
-                            </PanelRow>
-                        </PanelBody>
-
-                    </PanelBody>
-
-                </InspectorControls>
+                            	/>
+                        	</PanelRow>
+                       </PanelBody>
+						<PanelBody>
+							<PanelRow>
+								<TextControl
+									label={ __( 'Source file: ID, URL or path' ) }
+									value={  props.attributes.src }
+									onChange={ onChangeSrc }
+								/>
+							</PanelRow>
+						</PanelBody>
+	                </InspectorControls>
+					<div { ...blockProps}>
                     {!isSelected &&
                     <ServerSideRender
                         block="oik-css/geshi" attributes={props.attributes}
@@ -156,14 +155,15 @@ export default registerBlockType( metadata,
                     }
 
                     {isSelected &&
-                    <div className="wp-block-oik-css-geshi wp-block-shortcode" key="content-input">
+
                     <PlainText
                         value={props.attributes.content}
                         placeholder={__('Write code or specify a source file.')}
                         onChange={onChangeContent}
                     />
-                    </div>
+
                     }
+					</div>
 
 
                 </Fragment>
