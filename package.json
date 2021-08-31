@@ -13,7 +13,7 @@
 		"start": "wp-scripts start",
 		"packages-update": "wp-scripts packages-update",
 		"dev": "wp-scripts start",
-		"makepot": "wp i18n make-pot . languages/oik-css.pot --exclude=node_modules,vendor,src",
+		"makepot": "wp i18n make-pot . languages/oik-css.pot --ignore-domain --exclude=node_modules,vendor,src/*.js",
 		"makejson": "wp i18n make-json languages --no-purge",
 		"l10n": "l10n oik-css"
 	},
