@@ -1,24 +1,2 @@
-/* oik-css/style.scss
-*/
-div.bw_css {
-  background-color: #f8f8f8;
-}
-
-.bw_css code {
-  display: block;
-  margin-top: 10px;
-  border-top: 1px solid grey;
-}
-/* oik-geshi/style.scss
-*/
-div.bw_geshi {
-  background-color: #f8f8f8;
-}
-
-.bw_geshi code {
-  display: block;
-  margin-top: 10px;
-  border-top: 1px solid grey;
-}
-
-/*# sourceMappingURL=style-index.css.map*/
+div.bw_css{background-color:#f8f8f8}.bw_css code{display:block;margin-top:10px;border-top:1px solid gray}
+div.bw_geshi{background-color:#f8f8f8}.bw_geshi code{display:block;margin-top:10px;border-top:1px solid gray}
