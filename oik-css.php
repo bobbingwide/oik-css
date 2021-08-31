@@ -278,6 +278,7 @@ function oik_css_init_blocks() {
  */
 function oik_css_register_dynamic_blocks() {
 	if ( function_exists( "register_block_type" ) ) {
+		add_filter( 'block_type_metadata', 'oik_css_block_type_metadata', 10 );
 		/*
 		register_block_type( 'oik-css/css',
 			[
@@ -317,6 +318,26 @@ function oik_css_register_dynamic_blocks() {
 		$registered = register_block_type_from_metadata( __DIR__ .'/src/oik-geshi', $args );
 		bw_trace2( $registered, "registered", false);
 	}
+}
+
+/**
+ * Implements block_type_metadata filter to set the textdomain if not set.
+ *
+ * Note: $metadata['name'] will be set for each block with a prefix of oik
+ *
+ * @param $metadata
+ * @return mixed
+ */
+function oik_css_block_type_metadata( $metadata ) {
+	if ( !isset( $metadata['textdomain']) ) {
+		$name = $metadata['name'];
+		$name_parts = explode( '/', $name );
+		$textdomain = $name_parts[0];
+		if ( 'oik-css' === $textdomain ) {
+			$metadata['textdomain'] = $textdomain;
+		}
+	}
+	return $metadata;
 }
 
 
@@ -381,6 +402,7 @@ function oik_css_plugins_loaded() {
 			oik_require_lib( 'oik-shortcodes' );
 		}
 	}
+	bw_load_plugin_textdomain( "oik-css");
 }
 
 /**
