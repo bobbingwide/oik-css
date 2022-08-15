@@ -1,4 +1,4 @@
-<?php // (C) Copyright Bobbing Wide 2013-2019
+<?php // (C) Copyright Bobbing Wide 2013-2022
 
 /**
  * Validate the language for GeSHi
@@ -9,7 +9,7 @@
  * @param string $lang - the required languange ( case insensitive )
  * @param string $text - alternative parameter for language ( case sensitive )
  * @return string - the validated language, or null
- * 
+ *
  */
 function oik_css_validate_lang( $lang, &$text ) {
   $lang = strtolower( $lang );
@@ -18,19 +18,20 @@ function oik_css_validate_lang( $lang, &$text ) {
   if ( !$vlang ) {
     $vlang = bw_array_get( $valid, $text, null );
     if ( $vlang ) {
-      $text = $lang; 
+      $text = $lang;
     }
   }
   if ( !$vlang ) {
+	/* translators: %1: Hardcoded string lang=, not translatable, %2: language parameter passed */
     BW_::p( sprintf( __( 'Invalid %1$s parameter for GeSHi. %2$s', "oik-css" ), "lang=", $lang ) );
     BW_::p( "$vlang,$text" );
-  } 
+  }
   return( $vlang );
 }
 
 /**
  * Format the content for the chosen language
- * 
+ *
  * - For 'none' and 'html' we shouldn't strip p and br tags.
  * - For other languages we have to remove them.
  * - Detexturize undoes any unwanted texturizing.
@@ -54,11 +55,11 @@ function bw_format_content( $atts, $content ) {
 			case 'html':
 			case 'html5':
 				$lang = 'html5';
-				
+
 			case 'none':
 				$content = bw_detexturize( $content );
 				break;
-			
+
 			default: // css, php, javascript, jquery, mysql
 				$content = bw_remove_unwanted_tags( $content );
 				$content = bw_detexturize( $content );
@@ -98,9 +99,9 @@ function oik_geshi( $atts=null, $content=null, $tag=null ) {
   return $ret;
 }
 
-/** 
+/**
  * Help hook for the bw_geshi shortcode
- */ 
+ */
 function bw_geshi__help( $shortcode="bw_geshi" ) {
   return( __( "Generic Syntax Highlighting", "oik-css" ) );
 }
@@ -121,11 +122,11 @@ function bw_geshi__syntax( $shortcode="bw_geshi" ) {
 
 /**
  * Implement example hook for the bw_geshi shortcode
- * 
+ *
  * We can't use bw_invoke_shortcode() since we need to call esc_html() against the sample HTML code
  * otherwise it just gets processed as normal output
  *
- * @param string $shortcode 
+ * @param string $shortcode
  */
 function bw_geshi__example( $shortcode="bw_geshi" ) {
   $text = __( "Demonstrating the HTML to create a link to oik-plugins.com", "oik-css" );
@@ -135,8 +136,8 @@ function bw_geshi__example( $shortcode="bw_geshi" ) {
   $example .= ']';
   sp();
   stag( "code" );
-  e( esc_html( $example ) ); 
-  etag( "code" ); 
+  e( esc_html( $example ) );
+  etag( "code" );
   ep();
   $expanded = apply_filters( 'the_content', $example );
   e( $expanded );
