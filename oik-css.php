@@ -3,7 +3,7 @@
 Plugin Name: oik-css
 Plugin URI: https://www.oik-plugins.com/oik-plugins/oik-css
 Description: Implements CSS and GeSHi blocks for internal CSS styling and to help document source code examples
-Version: 2.0.0
+Version: 2.0.1
 Author: bobbingwide
 Author URI: https://bobbingwide.com/about-bobbing-wide
 Text Domain: oik-css
@@ -11,7 +11,7 @@ Domain Path: /languages/
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-    Copyright 2013-2021 Bobbing Wide (email : herb@bobbingwide.com )
+    Copyright 2013-2022 Bobbing Wide (email : herb@bobbingwide.com )
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License version 2,
@@ -215,41 +215,9 @@ function oik_css_oik_menu_box() {
 }
 
 /**
- * Implement "admin_notices" for oik-css to check plugin dependency
- *
- * Version | Dependent on
- * ------- | ------------
- * 0.1     | v2.0-beta
- * 0.2     | v2.0
- * 0.3     | v2.0
- * 0.4     | v2.0
- * 0.5     | v2.1
- * 0.6     | v2.1
- * 0.7     | v2.3
- * 0.8.0   | v2.3
- * 0.8.1   | v2.5
- * 0.8.2   | v2.5
- * 0.9.0   | v3.2.3
- * 1.0.0   | @TODO No longer dependent upon oik except when oik is active!
- */
-function oik_css_activation() {
-  static $plugin_basename = null;
-  if ( !$plugin_basename ) {
-    $plugin_basename = plugin_basename(__FILE__);
-    add_action( "after_plugin_row_oik-css/oik-css.php", "oik_css_activation" );
-    if ( !function_exists( "oik_plugin_lazy_activation" ) ) {
-      require_once( "admin/oik-activation.php" );
-    }
-  }
-  $depends = "oik:3.2.3";
-  oik_plugin_lazy_activation( __FILE__, $depends, "oik_plugin_plugin_inactive" );
-}
-
-/**
  * Function to run when the plugin file is loaded
  */
 function oik_css_plugin_loaded() {
-  // add_action( "admin_notices", "oik_css_activation", 11 );
   add_action( "oik_admin_menu", "oik_css_admin_menu" );
   add_action( "oik_loaded", "oik_css_oik_loaded" );
   add_action( "oik_add_shortcodes", "oik_css_init" );
@@ -297,7 +265,7 @@ function oik_css_register_dynamic_blocks() {
 		$args = [ 'render_callback' => 'oik_css_dynamic_block_css'];
 		$registered = register_block_type_from_metadata( __DIR__ .'/src/oik-css', $args );
 		//bw_trace2( $registered, "registered", false);
-		
+
  		$args = [ 'render_callback' => 'oik_css_dynamic_block_geshi'];
 		$registered = register_block_type_from_metadata( __DIR__ .'/src/oik-geshi', $args );
 		//bw_trace2( $registered, "registered", false);
@@ -314,7 +282,7 @@ function oik_css_register_dynamic_blocks() {
 /**
  * Implements block_type_metadata filter to set the textdomain if not set.
  *
- * Note: $metadata['name'] will be set for each block with a prefix of oik
+ * Note: $metadata['name'] will be set for each block with a prefix of oik-css
  *
  * @param $metadata
  * @return mixed
