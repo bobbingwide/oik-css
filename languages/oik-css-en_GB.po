@@ -1,8 +1,8 @@
-# Copyright (C) 2021 bobbingwide
+# Copyright (C) 2022 bobbingwide
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: oik-css 2.0.0\n"
+"Project-Id-Version: oik-css 2.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/oik-css\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Language: en_GB\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-08-31T15:05:05+00:00\n"
+"POT-Creation-Date: 2022-08-15T11:17:27+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 msgid "oik-css"
@@ -29,34 +29,34 @@ msgstr "bobbingwide"
 msgid "https://bobbingwide.com/about-bobbing-wide"
 msgstr "https://bobbingwide.com/about-bobbing-wide"
 
-#: admin/oik-activation.php:29
-#: libs/oik-depends.php:284
+#: admin/oik-activation.php:30
+#: libs/oik-depends.php:285
 msgid "Install %1$s"
 msgstr "Install %1$s"
 
-#: admin/oik-activation.php:61
-#: libs/oik-depends.php:312
+#: admin/oik-activation.php:63
+#: libs/oik-depends.php:313
 msgid "Activate %1$s"
 msgstr "Activate %1$s"
 
-#: admin/oik-activation.php:79
-#: libs/oik-depends.php:330
+#: admin/oik-activation.php:82
+#: libs/oik-depends.php:331
 msgid "Upgrade %1$s"
 msgstr "Upgrade %1$s"
 
-#: admin/oik-activation.php:195
-#: libs/oik-depends.php:147
+#: admin/oik-activation.php:198
+#: libs/oik-depends.php:148
 msgid "version"
 msgstr "version"
 
-#: admin/oik-activation.php:197
-#: libs/oik-depends.php:150
+#: admin/oik-activation.php:201
+#: libs/oik-depends.php:151
 msgid "%1$s may not be fully functional."
 msgstr "%1$s may not be fully functional."
 
-#: admin/oik-activation.php:199
-#: libs/oik-depends.php:106
-#: libs/oik-depends.php:152
+#: admin/oik-activation.php:204
+#: libs/oik-depends.php:107
+#: libs/oik-depends.php:153
 msgid "Please install and activate the required minimum version of this plugin: %1$s"
 msgstr "Please install and activate the required minimum version of this plugin: %1$s"
 
@@ -125,7 +125,7 @@ msgctxt "em dash"
 msgid "&#8212;"
 msgstr "&#8212;"
 
-#: libs/class-BW-.php:108
+#: libs/class-BW-.php:109
 msgid "Toggle panel: %s"
 msgstr "Toggle panel: %s"
 
@@ -133,7 +133,7 @@ msgstr "Toggle panel: %s"
 msgid " version "
 msgstr " version "
 
-#: libs/oik-depends.php:103
+#: libs/oik-depends.php:104
 msgid "Plugin %1$s may not be fully functional."
 msgstr "Plugin %1$s may not be fully functional."
 
@@ -141,7 +141,7 @@ msgstr "Plugin %1$s may not be fully functional."
 msgid "<b>Unable to locate routine to expand shortcode.</b>"
 msgstr "<b>Unable to locate routine to expand shortcode.</b>"
 
-#: libs/oik-shortcodes.php:243
+#: libs/oik-shortcodes.php:244
 msgid "missing post processing function: %1$s"
 msgstr "missing post processing function: %1$s"
 
@@ -230,93 +230,91 @@ msgstr "Elsewhere display &lt;code&gt; in blue."
 msgid "Use a parameter to cause the CSS to be shown."
 msgstr "Use a parameter to cause the CSS to be shown."
 
-#: shortcodes/oik-geshi.php:25
+#: shortcodes/oik-geshi.php:26
 msgid "Invalid %1$s parameter for GeSHi. %2$s"
 msgstr "Invalid %1$s parameter for GeSHi. %2$s"
 
-#: shortcodes/oik-geshi.php:105
+#: shortcodes/oik-geshi.php:106
 msgid "Generic Syntax Highlighting"
 msgstr "Generic Syntax Highlighting"
 
-#: shortcodes/oik-geshi.php:116
+#: shortcodes/oik-geshi.php:117
 msgid "Programming language"
 msgstr "Programming language"
 
-#: shortcodes/oik-geshi.php:117
+#: shortcodes/oik-geshi.php:118
 msgid "text"
 msgstr "text"
 
-#: shortcodes/oik-geshi.php:117
+#: shortcodes/oik-geshi.php:118
 msgid "Descriptive text to display"
 msgstr "Descriptive text to display"
 
-#: shortcodes/oik-geshi.php:131
+#: shortcodes/oik-geshi.php:132
 msgid "Demonstrating the HTML to create a link to oik-plugins.com"
 msgstr "Demonstrating the HTML to create a link to oik-plugins.com"
 
-#: shortcodes/oik-geshi.php:134
+#: shortcodes/oik-geshi.php:135
 msgid "Visit oik-plugins.com"
 msgstr "Visit oik-plugins.com"
 
-#: build/index.js:398
-#: build/index.js:703
-msgid "Text"
-msgstr "Text"
-
-#: build/index.js:402
-#: build/index.js:707
-msgid "Source file: ID, URL or path"
-msgstr "Source file: ID, URL or path"
-
-#: build/index.js:407
-msgid "Write CSS or specify a source file."
-msgstr "Write CSS or specify a source file."
-
-#: build/index.js:470
+#: build/index.js:1
 msgid "This sentence will be very red."
 msgstr "This sentence will be very red."
 
-#: build/index.js:597
+#: build/index.js:1
+msgid "Text"
+msgstr "Text"
+
+#: build/index.js:1
+msgid "Source file: ID, URL or path"
+msgstr "Source file: ID, URL or path"
+
+#: build/index.js:1
+msgid "Write CSS or specify a source file."
+msgstr "Write CSS or specify a source file."
+
+#: build/index.js:1
 msgid "None"
 msgstr "None"
 
-#: build/index.js:598
+#: build/index.js:1
 msgid "HTML"
 msgstr "HTML"
 
-#: build/index.js:599
+#: build/index.js:1
 msgid "CSS"
 msgstr "CSS"
 
-#: build/index.js:600
+#: build/index.js:1
 msgid "JavaScript"
 msgstr "JavaScript"
 
-#: build/index.js:601
+#: build/index.js:1
 msgid "jQuery"
 msgstr "jQuery"
 
-#: build/index.js:602
+#: build/index.js:1
 msgid "PHP"
 msgstr "PHP"
 
-#: build/index.js:603
+#: build/index.js:1
 msgid "MySQL"
 msgstr "MySQL"
 
-#: build/index.js:613
+#: build/index.js:1
 msgid "WordPress motto"
 msgstr "WordPress motto"
 
-#: build/index.js:614
+#: build/index.js:1
 msgid "echo \"Code is Poetry.\""
 msgstr "echo \"Code is Poetry.\""
 
-#: build/index.js:693
+#: build/index.js:1
 msgid "Lang"
 msgstr "Lang"
 
-#: build/index.js:715
+#: build/index.js:1
 msgid "Write code or specify a source file."
 msgstr "Write code or specify a source file."
 
