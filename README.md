@@ -120,7 +120,6 @@ Updated shared libraries and wp-scripts. Tested with WordPress 6.0.1
 * Tested: With PHP 8.0
 * Tested: With Gutenberg 13.8.2
 
-
 ## Further reading 
 If you want to read more about the oik plugins then please visit the
 [oik plugin](https://www.oik-plugins.com/oik)
