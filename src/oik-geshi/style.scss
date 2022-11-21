@@ -1,6 +1,6 @@
 /* oik-geshi/style.scss
 */
-div.bw_geshi {
+div.wp-block-oik-css-geshi:not( .has-background ) div.bw_geshi {
   background-color: #f8f8f8;
 }
 .bw_geshi code {

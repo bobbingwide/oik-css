@@ -334,6 +334,7 @@ function oik_css_dynamic_block_css( $attributes ) {
 		$content = bw_array_get( $attributes, 'css', null );
 		bw_trace2( $content, 'Content' );
 		$html = oik_css( $attributes, $content );
+		$html = oik_css_server_side_wrapper( $attributes, $html );
 	}
 	return $html;
 }
@@ -357,9 +358,23 @@ function oik_css_dynamic_block_geshi( $attributes ) {
 		if ( ! $html ) {
 			$html = 'empty';
 		}
+		$html = oik_css_server_side_wrapper( $attributes, $html );
 	}
 	return $html;
 }
+
+function oik_css_server_side_wrapper( $attributes, $html ) {
+	$align_class_name=empty( $attributes['textAlign'] ) ? '' : "has-text-align-{$attributes['textAlign']}";
+	$extra_attributes  =[ 'class'=>$align_class_name ];
+	$wrapper_attributes = get_block_wrapper_attributes( $extra_attributes );
+	$html=sprintf(
+		'<div %1$s>%2$s</div>',
+		$wrapper_attributes,
+		$html
+	);
+	return $html;
+}
+
 
 /**
  * Implements 'parse_request' action for oik-css.
