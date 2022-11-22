@@ -9,6 +9,7 @@
  * @author Herb Miller @bobbingwide
  */
 import './style.scss';
+import './editor.scss';
 
 import { __ } from '@wordpress/i18n';
 import classnames from 'classnames';
@@ -150,6 +151,7 @@ export default registerBlockType( metadata,
 					<div { ...blockProps}>
                     {!isSelected &&
                     <ServerSideRender
+
                         block="oik-css/geshi" attributes={props.attributes}
                     />
                     }
