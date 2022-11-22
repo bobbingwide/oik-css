@@ -1,4 +1,6 @@
 == Upgrade Notice ==
+= 2.0.1 = 
+Updated shared libraries and wp-scripts. Tested with WordPress 6.0.1
 
 = 2.0.0 = 
 Upgrade to use the CSS and GeSHi blocks in the block widget editor.
@@ -70,6 +72,13 @@ Dependent upon the oik base plugin v2.0 (or higher)
 Dependent upon the oik base plugin 
 
 == Changelog ==
+= 2.0.1 =
+* Deleted: Remove redundant logic and files for oik_css_activation() #18
+* Changed: Updated wp-scripts
+* Changed: Updated shared libraries
+* Tested: With WordPress 6.0.1 and WordPress Multi Site
+* Tested: With PHP 8.0
+* Tested: With Gutenberg 13.8.2
 
 = 2.0.0 =
 * Changed: Refactor to use wp-scripts,[github bobbingwide oik-css issues 16]

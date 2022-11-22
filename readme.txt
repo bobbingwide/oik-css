@@ -3,9 +3,9 @@ Contributors: bobbingwide, vsgloik
 Donate link: https://www.oik-plugins.com/oik/oik-donate/
 Tags: CSS, GeSHi, blocks, shortcodes, [bw_css], [bw_geshi], [bw_autop], [bw_background], oik, lazy, smart
 Requires at least: 5.0
-Tested up to: 6.0.1
+Tested up to: 6.1.1
 Gutenberg compatible: Yes
-Stable tag: 2.0.1
+Stable tag: 2.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -107,17 +107,17 @@ This new plugin depends on Gutenberg, the oik base plugin and oik-css.
 
 
 == Upgrade Notice ==
-= 2.0.1 = 
-Updated shared libraries and wp-scripts. Tested with WordPress 6.0.1
+= 2.1.0 = 
+Update for ability to style CSS and GeSHi output in documentation 
 
 == Changelog ==
-= 2.0.1 =
-* Deleted: Remove redundant logic and files for oik_css_activation() #18
+= 2.1.0 =
+* Changed: Implement get_block_wrapper_attributes #16
+* Changed: Adding styling of text,background and font size #16
 * Changed: Updated wp-scripts
-* Changed: Updated shared libraries
-* Tested: With WordPress 6.0.1 and WordPress Multi Site
+* Tested: With WordPress 6.1.1 and WordPress Multi Site
 * Tested: With PHP 8.0
-* Tested: With Gutenberg 13.8.2
+* Tested: With Gutenberg 14.5.4
 
 == Further reading ==
 If you want to read more about the oik plugins then please visit the
