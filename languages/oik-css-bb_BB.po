@@ -1,8 +1,8 @@
-# Copyright (C) 2022 bobbingwide
+# Copyright (C) 2023 bobbingwide
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: oik-css 2.0.1\n"
+"Project-Id-Version: oik-css 2.1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/oik-css\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Language: bb_BB\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-08-15T11:17:27+00:00\n"
+"POT-Creation-Date: 2023-08-07T13:51:58+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 msgid "oik-css"
@@ -28,37 +28,6 @@ msgstr "bboibgniwde"
 
 msgid "https://bobbingwide.com/about-bobbing-wide"
 msgstr "https://bobbingwide.com/about-bobbing-wide"
-
-#: admin/oik-activation.php:30
-#: libs/oik-depends.php:285
-msgid "Install %1$s"
-msgstr "Isnatll %1$s"
-
-#: admin/oik-activation.php:63
-#: libs/oik-depends.php:313
-msgid "Activate %1$s"
-msgstr "Atcvitae %1$s"
-
-#: admin/oik-activation.php:82
-#: libs/oik-depends.php:331
-msgid "Upgrade %1$s"
-msgstr "Ugparde %1$s"
-
-#: admin/oik-activation.php:198
-#: libs/oik-depends.php:148
-msgid "version"
-msgstr "vreison"
-
-#: admin/oik-activation.php:201
-#: libs/oik-depends.php:151
-msgid "%1$s may not be fully functional."
-msgstr "%1$s mAy nOt bE fluly fnutcoianl."
-
-#: admin/oik-activation.php:204
-#: libs/oik-depends.php:107
-#: libs/oik-depends.php:153
-msgid "Please install and activate the required minimum version of this plugin: %1$s"
-msgstr "Pelsae isnatll And atcvitae thE rqeiuerd mnimium vreison Of tihs pulign: %1$s"
 
 #: admin/oik-css.php:4
 msgid "oik-CSS options"
@@ -136,6 +105,31 @@ msgstr "vreison"
 #: libs/oik-depends.php:104
 msgid "Plugin %1$s may not be fully functional."
 msgstr "Pulign %1$s mAy nOt bE fluly fnutcoianl."
+
+#: libs/oik-depends.php:108
+#: libs/oik-depends.php:156
+msgid "Please install and activate the required minimum version of this plugin: %1$s"
+msgstr "Pelsae isnatll And atcvitae thE rqeiuerd mnimium vreison Of tihs pulign: %1$s"
+
+#: libs/oik-depends.php:149
+msgid "version"
+msgstr "vreison"
+
+#: libs/oik-depends.php:153
+msgid "%1$s may not be fully functional."
+msgstr "%1$s mAy nOt bE fluly fnutcoianl."
+
+#: libs/oik-depends.php:289
+msgid "Install %1$s"
+msgstr "Isnatll %1$s"
+
+#: libs/oik-depends.php:318
+msgid "Activate %1$s"
+msgstr "Atcvitae %1$s"
+
+#: libs/oik-depends.php:337
+msgid "Upgrade %1$s"
+msgstr "Ugparde %1$s"
 
 #: libs/oik-shortcodes.php:28
 msgid "<b>Unable to locate routine to expand shortcode.</b>"
@@ -318,67 +312,81 @@ msgstr "Lnag"
 msgid "Write code or specify a source file."
 msgstr "Wirte cdoe Or sepicfy A suocre flie."
 
+#: build/oik-css/block.json
 #: src/oik-css/block.json
 msgctxt "block title"
 msgid "CSS"
 msgstr "CSS"
 
+#: build/oik-css/block.json
 #: src/oik-css/block.json
 msgctxt "block description"
 msgid "Inline CSS"
 msgstr "Ilnnie CSS"
 
+#: build/oik-css/block.json
+#: build/oik-geshi/block.json
 #: src/oik-css/block.json
 #: src/oik-geshi/block.json
 msgctxt "block keyword"
 msgid "CSS"
 msgstr "CSS"
 
+#: build/oik-css/block.json
 #: src/oik-css/block.json
 msgctxt "block keyword"
 msgid "oik"
 msgstr "OIk"
 
+#: build/oik-geshi/block.json
 #: src/oik-geshi/block.json
 msgctxt "block title"
 msgid "GeSHi"
 msgstr "GSeHi"
 
+#: build/oik-geshi/block.json
 #: src/oik-geshi/block.json
 msgctxt "block description"
 msgid "Generic Syntax Highlighting - for code examples"
 msgstr "Gnereic Snyatx Hgilhgithnig - fOr cdoe eaxpmels"
 
+#: build/oik-geshi/block.json
 #: src/oik-geshi/block.json
 msgctxt "block keyword"
 msgid "GeSHi"
 msgstr "GSeHi"
 
+#: build/oik-geshi/block.json
 #: src/oik-geshi/block.json
 msgctxt "block keyword"
 msgid "syntax"
 msgstr "snyatx"
 
+#: build/oik-geshi/block.json
 #: src/oik-geshi/block.json
 msgctxt "block keyword"
 msgid "highlight"
 msgstr "hgilhgiht"
 
+#: build/oik-geshi/block.json
 #: src/oik-geshi/block.json
 msgctxt "block keyword"
 msgid "PHP"
 msgstr "PHP"
 
+#: build/oik-geshi/block.json
 #: src/oik-geshi/block.json
 msgctxt "block keyword"
 msgid "HTML"
 msgstr "HMTL"
 
+#: build/oik-geshi/block.json
 #: src/oik-geshi/block.json
 msgctxt "block keyword"
 msgid "JavaScript"
 msgstr "JvaSarcpit"
 
+#: build/oik-geshi/block.json
 #: src/oik-geshi/block.json
 msgctxt "block keyword"
 msgid "MySQL"

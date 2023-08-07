@@ -1,15 +1,15 @@
-# Copyright (C) 2022 bobbingwide
+# Copyright (C) 2023 bobbingwide
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: oik-css 2.0.1\n"
+"Project-Id-Version: oik-css 2.1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/oik-css\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-08-15T11:39:59+00:00\n"
+"POT-Creation-Date: 2023-08-07T13:51:58+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 
@@ -31,41 +31,6 @@ msgstr ""
 
 #. Author URI of the plugin
 msgid "https://bobbingwide.com/about-bobbing-wide"
-msgstr ""
-
-#. translators: %s: plugin name
-#: admin/oik-activation.php:30
-#: libs/oik-depends.php:285
-msgid "Install %1$s"
-msgstr ""
-
-#. translators: %s: plugin name
-#: admin/oik-activation.php:63
-#: libs/oik-depends.php:313
-msgid "Activate %1$s"
-msgstr ""
-
-#. translators: %s: plugin name
-#: admin/oik-activation.php:82
-#: libs/oik-depends.php:331
-msgid "Upgrade %1$s"
-msgstr ""
-
-#: admin/oik-activation.php:198
-#: libs/oik-depends.php:148
-msgid "version"
-msgstr ""
-
-#: admin/oik-activation.php:201
-#: libs/oik-depends.php:151
-msgid "%1$s may not be fully functional."
-msgstr ""
-
-#. translators: %s: plugin dependencies
-#: admin/oik-activation.php:204
-#: libs/oik-depends.php:107
-#: libs/oik-depends.php:153
-msgid "Please install and activate the required minimum version of this plugin: %1$s"
 msgstr ""
 
 #: admin/oik-css.php:4
@@ -154,6 +119,36 @@ msgstr ""
 #. translators: %s: plugin name
 #: libs/oik-depends.php:104
 msgid "Plugin %1$s may not be fully functional."
+msgstr ""
+
+#. translators: %s: plugin dependencies, comma separated
+#: libs/oik-depends.php:108
+#: libs/oik-depends.php:156
+msgid "Please install and activate the required minimum version of this plugin: %1$s"
+msgstr ""
+
+#: libs/oik-depends.php:149
+msgid "version"
+msgstr ""
+
+#. translators: %s: plugin dependencies, comma separated
+#: libs/oik-depends.php:153
+msgid "%1$s may not be fully functional."
+msgstr ""
+
+#. translators: %s: plugin name
+#: libs/oik-depends.php:289
+msgid "Install %1$s"
+msgstr ""
+
+#. translators: %s: plugin name
+#: libs/oik-depends.php:318
+msgid "Activate %1$s"
+msgstr ""
+
+#. translators: %s: plugin name
+#: libs/oik-depends.php:337
+msgid "Upgrade %1$s"
 msgstr ""
 
 #: libs/oik-shortcodes.php:28
