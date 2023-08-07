@@ -1,4 +1,7 @@
 == Upgrade Notice ==
+= 2.1.0 =
+Update for ability to style CSS and GeSHi output in documentation
+
 = 2.0.1 = 
 Updated shared libraries and wp-scripts. Tested with WordPress 6.0.1
 
@@ -72,6 +75,14 @@ Dependent upon the oik base plugin v2.0 (or higher)
 Dependent upon the oik base plugin 
 
 == Changelog ==
+= 2.1.0 =
+* Changed: Implement get_block_wrapper_attributes #16
+* Changed: Adding styling of text,background and font size #16
+* Changed: Updated wp-scripts
+* Tested: With WordPress 6.1.1 and WordPress Multi Site
+* Tested: With PHP 8.0
+* Tested: With Gutenberg 14.5.4
+
 = 2.0.1 =
 * Deleted: Remove redundant logic and files for oik_css_activation() #18
 * Changed: Updated wp-scripts
