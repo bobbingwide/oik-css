@@ -3,9 +3,9 @@ Contributors: bobbingwide, vsgloik
 Donate link: https://www.oik-plugins.com/oik/oik-donate/
 Tags: CSS, GeSHi, blocks, shortcodes, [bw_css], [bw_geshi], [bw_autop], [bw_background], oik, lazy, smart
 Requires at least: 5.0
-Tested up to: 6.3
+Tested up to: 6.3.1
 Gutenberg compatible: Yes
-Stable tag: 2.1.1
+Stable tag: 2.1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -107,18 +107,15 @@ This new plugin depends on Gutenberg, the oik base plugin and oik-css.
 
 
 == Upgrade Notice ==
-= 2.1.1 =
-Updated to latest wp-scripts. Tested with WordPress 6.3
-
-= 2.1.0 =
-Update for ability to style CSS and GeSHi output in documentation
+= 2.1.2 =
+Now supports PHP 8.2
 
 == Changelog ==
-= 2.1.1 =
-* Changed: Update wp-scripts, rebuild and test with WordPress 6.3 #26
-* Tested: With WordPress 6.3 and WordPress Multi Site
-* Tested: With PHP 8.0
-* Tested: With Gutenberg 16.3.0
+= 2.1.2 =
+* Fixed: PHP 8.2: Don't strtolower( null ) #27
+* Tested: With WordPress 6.3.1 and WordPress Multisite
+* Tested: With PHP 8.2
+* TestedL With PHPUnit 9.6
 
 == Further reading ==
 If you want to read more about the oik plugins then please visit the
