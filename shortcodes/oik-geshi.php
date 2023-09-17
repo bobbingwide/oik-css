@@ -1,4 +1,4 @@
-<?php // (C) Copyright Bobbing Wide 2013-2022
+<?php // (C) Copyright Bobbing Wide 2013-2023
 
 /**
  * Validate the language for GeSHi
@@ -12,7 +12,9 @@
  *
  */
 function oik_css_validate_lang( $lang, &$text ) {
-  $lang = strtolower( $lang );
+	if ( null !== $lang ) {
+		$lang=strtolower( $lang );
+	}
   $valid = bw_assoc( bw_as_array( "css,html,javascript,jquery,php,html5,none,mysql" ));
   $vlang = bw_array_get( $valid, $lang, null );
   if ( !$vlang ) {
