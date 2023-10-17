@@ -332,7 +332,7 @@ function oik_css_dynamic_block_css( $attributes ) {
 	$html = \oik\oik_blocks\oik_blocks_check_server_func( 'shortcodes/oik-css.php', 'oik-css', 'oik_css' );
 	if ( ! $html ) {
 		$content = bw_array_get( $attributes, 'css', null );
-		bw_trace2( $content, 'Content' );
+		bw_trace2( $content, 'Content', false, BW_TRACE_VERBOSE );
 		$html = oik_css( $attributes, $content );
 		$html = oik_css_server_side_wrapper( $attributes, $html );
 	}
