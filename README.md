@@ -4,7 +4,7 @@
 * Donate link: https://www.oik-plugins.com/oik/oik-donate/
 * Tags: CSS, GeSHi, blocks, shortcodes, [bw_css], [bw_geshi], [bw_autop], [bw_background], oik, lazy, smart
 * Requires at least: 5.0
-* Tested up to: 6.3.1
+* Tested up to: 6.4-beta3
 * Gutenberg compatible: Yes
 * Stable tag: 2.1.2
 * License: GPLv2 or later
@@ -113,10 +113,10 @@ Now supports PHP 8.2
 
 ## Changelog 
 # 2.1.2 
-* Fixed: PHP 8.2: Don't strtolower( null ) #27
-* Tested: With WordPress 6.3.1 and WordPress Multisite
-* Tested: With PHP 8.2
-* TestedL With PHPUnit 9.6
+* Changed: Support PHP 8.2 #27
+* Tested: With WordPress 6.4-beta3 and WordPress Multisite
+* Tested: With PHP 8.0, PHP 8.1 and PHP 8.2
+* Tested: With PHPUnit 9.6
 
 ## Further reading 
 If you want to read more about the oik plugins then please visit the
