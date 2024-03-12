@@ -46,6 +46,7 @@ function oik_css_oik_loaded() {
   $bw_disable_autop = bw_get_option( "bw_autop", "bw_css_options" );
   $bw_autop = !$bw_disable_autop;
   bw_better_autop( $bw_autop );
+	add_action( "oik_add_shortcodes", "oik_css_init" );
 }
 
 /**
@@ -220,7 +221,6 @@ function oik_css_oik_menu_box() {
 function oik_css_plugin_loaded() {
   add_action( "oik_admin_menu", "oik_css_admin_menu" );
   add_action( "oik_loaded", "oik_css_oik_loaded" );
-  add_action( "oik_add_shortcodes", "oik_css_init" );
   add_action( 'init', 'oik_css_init_blocks', 100);
   //add_action( 'plugins_loaded', 'oik_css_plugins_loaded' );
   add_action( 'parse_request', 'oik_css_plugins_loaded' );
