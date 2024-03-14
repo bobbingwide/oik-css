@@ -275,6 +275,7 @@ function oik_css_register_dynamic_blocks() {
 		 * from the locale specific .json file in the languages folder.
 		 */
 		$ok = wp_set_script_translations( 'oik-css-css-editor-script', 'oik-css' , __DIR__ .'/languages' );
+		$ok = wp_set_script_translations( 'oik-css-geshi-editor-script', 'oik-css' , __DIR__ .'/languages' );
 		add_filter( 'load_script_textdomain_relative_path', 'oik_css_load_script_textdomain_relative_path', 10, 2);
 	}
 }
@@ -312,8 +313,8 @@ function oik_css_block_type_metadata( $metadata ) {
  * @return mixed
  */
 function oik_css_load_script_textdomain_relative_path( $relative, $src ) {
-	if ( false !== strrpos( $relative, './build/index.js' )) {
-		$relative = 'build/index.js';
+	if ( false !== strpos( $src, '/oik-css/src/' )) {
+		$relative = 'build/' . basename( $relative );
 	}
 	//bw_trace2( $relative, "relative");
 	return $relative;
