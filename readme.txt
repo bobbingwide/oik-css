@@ -107,14 +107,15 @@ This new plugin depends on Gutenberg, the oik base plugin and oik-css.
 
 
 == Upgrade Notice ==
-= 2.1.2 =
-Now supports PHP 8.2
+= 2.1.3 =
+Each block has its own entry point. Now supports PHP 8.3.
 
 == Changelog ==
-= 2.1.2 =
-* Changed: Support PHP 8.2 #27
-* Tested: With WordPress 6.4-beta3 and WordPress Multisite
-* Tested: With PHP 8.0, PHP 8.1 and PHP 8.2
+= 2.1.3 =
+* Changed: Support PHP 8.3 #27
+* Changed: Update wp-scripts and rebuild using separate entry points #26
+* Tested: With WordPress 6.5-RC2 and WordPress Multisite
+* Tested: With PHP 8.3
 * Tested: With PHPUnit 9.6
 
 == Further reading ==
