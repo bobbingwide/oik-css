@@ -2,11 +2,11 @@
 ![banner](assets/oik-css-banner-772x250.jpg)
 * Contributors: bobbingwide, vsgloik
 * Donate link: https://www.oik-plugins.com/oik/oik-donate/
-* Tags: CSS, GeSHi, blocks, shortcodes, [bw_css], [bw_geshi], [bw_autop], [bw_background], oik, lazy, smart
+* Tags: CSS, GeSHi, blocks, shortcodes
 * Requires at least: 5.0
-* Tested up to: 6.5-RC2
+* Tested up to: 6.6.2
 * Gutenberg compatible: Yes
-* Stable tag: 2.1.3
+* Stable tag: 2.2.0
 * License: GPLv2 or later
 * License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -31,7 +31,6 @@ If the oik base plugin is activated
 - Use the [bw_autop] shortcode to disable or re-enable WordPress's wpautop() logic.
 
 - Use the experimental [bw_background] shortcode to display an attached image in the background.
-
 
 ## Installation 
 1. Upload the contents of the oik-css plugin to the `/wp-content/plugins/oik-css' directory
@@ -81,23 +80,12 @@ Supported languages are:
 
 If you want to display syntax highlighted CSS without affecting the current display use [bw_geshi css].
 
-
 # What version of GeSHi does oik-css use? 
 oik-css delivers a subset of GeSHi version 1.0.9.0, which was released in May 2017, with modifications to support PHP 7.2
 
 Only a small selection of the languages are supported by oik-css. These are the languages primarily used by WordPress.
 
 * Note: oik-css will only load the GeSHi code if it is not already loaded.
-
-# What about Gutenberg? 
-oik-css has been tested with the Gutenberg plugin and some problems were detected.
-For details see https://github.com/bobbingwide/oik-css/issues/9.
-Changes have been made to undo the unwanted wpautop processing that affected the output of the bw_geshi shortcode.
-
-In the future you may want to convert your shortcodes to blocks.
-We are developing a new plugin for this... https://github.com/bobbingwide/oik-block.
-This new plugin depends on Gutenberg, the oik base plugin and oik-css.
-
 
 ## Screenshots 
 1. CSS block example
@@ -106,16 +94,14 @@ This new plugin depends on Gutenberg, the oik base plugin and oik-css.
 4. [bw_geshi] - examples
 5. oik-CSS options - available when oik is active
 
-
 ## Upgrade Notice 
-# 2.1.3 
-Each block has its own entry point. Now supports PHP 8.3.
+# 2.2.0 
+Built with latest wp-scripts. Tested with WordPress 6.6.2.
 
 ## Changelog 
-# 2.1.3 
-* Changed: Support PHP 8.3 #27
-* Changed: Update wp-scripts and rebuild using separate entry points #26
-* Tested: With WordPress 6.5-RC2 and WordPress Multisite
+# 2.2.0 
+* Changed: Update wp-scripts to v29.0.0. Add dependency on clsx. #26
+* Tested: With WordPress 6.6.2 and WordPress Multisite
 * Tested: With PHP 8.3
 * Tested: With PHPUnit 9.6
 
