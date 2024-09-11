@@ -56,7 +56,7 @@
     "CSS",
     "oik"
   ],
-  "editorScript": "file:../../build/index.js",
-  "editorStyle": "file:../../build/index.css",
-  "style": "file:../../build/style-index.css"
+  "editorScript": "file:../../build/oik-css.js",
+  "editorStyle": "file:../../build/oik-css.css",
+  "style": "file:../../build/style-oik-css.css"
 }

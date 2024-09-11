@@ -64,5 +64,8 @@
     "JavaScript",
     "CSS",
     "MySQL"
-  ]
+  ],
+  "editorScript": "file:../../build/oik-geshi.js",
+  "editorStyle": "file:../../build/oik-geshi.css",
+  "style": "file:../../build/style-oik-geshi.css"
 }
