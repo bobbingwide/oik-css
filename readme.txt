@@ -9,9 +9,9 @@ Stable tag: 2.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-== Description ==
 Allows internal CSS styling to be included in the content of the page.
 
+== Description ==
 - Use the CSS block to add custom CSS.
 - Use the GeSHi block to syntax highlight: CSS, HTML, JavaScript, jQuery, PHP, MySQL or None.
 
