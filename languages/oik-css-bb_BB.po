@@ -1,8 +1,8 @@
-# Copyright (C) 2023 bobbingwide
+# Copyright (C) 2024 bobbingwide
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: oik-css 2.1.0\n"
+"Project-Id-Version: oik-css 2.3.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/oik-css\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -11,9 +11,9 @@ msgstr ""
 "Language: bb_BB\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-08-07T13:51:58+00:00\n"
+"POT-Creation-Date: 2024-09-23T15:34:16+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.5.0\n"
+"X-Generator: WP-CLI 2.8.1\n"
 msgid "oik-css"
 msgstr "OIk-css"
 
@@ -224,91 +224,93 @@ msgstr "Eslweehre dsilpay &lt;code&gt; In bule."
 msgid "Use a parameter to cause the CSS to be shown."
 msgstr "UsE A pramateer tO cuase thE CSS tO bE sohwn."
 
-#: shortcodes/oik-geshi.php:26
+#: shortcodes/oik-geshi.php:28
 msgid "Invalid %1$s parameter for GeSHi. %2$s"
 msgstr "Ivnlaid %1$s pramateer fOr GSeHi. %2$s"
 
-#: shortcodes/oik-geshi.php:106
+#: shortcodes/oik-geshi.php:108
 msgid "Generic Syntax Highlighting"
 msgstr "Gnereic Snyatx Hgilhgithnig"
 
-#: shortcodes/oik-geshi.php:117
+#: shortcodes/oik-geshi.php:119
 msgid "Programming language"
 msgstr "Porrgmaimng lnauggae"
 
-#: shortcodes/oik-geshi.php:118
+#: shortcodes/oik-geshi.php:120
 msgid "text"
 msgstr "txet"
 
-#: shortcodes/oik-geshi.php:118
+#: shortcodes/oik-geshi.php:120
 msgid "Descriptive text to display"
 msgstr "Dsercpiitve txet tO dsilpay"
 
-#: shortcodes/oik-geshi.php:132
+#: shortcodes/oik-geshi.php:134
 msgid "Demonstrating the HTML to create a link to oik-plugins.com"
 msgstr "Dmenotsaritng thE HMTL tO certae A lnik tO OIk-puligns.cOm"
 
-#: shortcodes/oik-geshi.php:135
+#: shortcodes/oik-geshi.php:137
 msgid "Visit oik-plugins.com"
 msgstr "Vsiit OIk-puligns.cOm"
 
-#: build/index.js:1
+#: build/oik-css.js:1
 msgid "This sentence will be very red."
 msgstr "Tihs sneetcne wlil bE vrey rEd."
 
-#: build/index.js:1
+#: build/oik-css.js:1
+#: build/oik-geshi.js:1
 msgid "Text"
 msgstr "Txet"
 
-#: build/index.js:1
+#: build/oik-css.js:1
+#: build/oik-geshi.js:1
 msgid "Source file: ID, URL or path"
 msgstr "Suocre flie: ID, URL Or ptah"
 
-#: build/index.js:1
+#: build/oik-css.js:1
 msgid "Write CSS or specify a source file."
 msgstr "Wirte CSS Or sepicfy A suocre flie."
 
-#: build/index.js:1
+#: build/oik-geshi.js:1
 msgid "None"
 msgstr "Nnoe"
 
-#: build/index.js:1
+#: build/oik-geshi.js:1
 msgid "HTML"
 msgstr "HMTL"
 
-#: build/index.js:1
+#: build/oik-geshi.js:1
 msgid "CSS"
 msgstr "CSS"
 
-#: build/index.js:1
+#: build/oik-geshi.js:1
 msgid "JavaScript"
 msgstr "JvaSarcpit"
 
-#: build/index.js:1
+#: build/oik-geshi.js:1
 msgid "jQuery"
 msgstr "juQrey"
 
-#: build/index.js:1
+#: build/oik-geshi.js:1
 msgid "PHP"
 msgstr "PHP"
 
-#: build/index.js:1
+#: build/oik-geshi.js:1
 msgid "MySQL"
 msgstr "MSyQL"
 
-#: build/index.js:1
+#: build/oik-geshi.js:1
 msgid "WordPress motto"
 msgstr "WroPderss mtoto"
 
-#: build/index.js:1
+#: build/oik-geshi.js:1
 msgid "echo \"Code is Poetry.\""
 msgstr "ehco \"Cdoe Is Peorty.\""
 
-#: build/index.js:1
+#: build/oik-geshi.js:1
 msgid "Lang"
 msgstr "Lnag"
 
-#: build/index.js:1
+#: build/oik-geshi.js:1
 msgid "Write code or specify a source file."
 msgstr "Wirte cdoe Or sepicfy A suocre flie."
 

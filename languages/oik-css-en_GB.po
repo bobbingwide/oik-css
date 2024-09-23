@@ -1,8 +1,8 @@
-# Copyright (C) 2023 bobbingwide
+# Copyright (C) 2024 bobbingwide
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: oik-css 2.1.0\n"
+"Project-Id-Version: oik-css 2.3.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/oik-css\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -11,9 +11,9 @@ msgstr ""
 "Language: en_GB\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-08-07T13:51:58+00:00\n"
+"POT-Creation-Date: 2024-09-23T15:34:16+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.5.0\n"
+"X-Generator: WP-CLI 2.8.1\n"
 msgid "oik-css"
 msgstr "oik-css"
 
@@ -224,91 +224,93 @@ msgstr "Elsewhere display &lt;code&gt; in blue."
 msgid "Use a parameter to cause the CSS to be shown."
 msgstr "Use a parameter to cause the CSS to be shown."
 
-#: shortcodes/oik-geshi.php:26
+#: shortcodes/oik-geshi.php:28
 msgid "Invalid %1$s parameter for GeSHi. %2$s"
 msgstr "Invalid %1$s parameter for GeSHi. %2$s"
 
-#: shortcodes/oik-geshi.php:106
+#: shortcodes/oik-geshi.php:108
 msgid "Generic Syntax Highlighting"
 msgstr "Generic Syntax Highlighting"
 
-#: shortcodes/oik-geshi.php:117
+#: shortcodes/oik-geshi.php:119
 msgid "Programming language"
 msgstr "Programming language"
 
-#: shortcodes/oik-geshi.php:118
+#: shortcodes/oik-geshi.php:120
 msgid "text"
 msgstr "text"
 
-#: shortcodes/oik-geshi.php:118
+#: shortcodes/oik-geshi.php:120
 msgid "Descriptive text to display"
 msgstr "Descriptive text to display"
 
-#: shortcodes/oik-geshi.php:132
+#: shortcodes/oik-geshi.php:134
 msgid "Demonstrating the HTML to create a link to oik-plugins.com"
 msgstr "Demonstrating the HTML to create a link to oik-plugins.com"
 
-#: shortcodes/oik-geshi.php:135
+#: shortcodes/oik-geshi.php:137
 msgid "Visit oik-plugins.com"
 msgstr "Visit oik-plugins.com"
 
-#: build/index.js:1
+#: build/oik-css.js:1
 msgid "This sentence will be very red."
 msgstr "This sentence will be very red."
 
-#: build/index.js:1
+#: build/oik-css.js:1
+#: build/oik-geshi.js:1
 msgid "Text"
 msgstr "Text"
 
-#: build/index.js:1
+#: build/oik-css.js:1
+#: build/oik-geshi.js:1
 msgid "Source file: ID, URL or path"
 msgstr "Source file: ID, URL or path"
 
-#: build/index.js:1
+#: build/oik-css.js:1
 msgid "Write CSS or specify a source file."
 msgstr "Write CSS or specify a source file."
 
-#: build/index.js:1
+#: build/oik-geshi.js:1
 msgid "None"
 msgstr "None"
 
-#: build/index.js:1
+#: build/oik-geshi.js:1
 msgid "HTML"
 msgstr "HTML"
 
-#: build/index.js:1
+#: build/oik-geshi.js:1
 msgid "CSS"
 msgstr "CSS"
 
-#: build/index.js:1
+#: build/oik-geshi.js:1
 msgid "JavaScript"
 msgstr "JavaScript"
 
-#: build/index.js:1
+#: build/oik-geshi.js:1
 msgid "jQuery"
 msgstr "jQuery"
 
-#: build/index.js:1
+#: build/oik-geshi.js:1
 msgid "PHP"
 msgstr "PHP"
 
-#: build/index.js:1
+#: build/oik-geshi.js:1
 msgid "MySQL"
 msgstr "MySQL"
 
-#: build/index.js:1
+#: build/oik-geshi.js:1
 msgid "WordPress motto"
 msgstr "WordPress motto"
 
-#: build/index.js:1
+#: build/oik-geshi.js:1
 msgid "echo \"Code is Poetry.\""
 msgstr "echo \"Code is Poetry.\""
 
-#: build/index.js:1
+#: build/oik-geshi.js:1
 msgid "Lang"
 msgstr "Lang"
 
-#: build/index.js:1
+#: build/oik-geshi.js:1
 msgid "Write code or specify a source file."
 msgstr "Write code or specify a source file."
 
