@@ -1,4 +1,4 @@
-<?php // (C) Copyright Bobbing Wide 2013-2023
+<?php // (C) Copyright Bobbing Wide 2013-2024
 
 /**
  * Validate the language for GeSHi
@@ -140,7 +140,7 @@ function bw_geshi__example( $shortcode="bw_geshi" ) {
   stag( "code" );
   e( esc_html( $example ) );
   etag( "code" );
-  ep();
+  bw_echo( '</p>' );
   $expanded = apply_filters( 'the_content', $example );
   e( $expanded );
 }
