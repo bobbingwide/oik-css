@@ -3,7 +3,7 @@
 Plugin Name: oik-css
 Plugin URI: https://www.oik-plugins.com/oik-plugins/oik-css
 Description: Implements CSS and GeSHi blocks for internal CSS styling and to help document source code examples
-Version: 2.2.0
+Version: 2.3.0
 Author: bobbingwide
 Author URI: https://bobbingwide.com/about-bobbing-wide
 Text Domain: oik-css
@@ -271,12 +271,11 @@ function oik_css_register_dynamic_blocks() {
 		//bw_trace2( $registered, "registered", false);
 
 		/**
-		 * Localise the script by loading the required strings for the build/index.js file
+		 * Localise the script by loading the required strings for the build/entry-point.js files
 		 * from the locale specific .json file in the languages folder.
 		 */
 		$ok = wp_set_script_translations( 'oik-css-css-editor-script', 'oik-css' , __DIR__ .'/languages' );
 		$ok = wp_set_script_translations( 'oik-css-geshi-editor-script', 'oik-css' , __DIR__ .'/languages' );
-		add_filter( 'load_script_textdomain_relative_path', 'oik_css_load_script_textdomain_relative_path', 10, 2);
 	}
 }
 
@@ -298,26 +297,6 @@ function oik_css_block_type_metadata( $metadata ) {
 		}
 	}
 	return $metadata;
-}
-
-/**
- * Filters $relative so that md5's match what's expected.
- *
- * Depending on how it was built the `build/index.js` may be preceded by `./` or `src/block-name/../../`.
- * In either of these situations we want the $relative value to be returned as `build/index.js`.
- * This then produces the correct md5 value and the .json file is found.
- *
- * @param $relative
- * @param $src
- *
- * @return mixed
- */
-function oik_css_load_script_textdomain_relative_path( $relative, $src ) {
-	if ( false !== strpos( $src, '/oik-css/src/' )) {
-		$relative = 'build/' . basename( $relative );
-	}
-	//bw_trace2( $relative, "relative");
-	return $relative;
 }
 
 /**
@@ -375,7 +354,6 @@ function oik_css_server_side_wrapper( $attributes, $html ) {
 	);
 	return $html;
 }
-
 
 /**
  * Implements 'parse_request' action for oik-css.
