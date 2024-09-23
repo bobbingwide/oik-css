@@ -1,4 +1,7 @@
 == Upgrade Notice ==
+= 2.2.0 =
+Built with latest wp-scripts. Tested with WordPress 6.6.2.
+
 = 2.1.3 =
 Each block has its own entry point. Now supports PHP 8.3.
 
@@ -84,6 +87,12 @@ Dependent upon the oik base plugin v2.0 (or higher)
 Dependent upon the oik base plugin
 
 == Changelog ==
+= 2.2.0 =
+* Changed: Update wp-scripts to v29.0.0. Add dependency on clsx. #26
+* Tested: With WordPress 6.6.2 and WordPress Multisite
+* Tested: With PHP 8.3
+* Tested: With PHPUnit 9.6
+
 = 2.1.3 =
 * Changed: Support PHP 8.3 #27
 * Changed: Update wp-scripts and rebuild using separate entry points #26
