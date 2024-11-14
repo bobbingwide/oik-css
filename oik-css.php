@@ -34,18 +34,30 @@ oik_css_plugin_loaded();
 /**
  * Implement "oik_loaded" action for oik-css
  *
- * Regardless of whether or not there are any shortcodes
+ * Regardless of whether there are any shortcodes
  * we apply our logic for filtering 'the_content'
- * The option field is a checkbox that is ticked when the wpautop() processing is disabled
+ *
+ * The call to bw_better_autop() takes a parameter to control whether
+ * the bw_autop() function is called to perform wpautop logic or not.
+ * When it's a block based theme the value is true when PHP is being run in the command line interface (CLI)
+ * false otherwise. This is a pragmatic solution for PHPUnit testing.
+ *
+ * For classic themes the option field is a checkbox that is ticked when the wpautop() processing is to be disabled.
  * So we need to negate the value when calling bw_better_autop().
  *
- * Note: Part of the better autop logic applies regardless of the settting for bw_autop
- *
+ * Note: Most of the better autop logic applies regardless of the settting for bw_autop
+ *Part
  */
 function oik_css_oik_loaded() {
-  $bw_disable_autop = bw_get_option( "bw_autop", "bw_css_options" );
-  $bw_autop = !$bw_disable_autop;
-  bw_better_autop( $bw_autop );
+	$theme         =wp_get_theme();
+	$is_block_theme=$theme->is_block_theme();
+	if ( $is_block_theme ) {
+		bw_better_autop( PHP_SAPI === 'cli' );
+	} else {
+		$bw_disable_autop=bw_get_option( "bw_autop", "bw_css_options" );
+		$bw_autop        = ! $bw_disable_autop;
+		bw_better_autop( $bw_autop );
+	}
 	add_action( "oik_add_shortcodes", "oik_css_init" );
 }
 
@@ -147,11 +159,13 @@ function bw_better_autop( $autop=false ) {
 	bw_replace_filter( "the_content", "do_shortcode", 11, "do_shortcode_earlier" );
 
   //add_filter( 'the_content', 'bw_tracef', 99 );
+
   if ( $autop ) {
     add_filter( 'the_content', 'bw_wpautop', 99);
   } else {
     remove_filter( 'the_content', 'bw_wpautop', 99 );
   }
+
   //add_filter( 'the_content', 'bw_tracef', 100 );
   //add_filter( 'the_content', 'shortcode_unautop',100 );
 	add_filter( 'no_texturize_shortcodes', "bw_no_texturize_shortcodes" );
