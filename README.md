@@ -4,9 +4,9 @@
 * Donate link: https://www.oik-plugins.com/oik/oik-donate/
 * Tags: CSS, GeSHi, blocks, shortcodes
 * Requires at least: 5.0
-* Tested up to: 6.6.2
+* Tested up to: 6.7
 * Gutenberg compatible: Yes
-* Stable tag: 2.3.0
+* Stable tag: 2.3.1
 * License: GPLv2 or later
 * License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -95,17 +95,14 @@ Only a small selection of the languages are supported by oik-css. These are the 
 5. oik-CSS options - available when oik is active
 
 ## Upgrade Notice 
-# 2.3.0 
-Update to remove the dependency on the ep() shared library function which is being renamed in oik-bwtrace
+# 2.3.1 
+Automatically disables automatic paragraph creation for block based themes.
 
 ## Changelog 
-# 2.3.0 
-* Changed: Remove oik_css_load_script_textdomain_relative_path #26
-* Changed: Update language files #26
-* Changed: Update wp-scripts to v30.0.2 and package version to 2.3.0 #26
-* Changed: Remove dependency on bobbfunc's ep() #33
-* Changed: Reconcile bobbfunc updates #33
-* Tested: With WordPress 6.6.2 and WordPress Multisite
+# 2.3.1 
+* Changed: Disable wpautop() processing for block based themes #35
+* Changed: Update wp-scripts to v30.4.0 #26
+* Tested: With WordPress 6.7 and WordPress Multisite
 * Tested: With PHP 8.3
 * Tested: With PHPUnit 9.6
 
