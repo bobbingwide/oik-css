@@ -22,7 +22,7 @@ function bw_enqueue_style( $atts, $content ) {
 
 /**
  * Format the CSS as part of the content, if required
- * 
+ *
  * @param array $atts - array of parameters. The formal parameter name is "text" but ANY value will do the job
  * @param string $content - the CSS to be displayed
  */
@@ -33,7 +33,7 @@ function bw_format_style( $atts, $content ) {
 		$text = bw_array_get( $atts, 'text', null );
 	}
   if ( $text ) {
-    sdiv( "bw_css" ); 
+    sdiv( "bw_css" );
     if ( $text <> "." ) {
       e( $text );
     }
@@ -66,12 +66,12 @@ function bw_geshi_highlight($string, $language) {
 
 /**
  * Perform GeSHi - Generic Syntax Highlighter processing
- * 
+ *
  * If geshi_highlight() is already available then we don't need to load our version
  *
  * After highlighting convert any remaining '[' to &#091; to stop plugins such as NextGen from expanding the shortcodes.
- * Note: It shouldn't matter if we do this to CSS 
- * 
+ * Note: It shouldn't matter if we do this to CSS
+ *
  * @param string $content - the code to be put through GeSHi highlighting
  * @param string $language - the language to use.
  * @return string the highlighted code
@@ -85,18 +85,38 @@ function bw_geshi_it( $content, $language="CSS" ) {
 	}
 	bw_trace2( $geshid );
 	$geshid = str_replace( "[", "&#091;", $geshid );
+	$geshid = bw_geshi_colour_contrast( $geshid );
 	return( $geshid );
 }
 
 /**
+ * Replace foreground colours for better colour constrast.
+ *
+ * We're assuming a background colour of #f8f8f8.
+ * We want to satisfy WCAG AAA.
+ *
+ * @param $geshid
+ * @return string
+ */
+function bw_geshi_colour_contrast( $geshid ) {
+	$geshid = str_replace( '#009900', '#006100', $geshid);
+	$geshid = str_replace( '#66cc66', '#006100', $geshid);
+	$geshid = str_replace( '#ff0000', '#ad0000', $geshid);
+	$geshid = str_replace( '#808080', '#757575', $geshid);
+	$geshid = str_replace( '#00AA00', '#008A00', $geshid);
+	bw_trace2( $geshid, "after colour contrast", false);
+	return $geshid;
+}
+
+/**
  * Remove unwanted tags introduced by other filters
- * 
+ *
  * The $content may contain all sorts of nastys that WordPress filters have added to the plain text so we need to strip it out.
  * @link http://www.ascii.cl/htmlcodes.htm
  *
- * @param string $content 
+ * @param string $content
  * @return string - content with the unwanted HTML removed
- */ 
+ */
 function bw_remove_unwanted_tags( $content ) {
   $dec = $content;
   $dec = str_replace( "<br />", "", $dec );
@@ -127,12 +147,12 @@ function bw_detexturize( $content ) {
 
 /**
  * Implement [bw_css] shortcode
- * 
+ *
  * @param array $atts - array of shortcode parameters
  * @param string $content - the CSS to be put into the page
  * @param string $tag - the shortcode tag - not expected
  * @return string any text to be put onto the page
- * 
+ *
  */
 function oik_css( $atts=null, $content=null, $tag=null ) {
 	if ( !$content ) {
@@ -168,12 +188,12 @@ function bw_css__help( $shortcode="bw_css" ) {
 /**
  * Implement syntax hook for the bw_css shortcode
  *
- * The shortcode is expected to be coded as 
+ * The shortcode is expected to be coded as
  * [bw_css]<i>Internal CSS rules</i>[/bw_css]
  *
  * If you want the CSS to be passed through GeSHi and output to the page then this is indicated using a parameter.
- * A simple . will cause the CSS to be echoed. 
- * Anything other than .  which could be as text="echo this text" or just "echo this text" will be echoed before the CSS. 
+ * A simple . will cause the CSS to be echoed.
+ * Anything other than .  which could be as text="echo this text" or just "echo this text" will be echoed before the CSS.
  */
 function bw_css__syntax( $shortcode="bw_css" ) {
   $syntax = array( "." => BW_::bw_skv( null, "<i>". __( "any", "oik-css" ) . "</i>", __( "Display the CSS", "oik-css" ) )
