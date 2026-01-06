@@ -1,28 +1,30 @@
 <div class="postbox " id="oik_css_options">
+<div class="postbox-header">
+<h2 class="hndle">oik-CSS options</h2>
+<div class="handle-actions hide-if-no-js">
 <button type="button" class="handlediv" aria-expanded="true">
 <span class="screen-reader-text">Toggle panel: oik-CSS options</span>
 <span class="toggle-indicator" aria-hidden="true">
 </span>
 </button>
-<h3 class="hndle">oik-CSS options</h3>
+</div>
+</div>
 <div class="inside">
 <form method="post" action="options.php">
-<table class="form-table">
+<div class="bw_grid">
 <input type='hidden' name='option_page' value='oik_css_options' />
 <input type="hidden" name="action" value="update" />
 <input type="hidden" id="_wpnonce" name="_wpnonce" value="nonsense" />
 <input type="hidden" name="_wp_http_referer" value="/" />
-<tr>
-<td>
+<div>
 <label for="bw_css_options[bw_autop]">Disable automatic paragraph creation</label>
-</td>
-<td>
 <input type="hidden" name="bw_css_options[bw_autop]" value="0" />
-<input type="checkbox" name="bw_css_options[bw_autop]" id="bw_css_options[bw_autop]"/>
-</td>
-</tr>
-</table>
+<input type="checkbox" name="bw_css_options[bw_autop]" id="bw_css_options[bw_autop]" aria-label="bw_css_options[bw_autop]"/>
+</div>
+</div>
+<p>
 <input type="submit" name="ok" value="Save changes" class="button-secondary" />
+</p>
 </form>
 <p>To enable automatic paragraph creation use the [bw_autop] shortcode.</p>
 <p>To disable automatic paragraph creation use [bw_autop off].</p>
