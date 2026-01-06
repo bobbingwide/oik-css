@@ -3,9 +3,9 @@ Contributors: bobbingwide, vsgloik
 Donate link: https://www.oik-plugins.com/oik/oik-donate/
 Tags: CSS, GeSHi, blocks, shortcodes
 Requires at least: 5.0
-Tested up to: 6.7
+Tested up to: 6.9
 Gutenberg compatible: Yes
-Stable tag: 2.3.1
+Stable tag: 2.4.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -94,16 +94,22 @@ Note: oik-css will only load the GeSHi code if it is not already loaded.
 5. oik-CSS options - available when oik is active
 
 == Upgrade Notice ==
-= 2.3.1 =
-Automatically disables automatic paragraph creation for block based themes.
+= 2.4.0 =
+Upgrade for accessibility improvements for Low Color Contrast errors.
 
 == Changelog ==
-= 2.3.1 =
-* Changed: Disable wpautop() processing for block based themes #35
-* Changed: Update wp-scripts to v30.4.0 #26
-* Tested: With WordPress 6.7 and WordPress Multisite
-* Tested: With PHP 8.3
-* Tested: With PHPUnit 9.6
+= 2.4.0 =
+* Changed: Support PHPUnit 10 & 11. #27
+* Changed: Accessibility: Update test data results #19
+* Changed: Accessibility: Deal with more GeSHi low color contrast messages from WAVE #19
+* Changed: Fixed: Accessibility - don't run wpautop() on the_excerpt #19
+* Changed: Accessibility: Deal with more GeSHi low color contrast messages from WAVE #19
+* Changed: Accessibility: Use grid rather than table #19
+* Fixed: Support PHP 8.4 #27
+* Changed: Fix Color Contrast errors from WAVE for GeSHi'd output. #39
+* Tested: With WordPress 6.9 and WordPress Multisite
+* Tested: With PHP 8.4
+* Tested: With PHPUnit 10 & 11
 
 == Further reading ==
 If you want to read more about the oik plugins then please visit the

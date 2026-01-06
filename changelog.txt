@@ -1,4 +1,7 @@
 == Upgrade Notice ==
+= 2.3.1 =
+Automatically disables automatic paragraph creation for block based themes.
+
 = 2.3.0 =
 Update to remove the dependency on the ep() shared library function which is being renamed in oik-bwtrace
 
@@ -90,6 +93,13 @@ Dependent upon the oik base plugin v2.0 (or higher)
 Dependent upon the oik base plugin
 
 == Changelog ==
+= 2.3.1 =
+* Changed: Disable wpautop() processing for block based themes #35
+* Changed: Update wp-scripts to v30.4.0 #26
+* Tested: With WordPress 6.7 and WordPress Multisite
+* Tested: With PHP 8.3
+* Tested: With PHPUnit 9.6
+
 = 2.3.0 =
 * Changed: Remove oik_css_load_script_textdomain_relative_path #26
 * Changed: Update language files #26
