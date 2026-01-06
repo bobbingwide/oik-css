@@ -1,4 +1,4 @@
-<?php // (C) Copyright Bobbing Wide 2017, 2020
+<?php // (C) Copyright Bobbing Wide 2017, 2020, 2026
 
 /**
  * @package oik-css
@@ -252,5 +252,3 @@ class Tests_shortcodes_oik_geshi extends BW_UnitTestCase {
 	}
 
 }
-
-

@@ -1,8 +1,8 @@
-<?php // (C) Copyright Bobbing Wide 2016-2017, 2020
+<?php // (C) Copyright Bobbing Wide 2016-2017, 2020, 2026
 
 /**
  * @package oik-css
- * 
+ *
  * Test the functions in admin/oik-css.php
  */
 class Tests_admin_oik_css extends BW_UnitTestCase {
@@ -12,17 +12,17 @@ class Tests_admin_oik_css extends BW_UnitTestCase {
 		oik_require( "admin/oik-css.php", "oik-css" );
 		oik_require_lib( "oik_plugins" );
 	}
-	
+
 	/**
 	 * Tests oik_css_options with bw_autop enabled
 	 */
 	function test_oik_css_options_bw_autop_enabled() {
 		bw_update_option( "bw_autop", "on", "bw_css_options" );
 		$this->switch_to_locale( "en_GB" );
-		
-		ob_start();   
+
+		ob_start();
 		oik_css_options();
-		
+
 		$html = ob_get_contents();
 		ob_end_clean();
 		$html .= bw_ret();
@@ -31,7 +31,7 @@ class Tests_admin_oik_css extends BW_UnitTestCase {
 		//$this->generate_expected_file( $html_array );
 		$this->assertArrayEqualsFile( $html_array );
 	}
-	
+
 	/**
 	 * Tests oik_css_options with bw_autop enabled language bb_BB
 	 */
@@ -39,10 +39,10 @@ class Tests_admin_oik_css extends BW_UnitTestCase {
 		//$this->setExpectedDeprecated( "bw_translate" );
 		bw_update_option( "bw_autop", "on", "bw_css_options" );
 		$this->switch_to_locale( "bb_BB" );
-		
-		ob_start();   
+
+		ob_start();
 		oik_css_options();
-		
+
 		$html = ob_get_contents();
 		ob_end_clean();
 		$html .= bw_ret();
@@ -50,10 +50,10 @@ class Tests_admin_oik_css extends BW_UnitTestCase {
 		$html_array = $this->replace_nonce_with_nonsense( $html_array );
 		//$this->generate_expected_file( $html_array );
 		$this->assertArrayEqualsFile( $html_array );
-		
+
 		$this->switch_to_locale( "en_GB" );
 	}
-	
+
 	/**
 	 * Tests oik_menu_box and oik_css_options with bw_autop disabled
 	 */
@@ -61,7 +61,7 @@ class Tests_admin_oik_css extends BW_UnitTestCase {
 		//$this->setExpectedDeprecated( "bw_translate" );
 		$this->switch_to_locale( "en_GB" );
 		bw_update_option( "bw_autop", "0", "bw_css_options" );
-		ob_start();   
+		ob_start();
 		oik_css_lazy_oik_menu_box();
 		$html = ob_get_contents();
 		ob_end_clean();
@@ -72,7 +72,7 @@ class Tests_admin_oik_css extends BW_UnitTestCase {
 		//$this->generate_expected_file( $html_array );
 		$this->assertArrayEqualsFile( $html_array );
 	}
-	
+
 	/**
 	 * Tests oik_menu_box and oik_css_options with bw_autop disabled language bb_BB
 	 */
@@ -80,7 +80,7 @@ class Tests_admin_oik_css extends BW_UnitTestCase {
 		//$this->setExpectedDeprecated( "bw_translate" );
 		$this->switch_to_locale( "bb_BB" );
 		bw_update_option( "bw_autop", "0", "bw_css_options" );
-		ob_start();   
+		ob_start();
 		oik_css_lazy_oik_menu_box();
 		$html = ob_get_contents();
 		ob_end_clean();
@@ -92,7 +92,7 @@ class Tests_admin_oik_css extends BW_UnitTestCase {
 		$this->assertArrayEqualsFile( $html_array );
 		$this->switch_to_locale( "en_GB" );
 	}
-	
+
 	/**
 	 * Reloads the text domains
 	 */
@@ -105,9 +105,5 @@ class Tests_admin_oik_css extends BW_UnitTestCase {
 		oik_require_lib( "oik-l10n" );
 		oik_l10n_enable_jti();
 	}
-	
-	
-	
-		
-	
+
 }
