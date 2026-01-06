@@ -108,6 +108,7 @@ function bw_geshi_colour_contrast( $geshid ) {
 	$geshid = str_replace( '#008A00', '#008500', $geshid);
 	$geshid = str_replace( '#cc66cc', '#B43CB4', $geshid);
 	$geshid = str_replace( '#cc00cc', '#C700C7', $geshid);
+	$geshid = str_replace( '#339933', '#2D862D', $geshid);
 	bw_trace2( $geshid, "after colour contrast", false);
 	return $geshid;
 }
