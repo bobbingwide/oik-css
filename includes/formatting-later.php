@@ -1,7 +1,7 @@
-<?php // (C) Copyright Bobbing Wide 2014-2015
+<?php // (C) Copyright Bobbing Wide 2014-2015, 2024
 
 /*
- * Allow for the autopia plugin 
+ * Allow for the autopia plugin
  *
  *
  * - The autopia plugin is a (vapourware) "feature plugin"
@@ -12,29 +12,29 @@
  * implemented with belt and braces; around each function
  *
  */
- 
+
 /**
  * Apply wptexturize logic in blocks
- * 
+ *
  * The content has been expanded and we now have output that may contain:
- * - a load of stuff that can be texturized, 
- * - followed by some that can't 
+ * - a load of stuff that can be texturized,
+ * - followed by some that can't
  * - `<!--notext:-->` this is the text that can't, ending in `<!--dotext:-->`
  * - then more that can be texturized
- 
+
  * Assume: We don't need to recursively process the <!--notext: <!--dotext: pairs
  * - Any routine that thinks it's necessary should add its own dotext: notext: pairing around stuff that can be texturized
  * - OR create texturized content in the first place
- * 
+ *
  * AND we hope wpautop() doesn't mess it up either
- * 
+ *
  * @since 4.2.0
  *
  * @param string $content the string to be texturized
  * @return string the texturized content without notext:/dotext: comments
  *
- */ 
-if ( !function_exists( "wptexturize_blocks" ) ) { 
+ */
+if ( !function_exists( "wptexturize_blocks" ) ) {
 function wptexturize_blocks( $content ) {
   $result = null;
   $rest = $content;
@@ -44,14 +44,14 @@ function wptexturize_blocks( $content ) {
     $result .= wptexturize_after_shortcodes( $left );
     $right = substr( $rest, $spos+14 );
     $epos = strpos( $right, "<!--dotext:-->" );
-    if ( $epos != false ) { 
+    if ( $epos != false ) {
       $result .= substr( $right, 0, $epos );
       $rest = substr( $right, $epos+14 );
     } else {
-      // Not expected? 
-      $result .= $right; 
-      $rest = null;
-    } 
+      // Not expected?
+      $result .= $right;
+      $rest = '';
+    }
     $spos = strpos( $rest, "<!--notext:-->" );
   }
   $result .= wptexturize_after_shortcodes( $rest );
@@ -361,7 +361,7 @@ function wptexturize_after_shortcodes($text, $reset = false) {
  * Replace double line-breaks without adding `<br />`.
  *
  * Perform most of wpautop() formatting except for the line-break to `br` conversion
- * 
+ *
  * @param string $pee The text which has to be formatted.
  * @return string Text which has been converted into correct paragraph tags.
  *
