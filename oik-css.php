@@ -195,6 +195,7 @@ function bw_better_autop( $autop=false ) {
     add_filter( 'the_content', "wptexturize_blocks", 98 );
     //add_filter( 'option_blogname', 'oik_css_pesky_shortcodes');
     //add_filter( 'oembed_response_data')
+	  remove_filter( 'the_excerpt', 'wpautop');
   }
 }
 
