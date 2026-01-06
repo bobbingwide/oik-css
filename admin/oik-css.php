@@ -6,12 +6,17 @@ function oik_css_lazy_oik_menu_box() {
 
 function oik_css_options() {
   $option = "bw_css_options";
+  bw_is_table( false );
   $options = bw_form_start( $option, "oik_css_options" );
-  bw_checkbox_arr( $option, __( "Disable automatic paragraph creation", "oik-css" ), $options, "bw_autop" ); 
-  etag( "table" ); 			
-  e( isubmit( "ok", __("Save changes", "oik-css" ), null, "button-secondary" ) ); 
+
+  bw_checkbox_arr( $option, __( "Disable automatic paragraph creation", "oik-css" ), $options, "bw_autop" );
+  //etag( "table" );
+	bw_table_or_grid_end();
+  p( isubmit( "ok", __("Save changes", "oik-css" ), null, "button-secondary" ) );
   etag( "form" );
+
   BW_::p( __( "To enable automatic paragraph creation use the [bw_autop] shortcode.", "oik-css" ) );
   BW_::p( __( "To disable automatic paragraph creation use [bw_autop off].", "oik-css" ) );
   bw_flush();
+  bw_is_table( true );
 }
