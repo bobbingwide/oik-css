@@ -90,10 +90,10 @@ function bw_geshi_it( $content, $language="CSS" ) {
 }
 
 /**
- * Replace foreground colours for better colour constrast.
+ * Replace foreground colours for better color contrast.
  *
  * We're assuming a background colour of #f8f8f8.
- * We want to satisfy WCAG AAA.
+ * We want to satisfy WCAG 2.1 AA or AAA?.
  *
  * @param $geshid
  * @return string
@@ -104,6 +104,10 @@ function bw_geshi_colour_contrast( $geshid ) {
 	$geshid = str_replace( '#ff0000', '#ad0000', $geshid);
 	$geshid = str_replace( '#808080', '#757575', $geshid);
 	$geshid = str_replace( '#00AA00', '#008A00', $geshid);
+	$geshid = str_replace( '#6666ff', '#5757ff', $geshid);
+	$geshid = str_replace( '#008A00', '#008500', $geshid);
+	$geshid = str_replace( '#cc66cc', '#B43CB4', $geshid);
+	$geshid = str_replace( '#cc00cc', '#C700C7', $geshid);
 	bw_trace2( $geshid, "after colour contrast", false);
 	return $geshid;
 }
